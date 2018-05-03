@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div style="font-size:3em; color:Tomato">
+  <i class="fas fa-camera-retro"></i>
+</div>
+You are logged in!
                 </div>
             </div>
         </div>
