@@ -217,8 +217,8 @@ return [
     */
 
     'plugins' => [
-        'datatables' => false,
-        'select2'    => false,
-        'chartjs'    => false,
+        'datatables' => true,
+        'select2'    => true,
+        'chartjs'    => true,
     ],
 ];
