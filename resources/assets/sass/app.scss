@@ -10,7 +10,30 @@
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-brands';
 
+// @import "styles.css";
+
 .navbar-laravel {
-  background-color: #fff;
+  background-color: #061A32;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  // height: 140px;
 }
+
+// .nav-pills .nav-item {
+// font-size:18px;
+// line-height:0px;
+//     margin-right: 20px;
+//     margin-left: 20px;
+//     position: relative;
+// }
+
+// .nav-item img {
+//     display: block;
+//     position: absolute;
+//     background-color: #ccc;
+//     width: 30px;
+//     height: 5px;
+//     top: 30px;
+//     left: 50%;
+//     margin-left: -15px;
+// }
+
