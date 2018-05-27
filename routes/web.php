@@ -53,9 +53,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::match(['get', 'post'], 'case/create', 'CasesController@create')->name('admin.cases.create');
     Route::get('case/{id}', 'CasesController@adminDetail')->where('id', '[0-9]+')->name('admin.cases.detail');
 
-    Route::get('resume/my', 'ResumeController@my')->name('resume.my');
-    Route::get('resume/job/{id?}', 'ResumeController@job')->where(['id' => '[0-9]+'])->name('resume.job');
-    Route::get('resume/all', 'ResumeController@all')->name('resume.all');
+    Route::get('product/{index?}', 'ProductController@adminIndex')->where('index', 'index')->name('admin.cases.index');
+    Route::match(['get', 'post'], 'product/create', 'ProductController@create')->name('admin.product.create');
+    Route::get('product/{id}', 'ProductController@adminDetail')->where('id', '[0-9]+')->name('admin.product.detail');
     Route::get('resumes', 'ResumeController@search')->name('resume.search');
     Route::match(['get', 'post'], '/edit', 'ResumeController@edit');
     Route::post('/my/add/{id}', 'ResumeController@addmy')->where(['id' => '[0-9]+'])->name('resume.addmy');

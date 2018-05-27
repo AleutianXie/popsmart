@@ -5,5 +5,8 @@
 @stop
 
 @section('content')
-    <p>index!</p>
+    <p>detail!</p>
+    @foreach ($product as $element)
+        {{ $element }}
+    @endforeach
 @stop
