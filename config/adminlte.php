@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        '内容管理',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
@@ -121,7 +121,7 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        'ACCOUNT SETTINGS',
+        '用户管理',
         [
             'text' => 'Profile',
             'url'  => 'admin/settings',
