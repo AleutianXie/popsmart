@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+{{-- @extends('adminlte::page')
 
 @section('content_header')
     <h1>Dashboard</h1>
@@ -6,4 +6,5 @@
 
 @section('content')
     <p>You are logged in!</p>
-@stop
+@stop --}}
+@extends('layouts.cici');

@@ -6,7 +6,9 @@
  */
 
 require('./bootstrap');
-require('./scripts.js');
+// require('./scripts.js');
+
+require('jquery.finger');
 
 window.Vue = require('vue');
 

@@ -19,4 +19,6 @@ return [
     'password_reset_message'      => '重置密码',
     'reset_password'              => '重置密码',
     'send_password_reset_link'    => '发送密码重置链接',
+
+    
 ];

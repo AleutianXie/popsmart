@@ -1,16 +1,21 @@
 // Variables
-@import "variables";
+@import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 // Font Awesome
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome";
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-solid';
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-brands';
 
 // @import "styles.css";
+
+@import './basic';
+@import './style';
+@import '~animate.css/animate';
+
 
 .navbar-laravel {
   background-color: #061A32;
