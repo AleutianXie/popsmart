@@ -1,4 +1,4 @@
-@extends('layouts.cici');
+@extends('layouts.cici')
 
 @section('content')
     <div class="casepage">

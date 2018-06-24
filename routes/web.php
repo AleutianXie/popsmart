@@ -21,6 +21,8 @@ Route::get('/case', 'CaseController@index')->name('case');
 
 Route::get('/product', 'ProductController@index')->name('product');
 
+Route::get('/recruit', 'RecruitController@index')->name('recruit');
+
 Auth::routes();
 
 // pop indoor admin

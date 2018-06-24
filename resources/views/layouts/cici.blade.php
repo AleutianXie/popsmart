@@ -5,21 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1">
     <!-- CSRF Token -->
-{{--     <meta name="csrf-token" content="{{ csrf_token() }}">
- --}}    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
-    <meta http-equiv="Page-Enter" Content="revealTrans(duration=5, transition=2)">
-    <meta http-equiv="Page-Exit" Content="revealTrans(duration=5, transition=2)">
+    <meta http-equiv="Page-Enter" content="revealTrans(duration=5, transition=2)">
+    <meta http-equiv="Page-Exit" content="revealTrans(duration=5, transition=2)">
     <meta name="keywords" content="">
     <meta name="description" content="">
 
     <title>{{ config('app.name', 'PopSmart') }} - @yield('title')</title>
-
-{{--     <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode(['csrf-token' => csrf_token()]); ?>
-    </script> --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -33,12 +28,12 @@
         <div class="logo fl"><a href="index.html"><img src="images/logo.png"></a></div>
         <div class="pc_nav fl clearfix">
             <ul>
-                <li class="on"><a href="index.html">首页</a></li>
-                <li ><a href="about.html">新闻</a></li>
-                <li ><a href="pro.html">产品</a></li>
-                <li ><a href="join.html">案例</a></li>
-                <li ><a href="news.html">服务</a></li>
-                <li ><a href="job.html">关于我们</a></li>
+                <li @if(Request::fullUrl() == route('home')) class="on" @endif><a href="/">首页</a></li>
+                <li><a href="/news">新闻</a></li>
+                <li @if(starts_with(Request::fullUrl(), route('product'))) class="on" @endif><a href="/product">产品</a></li>
+                <li @if(starts_with(Request::fullUrl(), route('case'))) class="on" @endif><a href="/case">案例</a></li>
+                <li><a href="/service">服务</a></li>
+                <li @if(starts_with(Request::fullUrl(), route('recruit'))) class="on" @endif><a href="/recruit">关于我们</a></li>
             </ul>
         </div>
     </div>
