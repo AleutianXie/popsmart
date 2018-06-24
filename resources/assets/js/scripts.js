@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    $(".mobile-inner-nav a").each(function( index ) {
+        $( this ).css({'animation-delay': (index/10)+'s'});
+    });
     // Documentation link
     $('.flicker-example').flicker();
     $(".c1_list").hide();

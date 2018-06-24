@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/case', 'CaseController@index')->name('case');
+
+Route::get('/product', 'ProductController@index')->name('product');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 // pop indoor admin
 Route::group(['middleware' => ['web']], function () {

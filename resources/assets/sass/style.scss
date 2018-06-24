@@ -208,9 +208,33 @@ body{
 .c-case-l{
 	float:left;
 	width:50%;
+	overflow:hidden;
+}
+.c-case-l div{
+	width:50%;
+	float:left;
+	display:block;
 }
 .c-case-l img{
-	width:100%;
+	float:left;
+	width:99.6%;
+}
+.c-case-l img.case1{
+	border-right:1px solid #B3B3B3;
+	border-bottom:1px solid #B3B3B3;
+}
+.c-case-l img.case2{
+	border-left:1px solid #B3B3B3;
+	border-bottom:1px solid #B3B3B3;
+
+}
+.c-case-l img.case3{
+	border-right:1px solid #B3B3B3;
+	border-top:1px solid #B3B3B3;
+}
+.c-case-l img.case4{
+	border-left:1px solid #B3B3B3;
+	border-top:1px solid #B3B3B3;
 }
 .c-case-r{
 	float:right;
@@ -289,9 +313,334 @@ body{
 }
 .c-aboutus{
 	width:100%;
+	position: relative;
+	text-align:center;
 }
 .c-aboutus img{
 	width:100%;
+	text-align:center;
+}
+.c-aboutus h1{
+	width:80%;
+	position: absolute;
+	bottom:40%;
+	left:50%;
+	margin-left:-40%;
+	color:#fff;
+	font-size:20px;
+	line-height:26px;
+}
+
+.proTop{
+	background:url(../images/productBg.jpg) center bottom no-repeat;
+	margin-top:60px;
+	padding:40px 40px 70px;
+}
+.proTop .gg_title{
+	border:1px solid #999;
+	text-align:center;
+	color:#fff;
+	padding:50px 0;
+}
+.proTop .gg_title h1{
+	font-size:36px;
+	font-weight:700;
+}
+.proTop .gg_title p{
+	font-size:20px;
+	color:#fff;
+}
+.proTop .gg_title .line{
+	height:15px;
+	border-top:3px solid #E4E4E4;
+	width:50px;
+	margin:30px auto 10px auto;
+	color:#848D99;
+}
+
+.product_main{
+	background:#fff;
+	padding-top:0px;
+	padding-bottom:50px;
+}
+.product_list{
+	padding-top:50px;
+}
+.product_list ul li{
+	float:left;
+	margin-left:2%;
+	margin-right:2%;
+	width:46%;
+	margin-bottom:30px;
+	background:#fff;
+	border-radius:6px;
+	padding-bottom:20px;
+	box-shadow: 0px 0px 15px #ccc;
+}
+.product_titleText{
+	width:100%;
+	height:40px;
+	line-height:40px;
+	font-weight:700;
+	text-align:center;
+	font-family:"微软雅黑";
+	font-size:18px;
+	color:#323232;
+}
+.product_cont{
+	width:100%;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	font-family:"微软雅黑";
+	font-size:12px;
+	color:#7a8189;
+}
+.product_more{
+	width:100%;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	font-family:"微软雅黑";
+	font-size:12px;
+	color:#007aff;
+}
+.product_img{
+	overflow:hidden;
+}
+.product_img img{
+	width:100%;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
+.product_img img:hover{
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+.casepage{
+	background:url(../images/caseBg.jpg) no-repeat center top;
+	padding-top:60px;
+	padding-bottom:60px;
+}
+.casepage .gg_title{
+	text-align:center;
+	color:#333;
+	padding-top:50px;
+}
+.casepage .gg_title h1{
+	font-size:32px;
+	line-height:80px;
+	font-weight:700;
+}
+.casepage .gg_title p{
+	font-size:16px;
+	line-height:20px;
+	color:#848D99;
+}
+.casepage .gg_title .line{
+	height:15px;
+	border-top:3px solid #E4E4E4;
+	width:30px;
+	margin:0 auto;
+	color:#848D99;
+}
+.casepage .ColumnOnenav{
+	text-align:center;
+	padding:50px;
+	cursor:pointer;
+	border-bottom:1px solid #E6E6E6;
+}
+.casepage .ColumnOnenav li{
+	display:inline-block;
+	padding:10px 25px;
+	color:#808080;
+	border-radius:6px;
+	border:1px solid #E5E5E5;
+	font-size:18px;
+	background:#fff;
+}
+.casepage .ColumnOnenav li p{
+	line-height:40px;
+}
+.casepage .ColumnOnenav li a{
+	color:#808080;
+}
+.casepage .ColumnOnenav li.cur,.casepage .ColumnOnenav li:hover{
+	background-color:rgba(255, 255, 255, 0.3);
+	color:#fff;
+	border:1px solid #76A3FF;
+}
+.case_list{
+	padding-top:40px;
+	background:#FCFCFC;
+}
+.case_list ul li{
+	width:23%;
+	float:left;
+	margin-left:1%;
+	margin-right:1%;
+	margin-bottom:30px;
+}
+.case_list ul li a{
+	display:block;
+	position:relative;
+	width:100%;
+	overflow:hidden;
+}
+.case_listImg{
+	width:100%;
+}
+.case_listImg img{
+	width:100%;
+}
+.case_listPclink{
+	position:absolute;
+	left:0px;
+	top:500px;
+	width:100%;
+	height:100%;
+}
+.case_listPclink_jt{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+}
+.case_listPhtitle{
+	position:absolute;
+	left:0px;
+	bottom:20px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	font-family:"微软雅黑";
+	font-size:16px;
+	color:#ffffff;
+	display:none;
+	text-align:center;
+	width:100%;
+}
+.case_listPclink_title{
+	position:absolute;
+	left:0px;
+	top:10%;
+	width:100%;
+	font-family:"微软雅黑";
+	font-size:14px;
+	color:#ffffff;
+	text-align:center;
+}
+.case_listPclink_title .gg_title{
+	padding:0px 10px 0;
+	text-align:center;
+	color:#fff;
+}
+.case_listPclink_title .gg_title h1{
+	font-size:24px;
+	line-height:60px;
+	font-weight:500;
+}
+.case_listPclink_title .gg_title p{
+	font-size:12px;
+	line-height:20px;
+	color:#fff;
+}
+.case_listPclink_title .gg_title .line{
+	height:15px;
+	border-top:3px solid #E4E4E4;
+	width:30px;
+	color:#848D99;
+}
+.joinTop{
+	background:url(../images/joinBg.jpg) center top no-repeat;
+	margin-top:60px;
+	padding:220px 40px 100px;
+}
+.joinTop .gg_title{
+	text-align:center;
+	color:#fff;
+	padding:50px 0;
+}
+.joinTop .gg_title h1{
+	font-size:20px;
+	font-weight:700;
+	line-height:30px;
+}
+.joinbox{
+	padding:30px 0;
+	background:#fff;
+}
+.joinbox .nav{
+	line-height:50px;
+	border-bottom:1px solid #E5E5E5;
+	overflow:hidden;
+}
+.joinbox .nav li{
+	float:left;
+}
+.joinbox .nav li a{
+	float:left;
+	color:#999;
+	font-size:16px;
+	margin-right:60px;
+}
+.joinbox .nav li a.cur{
+	border-bottom:2px solid #222;
+}
+.joinbox .link{
+	padding:30px 0 20px 0;
+	border-bottom:1px solid #E5E5E5;
+	overflow:hidden;
+}
+.joinbox .link a{
+	float:left;
+	border:1px solid #E5E5E5;
+	font-size:14px;
+	color:#222;
+	margin-right:15px;
+	margin-bottom:10px;
+	padding:10px 20px;
+}
+.joinbox .link a.cur{
+	background:#246AF8;
+	border:1px solid #E5E5E5;
+	color:#fff;
+}
+.joinbox .content{
+	
+}
+.joinbox .content .list{
+	padding:30px 30px;
+}
+.joinbox .content .list h4{
+	font-size:18px;
+}
+.joinbox .content .list h5{
+	background:#E9F0FE;
+	width:60px;
+	text-align:center;
+	padding:10px 5px;
+	font-size:14px;
+	color:#246af8;
+	margin:10px 0;
+}
+.joinbox .content .list h6{
+	border-left:3px solid #246AF8;
+	padding-left:10px;
+	font-size:14px;
+}
+.joinbox .content .list .ds{
+	margin:20px 0;
+}
+.joinbox .content .list p{
+	line-height:30px;
+	font-size:14px;
 }
 
 
@@ -516,8 +865,33 @@ body{
 		font-size:14px;
 		padding-top:8px;
 	}
+	.c-aboutus h1{
+		font-size:16px;
+		bottom:30%;
+	}
 	.footer_top{
 		display:none;
+	}
+	.proTop{
+		margin-top:0px;
+		padding:40px 40px 70px;
+	}
+	.product_list ul li{
+		float:left;
+		margin-left:2%;
+		margin-right:2%;
+		width:46%;
+		margin-bottom:30px;
+	}
+	.case_list ul li{
+		width:48%;
+		float:left;
+		margin-left:1%;
+		margin-right:1%;
+		margin-bottom:20px;
+	}
+	.joinTop{
+		margin-top:0px;
 	}
 	
 }
@@ -608,6 +982,21 @@ body{
 		line-height:50px;
 		font-size:1em;
 	}
+	.product_list ul li{
+		float:left;
+		margin-left:1%;
+		margin-right:1%;
+		width:98%;
+		margin-bottom:10px;
+	}
+	.product_list{
+		padding-top:20px;
+	}
+	.product_titleText{
+		height:30px;
+		line-height:30px;
+		font-size:1em;
+	}
 	.c-service{
 		padding:30px 10px;
 	}
@@ -673,7 +1062,10 @@ body{
 		margin-right:1%;
 		margin-bottom:10px;
 	}
-	
+	.c-aboutus h1{
+		font-size:12px;
+		bottom:20%;
+	}
 	.footer_top{
 		display:none;
 	}
@@ -691,9 +1083,75 @@ body{
 	.footer_bottom_t3{
 		font-size:0.8em;
 	}
+	.proTop{
+		margin-top:0px;
+		padding:15px 15px 70px;
+	}
+	.proTop .gg_title{
+		border:1px solid #999;
+		text-align:center;
+		color:#fff;
+		padding:20px 0;
+	}
+	.proTop .gg_title h1{
+		font-size:20px;
+		line-height:40px;
+		font-weight:700;
+	}
+	.proTop .gg_title p{
+		font-size:14px;
+		color:#fff;
+	}
+	.proTop .gg_title .line{
+		height:15px;
+		border-top:3px solid #E4E4E4;
+		width:50px;
+		margin:20px auto 0px auto;
+		color:#848D99;
+	}
+	.casepage{
+		padding-top:0;
+	}
+	.case_list ul li{
+		width:98%;
+		margin-bottom:10px;
+	}
+	.case_listPhtitle{
+		display:block;
+	}
+	.casepage .ColumnOnenav li{
+		display:inline-block;
+		padding:5px 5px;
+		color:#808080;
+		border-radius:6px;
+		border:1px solid #E5E5E5;
+		font-size:14px;
+		background:#fff;
+	}
+	.casepage .ColumnOnenav li p{
+		line-height:30px;
+	}
+	.casepage .ColumnOnenav li a{
+		color:#808080;
+	}
+	.joinTop{
+		margin-top:0px;
+	}
+	.joinbox .nav li a{
+		float:left;
+		color:#999;
+		font-size:16px;
+		margin-right:0;
+		margin-left:30px;
+	}
 	
 }
 @media only screen and (max-width:440px) and (min-width:0px) {
 	
-
+	.c-aboutus h1{
+		font-size:12px;
+		bottom:10%;
+		font-size:10px;
+		line-height:20px;
+	}
 }

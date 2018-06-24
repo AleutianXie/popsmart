@@ -6,9 +6,11 @@
  */
 
 require('./bootstrap');
-// require('./scripts.js');
-
+require('jquery');
 require('jquery.finger');
+require('./modernizr');
+require('./flickerplate.min');
+require('./scripts');
 
 window.Vue = require('vue');
 
