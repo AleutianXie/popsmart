@@ -17,6 +17,8 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/news', 'NewsController@index')->name('news');
+
 Route::get('/case', 'CaseController@index')->name('case');
 
 Route::get('/product', 'ProductController@index')->name('product');
