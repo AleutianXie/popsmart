@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Pop</b>Smart',
+    'logo' => '<b><img src="/images/logo.png" style="width: 50%;">Pop</b>Smart',
 
     'logo_mini' => '<b>P</b>ST',
 
@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
     'logout_url' => 'logout',
 
@@ -108,80 +108,104 @@ return [
     */
 
     'menu' => [
-        '内容管理',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => '欢迎页',
+            'url'         => 'admin',
+            'icon'        => 'dashboard',
+            'active' => ['欢迎页', '/admin'],
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        '用户管理',
-        [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text'    => '首页',
+            'icon'    => 'home',
+            'active' => ['首页', '/admin/home/*'],
             'submenu' => [
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => '轮播图',
+                    'url'  => '/admin/home/banner',
+                    'icon' => 'image',
+                    'active' => ['首页', '轮播图', '/admin/home/banner/*'],
                 ],
             ],
         ],
-        'LABELS',
         [
-            'text'       => 'Important',
-            'icon_color' => 'red',
+            'text'    => '新闻',
+            'icon'    => 'newspaper-o',
+            'submenu' => [
+                [
+                    'text' => '列表',
+                    'url'  => '#',
+                    'icon' => 'feed'
+                ],
+            ],
         ],
         [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
+            'text'    => '产品',
+            'icon'    => 'plane',
+            'submenu' => [
+                [
+                    'text' => '列表',
+                    'url'  => '#',
+                    'icon' => 'paper-plane',
+                ],
+                [
+                    'text'    => '系列',
+                    'url'     => '#',
+                    'icon'    => 'cog',
+                ],
+            ],
         ],
         [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
+            'text'    => '案例',
+            'icon'    => 'cogs',
+            'submenu' => [
+                [
+                    'text' => '列表',
+                    'url'  => '#',
+                    'icon' => 'file',
+                ],
+                [
+                    'text'    => '分类',
+                    'url'     => '#',
+                    'icon'    => 'cog',
+                ],
+            ],
+        ],
+        [
+            'text'    => '服务',
+            'icon'    => 'tags',
+            'submenu' => [
+                [
+                    'text' => '列表',
+                    'url'  => '#',
+                    'icon' => 'tag',
+                ],
+                [
+                    'text'    => '模块',
+                    'url'     => '#',
+                    'icon'    => 'cog',
+                ],
+            ],
+        ],
+        [
+            'text'    => '关于',
+            'icon'    => 'question',
+            'submenu' => [
+                [
+                    'text' => '我们',
+                    'url'  => '#',
+                    'icon' => 'users',
+                ],
+                [
+                    'text'    => '加入',
+                    'url'     => '#',
+                    'icon'    => 'odnoklassniki',
+                ],
+                [
+                    'text' => '联系',
+                    'url'  => '#',
+                    'icon' => 'mobile',
+                ],
+            ],
         ],
     ],
 

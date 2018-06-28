@@ -23,39 +23,16 @@ Route::get('/case', 'CaseController@index')->name('case');
 
 Route::get('/product', 'ProductController@index')->name('product');
 
+Route::get('/service', 'ServiceController@index')->name('service');
+
 Route::get('/recruit', 'RecruitController@index')->name('recruit');
 
 Auth::routes();
 
 // pop indoor admin
-Route::group(['middleware' => ['web']], function () {
-    // case
-    Route::get('case/{index?}', 'CaseController@index')->where('index', 'index')->name('case.index');
-    Route::get('case/{id}', 'CaseController@detail')->where('id', '[0-9]+')->name('case.detail');
-
-    
-    Route::get('resume/my', 'ResumeController@my')->name('resume.my');
-    Route::get('resume/job/{id?}', 'ResumeController@job')->where(['id' => '[0-9]+'])->name('resume.job');
-    Route::get('resume/all', 'ResumeController@all')->name('resume.all');
-    Route::get('resumes', 'ResumeController@search')->name('resume.search');
-    Route::match(['get', 'post'], '/edit', 'ResumeController@edit');
-    Route::post('/my/add/{id}', 'ResumeController@addmy')->where(['id' => '[0-9]+'])->name('resume.addmy');
-    Route::get('/jobmodal/{id}', 'ResumeController@jobmodal')->where('id', '[0-9]+')->name('resume.jobmodal');
-    Route::post('/job/add/', 'ResumeController@addjob')->name('resume.addjob');
-    //Route::get('/search/{type}', 'ResumeController@search')->where(['type' => 'my|all|job'])->name('resume.search');
-    Route::post('/feedback', 'FeedbackController@add');
-
-    // customer
-
-    Route::get('customer/search', 'CustomerController@search')->name('customer.search');
-
-    // job
-
-    Route::get('job/search', 'JobController@search')->name('job.search');
-});
-
-// pop indoor admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function () {
+    Route::get('/{index?}', 'AdminController@index')->where('index', 'index')->name('admin.index');
+    Route::get('/home/banner', 'AdminController@banner')->name('admin.home.banner');
     // case
     Route::get('case/{index?}', 'CasesController@adminIndex')->where('index', 'index')->name('admin.cases.index');
     Route::match(['get', 'post'], 'case/create', 'CasesController@create')->name('admin.cases.create');

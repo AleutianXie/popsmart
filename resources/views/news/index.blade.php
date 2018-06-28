@@ -1,5 +1,7 @@
 @extends('layouts.cici')
 
+@section('title', '新闻')
+
 @section('content')
 
 <div class="news_main">

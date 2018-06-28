@@ -1,5 +1,7 @@
 @extends('layouts.cici')
 
+@section('title', '首页')
+
 @section('content')
     <!---banner---->
     <div class="banner active">

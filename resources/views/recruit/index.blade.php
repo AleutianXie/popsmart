@@ -1,5 +1,7 @@
 @extends('layouts.cici')
 
+@section('title', '关于我们')
+
 @section('content')
     <div class="joinTop">
         <div class="gg_title">

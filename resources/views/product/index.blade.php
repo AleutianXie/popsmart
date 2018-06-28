@@ -1,5 +1,7 @@
 @extends('layouts.cici')
 
+@section('title', '产品')
+
 @section('content')
     <div class="proTop">
         <div class="gg_title">

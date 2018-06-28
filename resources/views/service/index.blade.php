@@ -1,6 +1,6 @@
 @extends('layouts.cici')
 
-@section('title', '案例')
+@section('title', '服务')
 
 @section('content')
     <div class="casepage">
@@ -284,4 +284,5 @@
             </div>
         </div>
     </div>
+
 @endsection
