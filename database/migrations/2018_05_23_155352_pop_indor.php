@@ -55,11 +55,11 @@ class PopIndor extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 30)->index()->comment('案例名');
-            $table->string('summary', 255)->comment('案例简述');
-            $table->string('cover', 255)->comment('案例封面图');
+            $table->string('summary', 255)->comment('产品简述');
+            $table->string('cover', 255)->comment('产品封面图');
             $table->smallInteger('sort')->default(0)->comment('排序');
             $table->boolean('is_top')->default(0)->comment('是否置顶');
-            $table->unsignedInteger('series_id')->comment('案例分类');
+            $table->unsignedInteger('series_id')->comment('产品分类');
             $table->foreign('series_id')->references('id')->on('series');
             $table->timestamps();
             $table->softDeletes();

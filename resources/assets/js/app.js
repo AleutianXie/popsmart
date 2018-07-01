@@ -21,6 +21,9 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('product-list', require('./components/ProductList.vue'));
+Vue.component('case-cate', require('./components/CaseCate.vue'));
+Vue.component('case-list', require('./components/CaseList.vue'));
 
 const app = new Vue({
     el: '#app'

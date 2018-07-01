@@ -13,42 +13,7 @@
     </div>
     <div class="product_main">
         <div class="boxmain">
-            <div class="product_list clearfix">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <div class="product_img"><img src="images/products_1.png"></div>
-                            <div class="product_titleText">飞马F-1000智能航测系统</div>
-                            <div class="product_cont">模块化设计，创新型一次性降落伞 智能飞马云管家</div>
-                            <div class="product_more">了解更多 ></div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="product_img"><img src="images/products_2.png"></div>
-                            <div class="product_titleText">飞马F-1000智能航测系统</div>
-                            <div class="product_cont">模块化设计，创新型一次性降落伞 智能飞马云管家</div>
-                            <div class="product_more">了解更多 ></div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="product_img"><img src="images/products_3.png"></div>
-                            <div class="product_titleText">飞马F-1000智能航测系统</div>
-                            <div class="product_cont">模块化设计，创新型一次性降落伞 智能飞马云管家</div>
-                            <div class="product_more">了解更多 ></div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="product_img"><img src="images/products_4.png"></div>
-                            <div class="product_titleText">飞马F-1000智能航测系统</div>
-                            <div class="product_cont">模块化设计，创新型一次性降落伞 智能飞马云管家</div>
-                            <div class="product_more">了解更多 ></div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <product-list products="{{ json_encode($products) }}"></product-list>
             <div class="page">
                   <a class="on" href="javascript:;">1</a><a href="#">2</a> <a href="#">下一页</a> 
             </div>

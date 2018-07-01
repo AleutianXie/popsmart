@@ -31,7 +31,7 @@
                 <li @if(Request::fullUrl() == route('home')) class="on" @endif><a href="/">首页</a></li>
                 <li @if(starts_with(Request::fullUrl(), route('news'))) class="on" @endif><a href="/news">新闻</a></li>
                 <li @if(starts_with(Request::fullUrl(), route('product'))) class="on" @endif><a href="/product">产品</a></li>
-                <li @if(starts_with(Request::fullUrl(), route('case'))) class="on" @endif><a href="/case">案例</a></li>
+                <li @if(starts_with(Request::fullUrl(), route('cases'))) class="on" @endif><a href="/case">案例</a></li>
                 <li @if(starts_with(Request::fullUrl(), route('service'))) class="on" @endif><a href="/service">服务</a></li>
                 <li @if(starts_with(Request::fullUrl(), route('recruit'))) class="on" @endif><a href="/recruit">关于我们</a></li>
             </ul>
