@@ -23,13 +23,13 @@ class Controller extends BaseController
         return view('admin.'.strtolower(substr(class_basename(static::class), 0, -10)).'.index', compact('filter'));
     }
 
-    public function adminDetail(Request $request, $id)
+    public function detail(Request $request, $id)
     {
         $class_name = substr(class_basename(static::class), 0, -10);
         $model = 'App\\'.$class_name;
         $class_name = strtolower($class_name);
         $$class_name = $model::query()->findOrFail($id);
 
-        return view('admin.'.$class_name.'.detail', compact($class_name));
+        return view($class_name.'.detail', compact($class_name));
     }
 }

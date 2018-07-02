@@ -23,6 +23,6 @@ class CasesController extends Controller
         $categories = json_encode(Category::all()->toArray());
 
         $cases = json_encode(Cases::Category($cur)->get()->toArray());
-        return view('case.index', compact('categories', 'cur', 'cases'));
+        return view('cases.index', compact('categories', 'cur', 'cases'));
     }
 }

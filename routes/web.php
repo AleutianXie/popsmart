@@ -20,6 +20,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/news', 'NewsController@index')->name('news');
 
 Route::get('/case', 'CasesController@index')->name('cases');
+Route::get('case/{id}', 'CasesController@detail')->where('id', '[0-9]+')->name('admin.cases.detail');
 
 Route::get('/product', 'ProductController@index')->name('product');
 
@@ -36,7 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     // case
     Route::get('case/{index?}', 'CasesController@adminIndex')->where('index', 'index')->name('admin.cases.index');
     Route::match(['get', 'post'], 'case/create', 'CasesController@create')->name('admin.cases.create');
-    Route::get('case/{id}', 'CasesController@adminDetail')->where('id', '[0-9]+')->name('admin.cases.detail');
+
 
     Route::get('product/{index?}', 'ProductController@adminIndex')->where('index', 'index')->name('admin.cases.index');
     Route::match(['get', 'post'], 'product/create', 'ProductController@create')->name('admin.product.create');

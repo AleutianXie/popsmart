@@ -25,7 +25,7 @@
     <div id="app">
     <!---头部---->
     <div class="top clearfix">
-        <div class="logo fl"><a href="index.html"><img src="images/logo.png"></a></div>
+        <div class="logo fl"><a href="index.html"><img src="/images/logo.png"></a></div>
         <div class="pc_nav fl clearfix">
             <ul>
                 <li @if(Request::fullUrl() == route('home')) class="on" @endif><a href="/">首页</a></li>
@@ -57,7 +57,7 @@
                 <div class="footer_topmain clearfix">
                     <div class="footer_left fl clearfix">
                        <div class="footer_img">
-                            <img src="images/ewm.jpg" /> 
+                            <img src="/images/ewm.jpg" /> 
                         </div>
                     </div>
                     <div class="footer_right fl clearfix">
