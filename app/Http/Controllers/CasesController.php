@@ -25,4 +25,11 @@ class CasesController extends Controller
         $cases = json_encode(Cases::Category($cur)->get()->toArray());
         return view('cases.index', compact('categories', 'cur', 'cases'));
     }
+
+
+    public function create()
+    {
+        $categories = Category::all()->pluck('name', 'id')->toArray();
+        return view('admin.cases.create', compact('categories'));
+    }
 }
