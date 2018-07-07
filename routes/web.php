@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::match(['get', 'post'], 'case/create', 'CasesController@create')->name('admin.cases.create');
 
 
-    Route::get('product/{index?}', 'ProductController@adminIndex')->where('index', 'index')->name('admin.cases.index');
+    Route::get('product/{index?}', 'ProductController@adminIndex')->where('index', 'index')->name('admin.product.index');
     Route::match(['get', 'post'], 'product/create', 'ProductController@create')->name('admin.product.create');
     Route::get('product/{id}', 'ProductController@adminDetail')->where('id', '[0-9]+')->name('admin.product.detail');
     Route::get('resumes', 'ResumeController@search')->name('resume.search');

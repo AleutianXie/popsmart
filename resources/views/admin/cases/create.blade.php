@@ -10,7 +10,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'foo/bar']) !!}
+{!! Form::open(['url' => route('admin.cases.create'), 'files' => true ]) !!}
 <div class="form-group">
     {{ Form::label('标题', null, ['class' => 'control-label']) }}
     {{ Form::text('name', '', ['class' => 'form-control']) }}
@@ -24,8 +24,9 @@
     {{ Form::file('cover') }}
 </div>
 <div class="form-group">
+    {{ Form::label('内容', null, ['class' => 'control-label']) }}
 @include('UEditor::head')
-<div name="others" id="others" style="min-height: 600px;"></div>
+<div name="content" id="content" style="min-height: 600px;"></div>
 </div>
 <div class="form-group">
     {{ Form::label('排序', null, ['class' => 'control-label']) }}
@@ -59,7 +60,7 @@
 <script type="text/javascript" src="{{ asset('/bootstrap-fileinput/js/locales/zh.js') }}"></script>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-    var ue = UE.getEditor('others');
+    var ue = UE.getEditor('content');
     $('input[name=cover]').fileinput({
         language: 'zh'
     });

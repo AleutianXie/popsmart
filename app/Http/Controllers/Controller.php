@@ -19,8 +19,11 @@ class Controller extends BaseController
     public function adminIndex(Request $request)
     {
         $filter = $request->input();
-
-        return view('admin.'.strtolower(substr(class_basename(static::class), 0, -10)).'.index', compact('filter'));
+        $class_name = substr(class_basename(static::class), 0, -10);
+        $model = 'App\\'.$class_name;
+        $class_names = str_plural(strtolower($class_name));
+        $$class_names = $model::query()->paginate(10)->appends($filter);
+        return view('admin.'.strtolower(substr(class_basename(static::class), 0, -10)).'.index', compact('filter', $class_names));
     }
 
     public function detail(Request $request, $id)

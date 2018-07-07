@@ -17,7 +17,7 @@ return [
 
     'title_prefix' => '',
 
-    'title_postfix' => '',
+    'title_postfix' => ' -- 内容管理系统',
 
     /*
     |--------------------------------------------------------------------------
@@ -160,8 +160,9 @@ return [
             'submenu' => [
                 [
                     'text' => '列表',
-                    'url'  => '#',
+                    'route'=> 'admin.cases.index',
                     'icon' => 'file',
+                    'active' => ['案例', '列表', '/admin/case*'],
                 ],
                 [
                     'text'    => '分类',
