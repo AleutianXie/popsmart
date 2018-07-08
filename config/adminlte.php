@@ -133,8 +133,9 @@ return [
             'submenu' => [
                 [
                     'text' => '列表',
-                    'url'  => '#',
-                    'icon' => 'feed'
+                    'route' => 'admin.news.index',
+                    'icon' => 'feed',
+                    'active' => ['新闻', '列表', '/admin/news*'],
                 ],
             ],
         ],

@@ -66,6 +66,49 @@ class PopIndor extends Migration
         });
         DB::statement("ALTER TABLE products comment '产品表'");
 
+        // news table
+        Schema::create('news', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 30)->index()->comment('案例名');
+            $table->string('summary', 255)->comment('案例简述');
+            $table->string('cover', 255)->comment('案例封面图');
+            $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE news ADD content LONGBLOB after cover");
+        DB::statement("ALTER TABLE news comment '新闻表'");
+
+        // product types table
+        Schema::create('types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 30)->comment('种类显示名');
+            $table->string('icon', 255)->comment('图标')->nullable();
+            $table->string('overview', 255)->comment('概述')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        DB::statement("ALTER TABLE types comment '服务种类表'");
+
+        // services table
+        Schema::create('services', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 30)->index()->comment('服务名');
+            $table->string('summary', 255)->comment('服务简述');
+            $table->string('cover', 255)->comment('服务封面图');
+            $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->unsignedInteger('types_id')->comment('服务分类');
+            $table->foreign('types_id')->references('id')->on('types');
+            // $table->boolean('is_top')->default(0)->comment('是否置顶');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE news ADD content LONGBLOB after cover");
+        DB::statement("ALTER TABLE news comment '新闻表'");
+
         // article table
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');

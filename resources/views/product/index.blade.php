@@ -14,10 +14,8 @@
     <div class="product_main">
         <div class="boxmain">
             <product-list products="{{ json_encode($products) }}"></product-list>
-            <div class="page">
-                  <a class="on" href="javascript:;">1</a><a href="#">2</a> <a href="#">下一页</a> 
-            </div>
         </div>
+        {{ $products->links('pagination::cici') }}
     </div>
 
 @endsection

@@ -1,7 +1,7 @@
 <template>
 <div class="product_list clearfix">
     <ul>
-        <li  v-for="item in items">
+        <li v-for="item in items">
             <a :href="'/product/' + item.id">
                 <div class="product_img"><img :src="item.cover"></div>
                 <div class="product_titleText">{{ item.name }}</div>
@@ -25,7 +25,7 @@
         props: ['products'],
         computed: {
             items() {
-                return JSON.parse(this.products);
+                return JSON.parse(this.products).data;
             }
         }
     }

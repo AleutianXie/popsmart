@@ -11,7 +11,8 @@
         </div>
         <div class="boxmain">
             <case-cate cates="{{ $categories }}" cur="{{ $cur }}"></case-cate>
-            <case-list cases="{{ $cases }}"></case-list>
+            <case-list cases="{{ json_encode($cases) }}"></case-list>
         </div>
+        {{ $cases->links('pagination::cici') }}
     </div>
 @endsection

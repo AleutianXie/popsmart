@@ -33,7 +33,7 @@
         props: ['cases'],
         computed: {
             items() {
-                return JSON.parse(this.cases);
+                return JSON.parse(this.cases).data;
             }
         }
     }

@@ -18,6 +18,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/news', 'NewsController@index')->name('news');
+Route::get('/news/{id}', 'NewsController@detail')->where('id', '[0-9]+')->name('admin.news.detail');
 
 Route::get('/case', 'CasesController@index')->name('cases');
 Route::get('case/{id}', 'CasesController@detail')->where('id', '[0-9]+')->name('admin.cases.detail');
@@ -38,7 +39,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::get('case/{index?}', 'CasesController@adminIndex')->where('index', 'index')->name('admin.cases.index');
     Route::match(['get', 'post'], 'case/create', 'CasesController@create')->name('admin.cases.create');
 
+    // news
+    Route::get('news/{index?}', 'NewsController@adminIndex')->where('index', 'index')->name('admin.news.index');
+    Route::match(['get', 'post'], 'news/create', 'NewsController@create')->name('admin.news.create');
 
+    // product
     Route::get('product/{index?}', 'ProductController@adminIndex')->where('index', 'index')->name('admin.product.index');
     Route::match(['get', 'post'], 'product/create', 'ProductController@create')->name('admin.product.create');
     Route::get('product/{id}', 'ProductController@adminDetail')->where('id', '[0-9]+')->name('admin.product.detail');
