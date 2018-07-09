@@ -101,7 +101,7 @@ class PopIndor extends Migration
             $table->smallInteger('sort')->default(0)->comment('排序');
             $table->unsignedInteger('types_id')->comment('服务分类');
             $table->foreign('types_id')->references('id')->on('types');
-            // $table->boolean('is_top')->default(0)->comment('是否置顶');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -109,11 +109,76 @@ class PopIndor extends Migration
         DB::statement("ALTER TABLE news ADD content LONGBLOB after cover");
         DB::statement("ALTER TABLE news comment '新闻表'");
 
+        // tags table
+        Schema::create('tags', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 30)->index()->comment('属性名');
+            $table->string('comment', 255)->nullable()->comment('备注');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE tags comment '标签'");
+
+        // departments table
+        Schema::create('departments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 30)->index()->comment('属性名');
+            $table->string('comment', 255)->nullable()->comment('备注');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE departments comment '部门表'");
+
+        // jobs table
+        Schema::create('jobs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('departments_id')->comment('部门');
+            $table->foreign('departments_id')->references('id')->on('departments');
+            $table->string('name', 30)->index()->comment('职位名');
+            $table->string('summary', 255)->comment('服务简述');
+            $table->mediumText('duty')->comment('工作职责');
+            $table->mediumText('requirements')->comment('任职要求');
+            $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE news comment '职位表'");
+
+        // job_has_tags table
+        Schema::create('job_has_tags', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('job_id');
+            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->unsignedInteger('tag_id');
+            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->timestamps();
+        });
+
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE job_has_tags comment '职位标签表'");
+
+        // attributes table
+        Schema::create('attributes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 30)->index()->comment('属性名');
+            $table->string('comment', 255)->nullable()->comment('备注');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE attributes comment '文章属性表'");
+
         // article table
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 30)->index()->comment('标题');
-            $table->string('summary', 255)->nullable()->comment('案例简述');
+            $table->string('summary', 255)->nullable()->comment('文章简述');
+            $table->unsignedInteger('attributes_id')->comment('文章属性');
+            $table->foreign('attributes_id')->references('id')->on('attributes');
             $table->timestamps();
             $table->softDeletes();
         });
