@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>产品列表</h1>
+    <h1>案例类型列表</h1>
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
             <li>
               <a>角色-用户列表</a>
                         </li>
-                        <a href="{{ route('admin.news.create') }}">
+                        <a href="{{ route('admin.category.create') }}">
                             <button class="btn-add btn btn-success btn-sm pull-right">
                                 +新增
                             </button>
@@ -34,7 +34,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($products as $item)
+              @foreach($categories as $item)
               <tr>
                 <td>{{ $item->id }}</td>
                 <td><img src="{{ $item->cover }}" alt=""></td>
@@ -53,7 +53,7 @@
               @endforeach
             </tbody>
           </table>
-          {{ $products->links() }}
+          {{ $categories->links() }}
         </div>
       </div>
     </div>

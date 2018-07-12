@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>产品列表</h1>
+    <h1>服务模块列表</h1>
 @stop
 
 @section('content')
@@ -34,7 +34,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($products as $item)
+              @foreach($modules as $item)
               <tr>
                 <td>{{ $item->id }}</td>
                 <td><img src="{{ $item->cover }}" alt=""></td>
@@ -53,7 +53,7 @@
               @endforeach
             </tbody>
           </table>
-          {{ $products->links() }}
+          {{ $modules->links() }}
         </div>
       </div>
     </div>

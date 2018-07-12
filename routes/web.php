@@ -39,6 +39,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::get('case/{index?}', 'CasesController@adminIndex')->where('index', 'index')->name('admin.cases.index');
     Route::match(['get', 'post'], 'case/create', 'CasesController@create')->name('admin.cases.create');
 
+    // category 
+    Route::get('category/{index?}', 'CategoryController@adminIndex')->where('index', 'index')->name('admin.category.index');
+    Route::match(['get', 'post'], 'category/create', 'CategoryController@create')->name('admin.category.create');
+
     // news
     Route::get('news/{index?}', 'NewsController@adminIndex')->where('index', 'index')->name('admin.news.index');
     Route::match(['get', 'post'], 'news/create', 'NewsController@create')->name('admin.news.create');
@@ -46,7 +50,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     // product
     Route::get('product/{index?}', 'ProductController@adminIndex')->where('index', 'index')->name('admin.product.index');
     Route::match(['get', 'post'], 'product/create', 'ProductController@create')->name('admin.product.create');
-    Route::get('product/{id}', 'ProductController@adminDetail')->where('id', '[0-9]+')->name('admin.product.detail');
+ 
+    // series
+    Route::get('series/{index?}', 'SeriesController@adminIndex')->where('index', 'index')->name('admin.series.index');
+    Route::match(['get', 'post'], 'series/create', 'SeriesController@create')->name('admin.series.create');
+
+    // service
+    Route::get('service/{index?}', 'ServiceController@adminIndex')->where('index', 'index')->name('admin.service.index');
+    Route::match(['get', 'post'], 'service/create', 'ServiceController@create')->name('admin.service.create');
+
+    // module
+    Route::get('module/{index?}', 'ModuleController@adminIndex')->where('index', 'index')->name('admin.module.index');
+    Route::match(['get', 'post'], 'module/create', 'ModuleController@create')->name('admin.module.create');
+
     Route::get('resumes', 'ResumeController@search')->name('resume.search');
     Route::match(['get', 'post'], '/edit', 'ResumeController@edit');
     Route::post('/my/add/{id}', 'ResumeController@addmy')->where(['id' => '[0-9]+'])->name('resume.addmy');

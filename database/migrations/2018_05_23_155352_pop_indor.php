@@ -18,6 +18,8 @@ class PopIndor extends Migration
             $table->increments('id');
             $table->string('name', 30)->comment('分类显示名');
             $table->string('icon', 255)->comment('分类图标');
+            $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -81,8 +83,8 @@ class PopIndor extends Migration
         DB::statement("ALTER TABLE news ADD content LONGBLOB after cover");
         DB::statement("ALTER TABLE news comment '新闻表'");
 
-        // product types table
-        Schema::create('types', function (Blueprint $table) {
+        // service modules table
+        Schema::create('modules', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 30)->comment('种类显示名');
             $table->string('icon', 255)->comment('图标')->nullable();
@@ -90,7 +92,7 @@ class PopIndor extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        DB::statement("ALTER TABLE types comment '服务种类表'");
+        DB::statement("ALTER TABLE modules comment '服务模块表'");
 
         // services table
         Schema::create('services', function (Blueprint $table) {
@@ -106,8 +108,8 @@ class PopIndor extends Migration
             $table->softDeletes();
         });
         // once the table is created use a raw query to ALTER it and add the LONGBLOB
-        DB::statement("ALTER TABLE news ADD content LONGBLOB after cover");
-        DB::statement("ALTER TABLE news comment '新闻表'");
+        DB::statement("ALTER TABLE services ADD content LONGBLOB after cover");
+        DB::statement("ALTER TABLE services comment '新闻表'");
 
         // tags table
         Schema::create('tags', function (Blueprint $table) {
@@ -146,7 +148,7 @@ class PopIndor extends Migration
             $table->softDeletes();
         });
         // once the table is created use a raw query to ALTER it and add the LONGBLOB
-        DB::statement("ALTER TABLE news comment '职位表'");
+        DB::statement("ALTER TABLE jobs comment '职位表'");
 
         // job_has_tags table
         Schema::create('job_has_tags', function (Blueprint $table) {

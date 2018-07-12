@@ -145,13 +145,15 @@ return [
             'submenu' => [
                 [
                     'text' => '列表',
-                    'url'  => '#',
+                    'route' => 'admin.product.index',
                     'icon' => 'paper-plane',
+                    'active' => ['产品', '列表', '/admin/product*'],
                 ],
                 [
                     'text'    => '系列',
-                    'url'     => '#',
+                    'route'   => 'admin.series.index',
                     'icon'    => 'cog',
+                    'active'  => ['产品', '系列', '/admin/series*'],
                 ],
             ],
         ],
@@ -167,8 +169,9 @@ return [
                 ],
                 [
                     'text'    => '分类',
-                    'url'     => '#',
+                    'route'   => 'admin.category.index',
                     'icon'    => 'cog',
+                    'active'  => ['案例', '分类', '/admin/category*'],
                 ],
             ],
         ],
@@ -178,13 +181,15 @@ return [
             'submenu' => [
                 [
                     'text' => '列表',
-                    'url'  => '#',
+                    'route' => 'admin.service.index',
                     'icon' => 'tag',
+                    'active' =>['服务', '列表', '/admin/service*'],
                 ],
                 [
                     'text'    => '模块',
-                    'url'     => '#',
+                    'route'   => 'admin.module.index',
                     'icon'    => 'cog',
+                    'active'  => ['服务', '模块', '/admin/module*'],
                 ],
             ],
         ],
