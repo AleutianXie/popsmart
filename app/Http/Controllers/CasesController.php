@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Cases;
 use App\Category;
+use App\Http\Requests\StoreCasesPost;
 use App\Library\Utils\Uploader;
-use Illuminate\Http\Request;
 
 class CasesController extends Controller
 {
@@ -14,7 +14,7 @@ class CasesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(StoreCasesPost $request)
     {
         $categories = Category::all()->toArray();
         $cur = $request->input('cate');
@@ -28,7 +28,7 @@ class CasesController extends Controller
     }
 
 
-    public function create(Request $request)
+    public function create(StoreCasesPost $request)
     {
         if ($request->isMethod('POST')) {
             $cover = Uploader::uploadImage($request->file('cover'));
@@ -40,5 +40,22 @@ class CasesController extends Controller
         }
         $categories = Category::all()->pluck('name', 'id')->toArray();
         return view('admin.cases.create', compact('categories'));
+    }
+
+    public function edit(StoreCasesPost $request, $id)
+    {
+        $case = Cases::findOrFail($id);
+        if ($request->isMethod('POST')) {
+            $caseAttribute = $request->input();
+            // dd($cateAttribute);
+            array_forget($caseAttribute, '_token');
+            if ($request->hasFile('cover')) {
+                $cover = Uploader::uploadImage($request->file('cover'));
+                $caseAttribute = array_add($caseAttribute, 'cover', $cover);
+            }
+            $case->update($caseAttribute);
+            return redirect(route('admin.cases.index'))->with('success', '修改成功！');
+        }
+        return view('admin.cases.edit', compact('case'));
     }
 }

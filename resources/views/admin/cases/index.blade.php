@@ -10,15 +10,10 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <ol class="breadcrumb" style="padding: 0px;margin: 0px;">
-            <li>
-              <a>角色-用户列表</a>
-                        </li>
-                        <a href="{{ route('admin.cases.create') }}">
-                            <button class="btn-add btn btn-success btn-sm pull-right">
-                                +新增
-                            </button>
-                        </a>
-                    </ol>
+              <a>案例列表</a>
+              <a href="{{ route('admin.cases.create') }}" class="btn btn-success btn-xs pull-right"><i class="fa fa-plus"></i> 新增
+              </a>
+          </ol>
         </div>
         <div class="panel-body">
           <table class="user-table table table-hover">

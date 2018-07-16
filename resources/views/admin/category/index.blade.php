@@ -36,7 +36,7 @@
                 <td>{{ $item->sort }}</td>
                 <td>{{ $item->is_top }}</td>
                 <td>
-                  <a href="{{-- {{ route('backend.role.edit', $role->id) }} --}}">
+                  <a href="{{ route('admin.category.edit', $item->id) }}">
                     <button class="btn btn-primary btn-xs">
                       修改
                     </button>

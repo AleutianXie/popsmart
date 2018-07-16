@@ -12,7 +12,7 @@
 
 {!! Form::open(['url' => route('admin.cases.create'), 'files' => true ]) !!}
 <div class="form-group">
-    {{ Form::label('标题', null, ['class' => 'control-label']) }}
+    {{ Form::label('案例名', null, ['class' => 'control-label']) }}
     {{ Form::text('name', '', ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
