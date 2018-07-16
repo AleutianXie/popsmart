@@ -30,7 +30,7 @@ class StoreCategoryPost extends FormRequest
 
         if (Route::currentRouteName() == 'admin.category.create') {
             return [
-                'name'   => 'required|unique:categories',
+                'name'   => 'required|unique:categories,name,,,deleted_at,',
                 'icon'   => 'required|image',
                 'sort'   => 'required|integer|min:0',
                 'is_top' => 'required|boolean'

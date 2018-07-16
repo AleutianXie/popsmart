@@ -27,7 +27,6 @@ class CasesController extends Controller
         return view('cases.index', compact('categories', 'cur', 'cases'));
     }
 
-
     public function create(StoreCasesPost $request)
     {
         if ($request->isMethod('POST')) {
@@ -45,9 +44,9 @@ class CasesController extends Controller
     public function edit(StoreCasesPost $request, $id)
     {
         $case = Cases::findOrFail($id);
+
         if ($request->isMethod('POST')) {
             $caseAttribute = $request->input();
-            // dd($cateAttribute);
             array_forget($caseAttribute, '_token');
             if ($request->hasFile('cover')) {
                 $cover = Uploader::uploadImage($request->file('cover'));

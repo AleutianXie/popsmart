@@ -30,10 +30,13 @@ class StoreCasesPost extends FormRequest
 
         if (Route::currentRouteName() == 'admin.cases.create') {
             return [
-                'name'   => 'required|unique:categories',
-                'icon'   => 'required|image',
+                'name'   => 'required|unique:cases,name,,,deleted_at,',
+                'summary' => 'required',
+                'cover'   => 'required|image',
+                'content' => 'required',
                 'sort'   => 'required|integer|min:0',
-                'is_top' => 'required|boolean'
+                'is_top' => 'required|boolean',
+                'category_id' => 'required|exists:categories,id,deleted_at,'
             ];
         }
 
