@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Route;
 
 class StoreCategoryPost extends FormRequest
 {
@@ -23,7 +24,11 @@ class StoreCategoryPost extends FormRequest
      */
     public function rules()
     {
-        if ($this->isMethod('POST')) {
+        if ($this->isMethod('GET')) {
+            return [];
+        }
+
+        if (Route::currentRouteName() == 'admin.category.create') {
             return [
                 'name'   => 'required|unique:categories',
                 'icon'   => 'required|image',
@@ -31,6 +36,15 @@ class StoreCategoryPost extends FormRequest
                 'is_top' => 'required|boolean'
             ];
         }
-        return [];
+
+        if (Route::currentRouteName() == 'admin.category.edit') {
+            $id = $this->route('id');
+            return [
+                'name'   => 'required|unique:categories,name,' . $id . ',,deleted_at,',
+                'icon'   => 'image',
+                'sort'   => 'required|integer|min:0',
+                'is_top' => 'required|boolean'
+            ];
+        }
     }
 }

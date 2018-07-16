@@ -5,15 +5,14 @@
 @endsection
 
 @section('content_header')
-    <h1>新建案例类型</h1>
+    <h1>修改案例类型</h1>
 @stop
 
 @section('content')
-
-{!! Form::open(['url' => route('admin.category.create'), 'files' => true ]) !!}
+{!! Form::open(['url' => route('admin.category.edit', $category->id), 'files' => true ]) !!}
 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
     {{ Form::label('类型名', null, ['class' => 'control-label']) }}
-    {{ Form::text('name', old('name') ?? '', ['class' => 'form-control']) }}
+    {{ Form::text('name', old('name') ?? $category->name, ['class' => 'form-control']) }}
     @if ($errors->has('name'))
         <span class="help-block">
             <strong>{{ $errors->first('name') }}</strong>
@@ -31,7 +30,7 @@
 </div>
 <div class="form-group {{ $errors->has('sort') ? 'has-error' : '' }}">
     {{ Form::label('排序', null, ['class' => 'control-label']) }}
-    {{ Form::number('sort', old('sort') ?? 0, ['class' => 'form-control']) }}
+    {{ Form::number('sort', old('sort') ?? $category->sort, ['class' => 'form-control']) }}
     @if ($errors->has('sort'))
         <span class="help-block">
             <strong>{{ $errors->first('sort') }}</strong>
@@ -41,13 +40,13 @@
 <div class="form-group {{ $errors->has('is_top') ? 'has-error' : '' }}">
     {{ Form::label('置顶', null, ['class' => 'control-label']) }}
     <div class="form-control">
-        @if (1 == old('is_top'))
+        @if (1 == old('is_top') ?? $category->is_top)
             {{ Form::radio('is_top', 1, true) }}
         @else
             {{ Form::radio('is_top', 1) }}
         @endif
         {{ Form::label('&nbsp;是&nbsp;', null, ['class' => 'text-success']) }}
-        @if (0 == old('is_top') ?? 0)
+        @if (0 == old('is_top') ?? $category->is_top)
             {{ Form::radio('is_top', 0, true) }}
         @else
             {{ Form::radio('is_top', 0) }}
@@ -76,7 +75,10 @@
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     $('input[name=icon]').fileinput({
-        language: 'zh'
+        language: 'zh',
+        initialPreview: [
+            '<img src="{{ $category->icon }}" class="file-preview-image" alt="{{ $category->name }}">'
+        ]
     });
     $(document).on('focus', 'form input', function(e) {
         $(this).next().children('strong').text('');

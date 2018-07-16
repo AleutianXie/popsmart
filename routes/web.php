@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     // category 
     Route::get('category/{index?}', 'CategoryController@adminIndex')->where('index', 'index')->name('admin.category.index');
     Route::match(['get', 'post'], 'category/create', 'CategoryController@create')->name('admin.category.create');
+    Route::match(['get', 'post'], 'category/{id}/edit', 'CategoryController@edit')->where(['id' => '[0-9]+'])->name('admin.category.edit');
 
     // news
     Route::get('news/{index?}', 'NewsController@adminIndex')->where('index', 'index')->name('admin.news.index');

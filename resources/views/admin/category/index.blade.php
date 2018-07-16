@@ -10,26 +10,20 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <ol class="breadcrumb" style="padding: 0px;margin: 0px;">
-            <li>
-              <a>角色-用户列表</a>
-                        </li>
-                        <a href="{{ route('admin.category.create') }}">
-                            <button class="btn-add btn btn-success btn-sm pull-right">
-                                +新增
-                            </button>
-                        </a>
-                    </ol>
+              <a>案例类型列表</a>
+              <a href="{{ route('admin.category.create') }}" class="btn btn-success btn-xs pull-right"><i class="fa fa-plus"></i> 新增
+              </a>
+          </ol>
         </div>
         <div class="panel-body">
           <table class="user-table table table-hover">
             <thead>
               <tr>
-                <th>角色ID</th>
-                <th>角色名</th>
-                <th>描述</th>
-                <th>用户</th>
-                <th>权限</th>
-                <th>创建时间</th>
+                <th>ID</th>
+                <th>图标</th>
+                <th>类型名</th>
+                <th>排序</th>
+                <th>是否置顶</th>
                 <th>操作</th>
               </tr>
             </thead>
@@ -37,9 +31,8 @@
               @foreach($categories as $item)
               <tr>
                 <td>{{ $item->id }}</td>
-                <td><img src="{{ $item->cover }}" alt=""></td>
+                <td><img src="{{ $item->icon }}" alt="{{ $item->name }}"></td>
                 <td>{{ $item->name }}</td>
-                <td>{{ $item->summary}}</td>
                 <td>{{ $item->sort }}</td>
                 <td>{{ $item->is_top }}</td>
                 <td>
