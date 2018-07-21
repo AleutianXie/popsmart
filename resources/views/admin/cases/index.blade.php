@@ -19,28 +19,28 @@
           <table class="user-table table table-hover">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>案例名</th>
-                <th>封图</th>
-                <th>简述</th>
-                <th>排序</th>
-                <th>是否置顶</th>
-                <th>创建时间</th>
-                <th>操作</th>
+                <th class="col-md-1">ID</th>
+                <th class="col-md-1">案例名</th>
+                <th class="col-md-2">封图</th>
+                <th class="col-md-2">简述</th>
+                <th class="col-md-1">排序</th>
+                <th class="col-md-1">置顶</th>
+                <th class="col-md-2">创建时间</th>
+                <th class="col-md-2">操作</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($cases as $case)
+              @foreach($cases as $item)
               <tr>
-                <td>{{ $case->id }}</td>
-                <td>{{ $case->name }}</td>
-                <td><img src="{{ $case->cover }}" alt="{{ $case->name }}"></td>
-                <td>{{ $case->summary}}</td>
-                <td>{{ $case->sort }}</td>
-                <td>{{ $case->is_top }}</td>
-                <td>{{ $case->created_at }}</td>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->name }}</td>
+                <td><img src="{{ $item->cover }}" alt="{{ $item->name }}"></td>
+                <td>{{ $item->summary}}</td>
+                <td>{{ $item->sort }}</td>
+                <td>{{ $item->is_top == 1 ? '是' : '否' }}</td>
+                <td>{{ $item->created_at }}</td>
                 <td>
-                  <a href="{{ route('admin.cases.edit', $case->id) }}">
+                  <a href="{{ route('admin.cases.edit', $item->id) }}">
                     <button class="btn btn-primary btn-xs">
                       修改
                     </button>

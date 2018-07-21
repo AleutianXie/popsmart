@@ -23,7 +23,7 @@
                 <th>图标</th>
                 <th>分类名</th>
                 <th>排序</th>
-                <th>是否置顶</th>
+                <th>置顶</th>
                 <th>操作</th>
               </tr>
             </thead>
@@ -34,7 +34,7 @@
                 <td><img src="{{ $item->icon }}" alt="{{ $item->name }}"></td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->sort }}</td>
-                <td>{{ $item->is_top }}</td>
+                <td>{{ $item->is_top == 1 ? '是' : '否' }}</td>
                 <td>
                   <a href="{{ route('admin.category.edit', $item->id) }}">
                     <button class="btn btn-primary btn-xs">
