@@ -12,7 +12,7 @@
 
 {!! Form::open(['url' => route('admin.category.create'), 'files' => true ]) !!}
 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-    {{ Form::label('类型名', null, ['class' => 'control-label']) }}
+    {{ Form::label('分类名', null, ['class' => 'control-label']) }}
     {{ Form::text('name', old('name') ?? '', ['class' => 'form-control']) }}
     @if ($errors->has('name'))
         <span class="help-block">

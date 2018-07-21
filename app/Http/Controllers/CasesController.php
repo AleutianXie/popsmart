@@ -55,6 +55,7 @@ class CasesController extends Controller
             $case->update($caseAttribute);
             return redirect(route('admin.cases.index'))->with('success', '修改成功！');
         }
-        return view('admin.cases.edit', compact('case'));
+        $categories = Category::all()->pluck('name', 'id')->toArray();
+        return view('admin.cases.edit', compact('case', 'categories'));
     }
 }

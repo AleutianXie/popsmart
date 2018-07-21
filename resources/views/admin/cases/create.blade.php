@@ -38,32 +38,55 @@
         </span>
     @endif
 </div>
-<div class="form-group">
+<div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
     {{ Form::label('内容', null, ['class' => 'control-label']) }}
-@include('UEditor::head')
-<div name="content" id="content" style="min-height: 600px;"></div>
+    @include('UEditor::head')
+    <div name="content" id="content" style="min-height: 600px;"></div>
+    @if ($errors->has('content'))
+        <span class="help-block">
+            <strong>{{ $errors->first('content') }}</strong>
+        </span>
+    @endif
 </div>
 <div class="form-group {{ $errors->has('sort') ? 'has-error' : '' }}">
     {{ Form::label('排序', null, ['class' => 'control-label']) }}
-    {{ Form::number('sort', 0, ['class' => 'form-control']) }}
+    {{ Form::number('sort', old('sort') ?? 0, ['class' => 'form-control']) }}
     @if ($errors->has('sort'))
         <span class="help-block">
             <strong>{{ $errors->first('sort') }}</strong>
         </span>
     @endif
 </div>
-<div class="form-group">
+<div class="form-group {{ $errors->has('is_top') ? 'has-error' : '' }}">
     {{ Form::label('置顶', null, ['class' => 'control-label']) }}
     <div class="form-control">
-        {{ Form::radio('is_top', 1) }}
+        @if (1 == old('is_top'))
+            {{ Form::radio('is_top', 1, true) }}
+        @else
+            {{ Form::radio('is_top', 1) }}
+        @endif
         {{ Form::label('&nbsp;是&nbsp;', null, ['class' => 'text-success']) }}
-        {{ Form::radio('is_top', 0, true) }}
+        @if (0 == old('is_top') ?? 0)
+            {{ Form::radio('is_top', 0, true) }}
+        @else
+            {{ Form::radio('is_top', 0) }}
+        @endif
         {{ Form::label('&nbsp;否&nbsp;', null, ['class' => 'text-muted']) }}
     </div>
+    @if ($errors->has('is_top'))
+        <span class="help-block">
+            <strong>{{ $errors->first('is_top') }}</strong>
+        </span>
+    @endif
 </div>
-<div class="form-group">
+<div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
     {{ Form::label('分类', null, ['class' => 'control-label']) }}
-    {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
+    {{ Form::select('category_id', $categories, old('category_id'), ['class' => 'form-control']) }}
+    @if ($errors->has('category_id'))
+        <span class="help-block">
+            <strong>{{ $errors->first('category_id') }}</strong>
+        </span>
+    @endif
 </div>
 <div class="form-group">
     <div class="text-center">
@@ -81,19 +104,26 @@
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     var ue = UE.getEditor('content');
+    @if (old('content'))
+        ue.on('ready', function() {
+            ue.setContent('{!! old('content') !!}');
+        });
+    @endif
+    ue.on("focus", function (type, event) {
+        $(ue.container.parentElement.nextElementSibling).children('strong').text('');
+        $(ue.container.parentElement.parentElement).removeClass('has-error');
+        return;
+    });
     $('input[name=cover]').fileinput({
         language: 'zh'
     });
-    $(document).on('focus', 'form input,form textarea', function(e) {
+    $(document).on('focus', 'form input,form textarea, form ', function(e) {
         $(this).next().children('strong').text('');
         $(this).parent().removeClass('has-error');
     });
     $(document).on('focus', 'form .file-caption-name', function(e) {
         $(this).parents('.form-group').children('.help-block').children('strong').text('');
         $(this).parents('.form-group').removeClass('has-error');
-    });
-    $(document).ready(function() {
-        console.log({{ old('cover') }});
     });
 </script>
 @endsection

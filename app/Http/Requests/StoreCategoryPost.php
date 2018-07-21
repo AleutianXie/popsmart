@@ -47,4 +47,14 @@ class StoreCategoryPost extends FormRequest
             ];
         }
     }
+
+    public function attributes()
+    {
+        return [
+           'name'        => '分类名',
+           'icon'        => '图标',
+           'sort'        => '排序',
+           'is_top'      => '是否置顶',
+        ];
+    }
 }

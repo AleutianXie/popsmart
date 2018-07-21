@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>案例类型列表</h1>
+    <h1>案例分类列表</h1>
 @stop
 
 @section('content')
@@ -10,7 +10,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <ol class="breadcrumb" style="padding: 0px;margin: 0px;">
-              <a>案例类型列表</a>
+              <a>案例分类列表</a>
               <a href="{{ route('admin.category.create') }}" class="btn btn-success btn-xs pull-right"><i class="fa fa-plus"></i> 新增
               </a>
           </ol>
@@ -21,7 +21,7 @@
               <tr>
                 <th>ID</th>
                 <th>图标</th>
-                <th>类型名</th>
+                <th>分类名</th>
                 <th>排序</th>
                 <th>是否置顶</th>
                 <th>操作</th>

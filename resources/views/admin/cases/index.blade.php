@@ -19,11 +19,12 @@
           <table class="user-table table table-hover">
             <thead>
               <tr>
-                <th>角色ID</th>
-                <th>角色名</th>
-                <th>描述</th>
-                <th>用户</th>
-                <th>权限</th>
+                <th>ID</th>
+                <th>案例名</th>
+                <th>封图</th>
+                <th>简述</th>
+                <th>排序</th>
+                <th>是否置顶</th>
                 <th>创建时间</th>
                 <th>操作</th>
               </tr>
@@ -32,13 +33,14 @@
               @foreach($cases as $case)
               <tr>
                 <td>{{ $case->id }}</td>
-                <td><img src="{{ $case->cover }}" alt=""></td>
                 <td>{{ $case->name }}</td>
+                <td><img src="{{ $case->cover }}" alt="{{ $case->name }}"></td>
                 <td>{{ $case->summary}}</td>
                 <td>{{ $case->sort }}</td>
                 <td>{{ $case->is_top }}</td>
+                <td>{{ $case->created_at }}</td>
                 <td>
-                  <a href="{{-- {{ route('backend.role.edit', $role->id) }} --}}">
+                  <a href="{{ route('admin.cases.edit', $case->id) }}">
                     <button class="btn btn-primary btn-xs">
                       修改
                     </button>
