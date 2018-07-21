@@ -48,6 +48,8 @@ class PopIndor extends Migration
             $table->string('name', 30)->comment('系列显示名');
             $table->string('icon', 255)->comment('图标')->nullable();
             $table->string('overview', 255)->comment('概述')->nullable();
+            $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::match(['get', 'post'], 'case/create', 'CasesController@create')->name('admin.cases.create');
     Route::match(['get', 'post'], 'case/{id}/edit', 'CasesController@edit')->where(['id' => '[0-9]+'])->name('admin.cases.edit');
 
-    // category 
+    // category
     Route::get('category/{index?}', 'CategoryController@adminIndex')->where('index', 'index')->name('admin.category.index');
     Route::match(['get', 'post'], 'category/create', 'CategoryController@create')->name('admin.category.create');
     Route::match(['get', 'post'], 'category/{id}/edit', 'CategoryController@edit')->where(['id' => '[0-9]+'])->name('admin.category.edit');
@@ -56,6 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     // series
     Route::get('series/{index?}', 'SeriesController@adminIndex')->where('index', 'index')->name('admin.series.index');
     Route::match(['get', 'post'], 'series/create', 'SeriesController@create')->name('admin.series.create');
+    Route::match(['get', 'post'], 'series/{id}/edit', 'SeriesController@edit')->where(['id' => '[0-9]+'])->name('admin.series.edit');
 
     // service
     Route::get('service/{index?}', 'ServiceController@adminIndex')->where('index', 'index')->name('admin.service.index');
