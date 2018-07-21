@@ -30,7 +30,7 @@ class StoreCategoryPost extends FormRequest
 
         if (Route::currentRouteName() == 'admin.category.create') {
             return [
-                'name'   => 'required|unique:categories,name,,,deleted_at,',
+                'name'   => 'required|unique:categories,name,,,deleted_at,NULL',
                 'icon'   => 'required|image',
                 'sort'   => 'required|integer|min:0',
                 'is_top' => 'required|boolean'
@@ -40,7 +40,7 @@ class StoreCategoryPost extends FormRequest
         if (Route::currentRouteName() == 'admin.category.edit') {
             $id = $this->route('id');
             return [
-                'name'   => 'required|unique:categories,name,' . $id . ',,deleted_at,',
+                'name'   => 'required|unique:categories,name,' . $id . ',id,deleted_at,NULL',
                 'icon'   => 'image',
                 'sort'   => 'required|integer|min:0',
                 'is_top' => 'required|boolean'

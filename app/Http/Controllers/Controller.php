@@ -22,7 +22,8 @@ class Controller extends BaseController
         $class_name = substr(class_basename(static::class), 0, -10);
         $model = 'App\\'.$class_name;
         $class_names = str_plural(strtolower($class_name));
-        $$class_names = $model::query()->paginate(10)->appends($filter);
+        // $$class_names = $model::query()->paginate(10)->appends($filter);
+        $$class_names = $model::paginate()->appends($filter);
         return view('admin.'.strtolower(substr(class_basename(static::class), 0, -10)).'.index', compact('filter', $class_names));
     }
 
