@@ -33,8 +33,8 @@
               <tr>
                 <td>{{ $item->id }}</td>
                 <td>@if ($item->icon)<img src="{{ $item->icon }}" alt="{{ $item->name }}">@endif</td>
-                <td>{{ $item->overview }}</td>
                 <td>{{ $item->name }}</td>
+                <td>{{ $item->overview }}</td>
                 <td>{{ $item->sort }}</td>
                 <td>{{ $item->is_top == 1 ? '是' : '否' }}</td>
                 <td>

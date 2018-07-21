@@ -15,6 +15,6 @@ class Series extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'icon', 'sort', 'is_top'
+        'name', 'icon', 'overview', 'sort', 'is_top'
     ];
 }
