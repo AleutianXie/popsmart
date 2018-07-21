@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreNewsPost;
 use App\Library\Utils\Uploader;
 use App\News;
-use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -13,7 +13,7 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(StoreNewsPost $request)
     {
         $filter = $request->input();
         $model = new News();
@@ -24,7 +24,7 @@ class NewsController extends Controller
     }
 
 
-    public function create(Request $request)
+    public function create(StoreNewsPost $request)
     {
         if ($request->isMethod('POST')) {
             $cover = Uploader::uploadImage($request->file('cover'));
@@ -35,6 +35,23 @@ class NewsController extends Controller
             return redirect(route('admin.news.index'))->with('success', '创建成功！');
         }
         return view('admin.news.create');
+    }
+
+    public function edit(StoreNewsPost $request, $id)
+    {
+        $news = News::findOrFail($id);
+
+        if ($request->isMethod('POST')) {
+            $newsAttribute = $request->input();
+            array_forget($newsAttribute, '_token');
+            if ($request->hasFile('cover')) {
+                $cover = Uploader::uploadImage($request->file('cover'));
+                $newsAttribute = array_add($newsAttribute, 'cover', $cover);
+            }
+            $news->update($newsAttribute);
+            return redirect(route('admin.news.index'))->with('success', '修改成功！');
+        }
+        return view('admin.news.edit', compact('news'));
     }
 
     /**

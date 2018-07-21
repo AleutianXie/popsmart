@@ -48,7 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     // news
     Route::get('news/{index?}', 'NewsController@adminIndex')->where('index', 'index')->name('admin.news.index');
     Route::match(['get', 'post'], 'news/create', 'NewsController@create')->name('admin.news.create');
-
+    Route::match(['get', 'post'], 'news/{id}/edit', 'NewsController@edit')->where(['id' => '[0-9]+'])->name('admin.news.edit');
     // product
     Route::get('product/{index?}', 'ProductController@adminIndex')->where('index', 'index')->name('admin.product.index');
     Route::match(['get', 'post'], 'product/create', 'ProductController@create')->name('admin.product.create');

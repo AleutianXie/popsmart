@@ -5,15 +5,14 @@
 @endsection
 
 @section('content_header')
-    <h1>新建新闻</h1>
+    <h1>修改新闻</h1>
 @stop
 
 @section('content')
-
-{!! Form::open(['url' => route('admin.news.create'), 'files' => true ]) !!}
+{!! Form::open(['url' => route('admin.news.edit', $news->id), 'files' => true ]) !!}
 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
     {{ Form::label('标题', null, ['class' => 'control-label']) }}
-    {{ Form::text('name', old('name') ?? '', ['class' => 'form-control']) }}
+    {{ Form::text('name', old('name') ?? $news->name, ['class' => 'form-control']) }}
     @if ($errors->has('name'))
         <span class="help-block">
             <strong>{{ $errors->first('name') }}</strong>
@@ -22,13 +21,14 @@
 </div>
 <div class="form-group {{ $errors->has('summary') ? 'has-error' : '' }}">
     {{ Form::label('摘要', null, ['class' => 'control-label']) }}
-    {{ Form::textArea('summary', old('summary') ?? '', ['class' => 'form-control']) }}
+    {{ Form::textArea('summary', old('summary') ?? $news->summary, ['class' => 'form-control']) }}
     @if ($errors->has('summary'))
         <span class="help-block">
             <strong>{{ $errors->first('summary') }}</strong>
         </span>
     @endif
 </div>
+
 <div class="form-group {{ $errors->has('cover') ? 'has-error' : '' }}">
     {{ Form::label('封图', null, ['class' => 'control-label']) }}
     {{ Form::file('cover') }}
@@ -50,7 +50,7 @@
 </div>
 <div class="form-group {{ $errors->has('sort') ? 'has-error' : '' }}">
     {{ Form::label('排序', null, ['class' => 'control-label']) }}
-    {{ Form::number('sort', old('sort') ?? 0, ['class' => 'form-control']) }}
+    {{ Form::number('sort', old('sort') ?? $news->sort, ['class' => 'form-control']) }}
     @if ($errors->has('sort'))
         <span class="help-block">
             <strong>{{ $errors->first('sort') }}</strong>
@@ -60,13 +60,13 @@
 <div class="form-group {{ $errors->has('is_top') ? 'has-error' : '' }}">
     {{ Form::label('置顶', null, ['class' => 'control-label']) }}
     <div class="form-control">
-        @if (1 == old('is_top'))
+        @if (old('is_top') ?? $news->is_top == 1)
             {{ Form::radio('is_top', 1, true) }}
         @else
             {{ Form::radio('is_top', 1) }}
         @endif
         {{ Form::label('&nbsp;是&nbsp;', null, ['class' => 'text-success']) }}
-        @if (0 == old('is_top') ?? 0)
+        @if (old('is_top') ?? $news->is_top == 0)
             {{ Form::radio('is_top', 0, true) }}
         @else
             {{ Form::radio('is_top', 0) }}
@@ -95,18 +95,13 @@
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     var ue = UE.getEditor('content');
-    @if (old('content'))
-        ue.on('ready', function() {
-            ue.setContent('{!! old('content') !!}');
-        });
-    @endif
+    ue.on('ready', function() {
+        ue.setContent('{!! old('content') ?? $news->content !!}');
+    });
     ue.on("focus", function (type, event) {
         $(ue.container.parentElement.nextElementSibling).children('strong').text('');
         $(ue.container.parentElement.parentElement).removeClass('has-error');
         return;
-    });
-    $('input[name=cover]').fileinput({
-        language: 'zh'
     });
     $(document).on('focus', 'form input,form textarea, form ', function(e) {
         $(this).next().children('strong').text('');
@@ -115,6 +110,12 @@
     $(document).on('focus', 'form .file-caption-name', function(e) {
         $(this).parents('.form-group').children('.help-block').children('strong').text('');
         $(this).parents('.form-group').removeClass('has-error');
+    });
+    $('input[name=cover]').fileinput({
+        language: 'zh',
+        initialPreview: [
+            '<img src="{{ $news->cover }}" class="file-preview-image kv-preview-data rotate-1" title="{{ $news->name }}" alt="{{ $news->name }}" style="width:auto;height:auto;max-width:100%;max-height:100%;">'
+        ]
     });
 </script>
 @endsection

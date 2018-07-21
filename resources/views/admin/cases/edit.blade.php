@@ -60,13 +60,13 @@
 <div class="form-group {{ $errors->has('is_top') ? 'has-error' : '' }}">
     {{ Form::label('置顶', null, ['class' => 'control-label']) }}
     <div class="form-control">
-        @if (1 == old('is_top') ?? $case->is_top)
+        @if (old('is_top') ?? $case->is_top == 1)
             {{ Form::radio('is_top', 1, true) }}
         @else
             {{ Form::radio('is_top', 1) }}
         @endif
         {{ Form::label('&nbsp;是&nbsp;', null, ['class' => 'text-success']) }}
-        @if (0 == old('is_top') ?? $case->is_top)
+        @if (old('is_top') ?? $case->is_top == 0)
             {{ Form::radio('is_top', 0, true) }}
         @else
             {{ Form::radio('is_top', 0) }}
