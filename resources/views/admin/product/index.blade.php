@@ -10,40 +10,37 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <ol class="breadcrumb" style="padding: 0px;margin: 0px;">
-            <li>
-              <a>角色-用户列表</a>
-                        </li>
-                        <a href="{{ route('admin.news.create') }}">
-                            <button class="btn-add btn btn-success btn-sm pull-right">
-                                +新增
-                            </button>
-                        </a>
-                    </ol>
+              <a>产品列表</a>
+              <a href="{{ route('admin.product.create') }}" class="btn btn-success btn-xs pull-right"><i class="fa fa-plus"></i> 新增
+              </a>
+          </ol>
         </div>
         <div class="panel-body">
           <table class="user-table table table-hover">
             <thead>
               <tr>
-                <th>角色ID</th>
-                <th>角色名</th>
-                <th>描述</th>
-                <th>用户</th>
-                <th>权限</th>
-                <th>创建时间</th>
-                <th>操作</th>
+                <th class="col-md-1">ID</th>
+                <th class="col-md-1">名称</th>
+                <th class="col-md-2">封图</th>
+                <th class="col-md-2">简述</th>
+                <th class="col-md-1">排序</th>
+                <th class="col-md-1">置顶</th>
+                <th class="col-md-2">创建时间</th>
+                <th class="col-md-2">操作</th>
               </tr>
             </thead>
             <tbody>
               @foreach($products as $item)
               <tr>
                 <td>{{ $item->id }}</td>
-                <td><img src="{{ $item->cover }}" alt=""></td>
                 <td>{{ $item->name }}</td>
+                <td><img src="{{ $item->cover }}" alt="{{ $item->name }}"></td>
                 <td>{{ $item->summary}}</td>
                 <td>{{ $item->sort }}</td>
-                <td>{{ $item->is_top }}</td>
+                <td>{{ $item->is_top == 1 ? '是' : '否' }}</td>
+                <td>{{ $item->created_at }}</td>
                 <td>
-                  <a href="{{-- {{ route('backend.role.edit', $role->id) }} --}}">
+                  <a href="{{ route('admin.product.edit', $item->id) }}">
                     <button class="btn btn-primary btn-xs">
                       修改
                     </button>

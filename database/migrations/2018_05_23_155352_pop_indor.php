@@ -68,6 +68,8 @@ class PopIndor extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE products ADD content LONGBLOB after cover");
         DB::statement("ALTER TABLE products comment '产品表'");
 
         // news table
@@ -91,6 +93,8 @@ class PopIndor extends Migration
             $table->string('name', 30)->comment('种类显示名');
             $table->string('icon', 255)->comment('图标')->nullable();
             $table->string('overview', 255)->comment('概述')->nullable();
+            $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -103,8 +107,8 @@ class PopIndor extends Migration
             $table->string('summary', 255)->comment('服务简述');
             $table->string('cover', 255)->comment('服务封面图');
             $table->smallInteger('sort')->default(0)->comment('排序');
-            $table->unsignedInteger('types_id')->comment('服务分类');
-            $table->foreign('types_id')->references('id')->on('types');
+            $table->unsignedInteger('module_id')->comment('服务分类');
+            $table->foreign('module_id')->references('id')->on('modules');
             $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->timestamps();
             $table->softDeletes();

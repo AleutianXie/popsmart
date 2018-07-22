@@ -5,15 +5,14 @@
 @endsection
 
 @section('content_header')
-    <h1>新建服务模块</h1>
+    <h1>修改服务模块</h1>
 @stop
 
 @section('content')
-
-{!! Form::open(['url' => route('admin.module.create'), 'files' => true ]) !!}
+{!! Form::open(['url' => route('admin.module.edit', $module->id), 'files' => true ]) !!}
 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-    {{ Form::label('模块名', null, ['class' => 'control-label']) }}
-    {{ Form::text('name', old('name') ?? '', ['class' => 'form-control']) }}
+    {{ Form::label('分类名', null, ['class' => 'control-label']) }}
+    {{ Form::text('name', old('name') ?? $module->name, ['class' => 'form-control']) }}
     @if ($errors->has('name'))
         <span class="help-block">
             <strong>{{ $errors->first('name') }}</strong>
@@ -31,7 +30,7 @@
 </div>
 <div class="form-group {{ $errors->has('overview') ? 'has-error' : '' }}">
     {{ Form::label('简述', null, ['class' => 'control-label']) }}
-    {{ Form::textArea('overview', old('overview') ?? '', ['class' => 'form-control']) }}
+    {{ Form::textArea('overview', old('overview') ?? $module->overview, ['class' => 'form-control']) }}
     @if ($errors->has('overview'))
         <span class="help-block">
             <strong>{{ $errors->first('overview') }}</strong>
@@ -40,7 +39,7 @@
 </div>
 <div class="form-group {{ $errors->has('sort') ? 'has-error' : '' }}">
     {{ Form::label('排序', null, ['class' => 'control-label']) }}
-    {{ Form::number('sort', old('sort') ?? 0, ['class' => 'form-control']) }}
+    {{ Form::number('sort', old('sort') ?? $module->sort, ['class' => 'form-control']) }}
     @if ($errors->has('sort'))
         <span class="help-block">
             <strong>{{ $errors->first('sort') }}</strong>
@@ -50,13 +49,13 @@
 <div class="form-group {{ $errors->has('is_top') ? 'has-error' : '' }}">
     {{ Form::label('置顶', null, ['class' => 'control-label']) }}
     <div class="form-control">
-        @if (1 == old('is_top'))
+        @if (old('is_top') ?? $module->is_top == 1)
             {{ Form::radio('is_top', 1, true) }}
         @else
             {{ Form::radio('is_top', 1) }}
         @endif
         {{ Form::label('&nbsp;是&nbsp;', null, ['class' => 'text-success']) }}
-        @if (0 == old('is_top') ?? 0)
+        @if (old('is_top') ?? $module->is_top == 0)
             {{ Form::radio('is_top', 0, true) }}
         @else
             {{ Form::radio('is_top', 0) }}
@@ -85,7 +84,10 @@
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     $('input[name=icon]').fileinput({
-        language: 'zh'
+        language: 'zh',
+        initialPreview: [
+            '<img src="{{ $module->icon }}" class="file-preview-image" alt="{{ $module->name }}">'
+        ]
     });
     $(document).on('focus', 'form input', function(e) {
         $(this).next().children('strong').text('');

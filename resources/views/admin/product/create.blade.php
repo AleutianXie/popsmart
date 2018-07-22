@@ -5,14 +5,14 @@
 @endsection
 
 @section('content_header')
-    <h1>新建服务模块</h1>
+    <h1>新建产品</h1>
 @stop
 
 @section('content')
 
-{!! Form::open(['url' => route('admin.module.create'), 'files' => true ]) !!}
+{!! Form::open(['url' => route('admin.product.create'), 'files' => true ]) !!}
 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-    {{ Form::label('模块名', null, ['class' => 'control-label']) }}
+    {{ Form::label('名称', null, ['class' => 'control-label']) }}
     {{ Form::text('name', old('name') ?? '', ['class' => 'form-control']) }}
     @if ($errors->has('name'))
         <span class="help-block">
@@ -20,21 +20,31 @@
         </span>
     @endif
 </div>
-<div class="form-group {{ $errors->has('icon') ? 'has-error' : '' }}">
-    {{ Form::label('图标', null, ['class' => 'control-label']) }}
-    {{ Form::file('icon') }}
-    @if ($errors->has('icon'))
+<div class="form-group {{ $errors->has('summary') ? 'has-error' : '' }}">
+    {{ Form::label('摘要', null, ['class' => 'control-label']) }}
+    {{ Form::textArea('summary', old('summary') ?? '', ['class' => 'form-control']) }}
+    @if ($errors->has('summary'))
         <span class="help-block">
-            <strong>{{ $errors->first('icon') }}</strong>
+            <strong>{{ $errors->first('summary') }}</strong>
         </span>
     @endif
 </div>
-<div class="form-group {{ $errors->has('overview') ? 'has-error' : '' }}">
-    {{ Form::label('简述', null, ['class' => 'control-label']) }}
-    {{ Form::textArea('overview', old('overview') ?? '', ['class' => 'form-control']) }}
-    @if ($errors->has('overview'))
+<div class="form-group {{ $errors->has('cover') ? 'has-error' : '' }}">
+    {{ Form::label('封图', null, ['class' => 'control-label']) }}
+    {{ Form::file('cover') }}
+    @if ($errors->has('cover'))
         <span class="help-block">
-            <strong>{{ $errors->first('overview') }}</strong>
+            <strong>{{ $errors->first('cover') }}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
+    {{ Form::label('内容', null, ['class' => 'control-label']) }}
+    @include('UEditor::head')
+    <div name="content" id="content" style="min-height: 600px;"></div>
+    @if ($errors->has('content'))
+        <span class="help-block">
+            <strong>{{ $errors->first('content') }}</strong>
         </span>
     @endif
 </div>
@@ -69,6 +79,15 @@
         </span>
     @endif
 </div>
+<div class="form-group {{ $errors->has('series_id') ? 'has-error' : '' }}">
+    {{ Form::label('系列', null, ['class' => 'control-label']) }}
+    {{ Form::select('series_id', $series, old('series_id'), ['class' => 'form-control']) }}
+    @if ($errors->has('series_id'))
+        <span class="help-block">
+            <strong>{{ $errors->first('series_id') }}</strong>
+        </span>
+    @endif
+</div>
 <div class="form-group">
     <div class="text-center">
         {{ Form::submit('提交', ['class' => 'btn btn-success']) }}
@@ -84,10 +103,21 @@
 <script type="text/javascript" src="{{ asset('/bootstrap-fileinput/js/locales/zh.js') }}"></script>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-    $('input[name=icon]').fileinput({
+    var ue = UE.getEditor('content');
+    @if (old('content'))
+        ue.on('ready', function() {
+            ue.setContent('{!! old('content') !!}');
+        });
+    @endif
+    ue.on("focus", function (type, event) {
+        $(ue.container.parentElement.nextElementSibling).children('strong').text('');
+        $(ue.container.parentElement.parentElement).removeClass('has-error');
+        return;
+    });
+    $('input[name=cover]').fileinput({
         language: 'zh'
     });
-    $(document).on('focus', 'form input', function(e) {
+    $(document).on('focus', 'form input,form textarea, form ', function(e) {
         $(this).next().children('strong').text('');
         $(this).parent().removeClass('has-error');
     });
