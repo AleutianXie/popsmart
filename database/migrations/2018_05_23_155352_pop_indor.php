@@ -107,9 +107,9 @@ class PopIndor extends Migration
             $table->string('summary', 255)->comment('服务简述');
             $table->string('cover', 255)->comment('服务封面图');
             $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->unsignedInteger('module_id')->comment('服务分类');
             $table->foreign('module_id')->references('id')->on('modules');
-            $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -122,6 +122,8 @@ class PopIndor extends Migration
             $table->increments('id');
             $table->string('name', 30)->index()->comment('属性名');
             $table->string('comment', 255)->nullable()->comment('备注');
+            $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->timestamps();
             $table->softDeletes();
         });

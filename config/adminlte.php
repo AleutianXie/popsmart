@@ -206,6 +206,20 @@ return [
                     'text'    => '加入',
                     'url'     => '#',
                     'icon'    => 'odnoklassniki',
+                    'submenu' => [
+                        [
+                            'text' => '部门',
+                            'url'  => '#',
+                            'icon' => 'users',
+                        ],
+                        [
+                            'text'    => '标签',
+                            'route'   => 'admin.tag.index',
+                            'icon'    => 'tags',
+                            'active'  => ['关于', '我们', '标签', '/admin/tag*'],
+
+                        ],
+                    ],
                 ],
                 [
                     'text' => '联系',

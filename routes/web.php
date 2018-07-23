@@ -69,19 +69,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::match(['get', 'post'], 'module/create', 'ModuleController@create')->name('admin.module.create');
     Route::match(['get', 'post'], 'module/{id}/edit', 'ModuleController@edit')->where(['id' => '[0-9]+'])->name('admin.module.edit');
 
-    Route::get('resumes', 'ResumeController@search')->name('resume.search');
-    Route::match(['get', 'post'], '/edit', 'ResumeController@edit');
-    Route::post('/my/add/{id}', 'ResumeController@addmy')->where(['id' => '[0-9]+'])->name('resume.addmy');
-    Route::get('/jobmodal/{id}', 'ResumeController@jobmodal')->where('id', '[0-9]+')->name('resume.jobmodal');
-    Route::post('/job/add/', 'ResumeController@addjob')->name('resume.addjob');
-    //Route::get('/search/{type}', 'ResumeController@search')->where(['type' => 'my|all|job'])->name('resume.search');
-    Route::post('/feedback', 'FeedbackController@add');
+    // tag
+    Route::get('tag/{index?}', 'TagController@adminIndex')->where('index', 'index')->name('admin.tag.index');
+    Route::match(['get', 'post'], 'tag/create', 'TagController@create')->name('admin.tag.create');
+    Route::match(['get', 'post'], 'tag/{id}/edit', 'TagController@edit')->where(['id' => '[0-9]+'])->name('admin.tag.edit');
 
-    // customer
-
-    Route::get('customer/search', 'CustomerController@search')->name('customer.search');
-
-    // job
-
-    Route::get('job/search', 'JobController@search')->name('job.search');
 });
