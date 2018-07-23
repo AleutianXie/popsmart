@@ -204,20 +204,25 @@ return [
                 ],
                 [
                     'text'    => '加入',
-                    'url'     => '#',
                     'icon'    => 'odnoklassniki',
                     'submenu' => [
                         [
+                            'text' => '职位',
+                            'route'  => 'admin.job.index',
+                            'icon' => 'list',
+                            'active'  => ['关于', '加入', '职位', '/admin/job*'],
+                        ],
+                        [
                             'text' => '部门',
-                            'url'  => '#',
+                            'route'  => 'admin.department.index',
                             'icon' => 'users',
+                            'active'  => ['关于', '加入', '部门', '/admin/department*'],
                         ],
                         [
                             'text'    => '标签',
                             'route'   => 'admin.tag.index',
                             'icon'    => 'tags',
-                            'active'  => ['关于', '我们', '标签', '/admin/tag*'],
-
+                            'active'  => ['关于', '加入', '标签', '/admin/tag*'],
                         ],
                     ],
                 ],

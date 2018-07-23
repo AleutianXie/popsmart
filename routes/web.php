@@ -74,4 +74,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::match(['get', 'post'], 'tag/create', 'TagController@create')->name('admin.tag.create');
     Route::match(['get', 'post'], 'tag/{id}/edit', 'TagController@edit')->where(['id' => '[0-9]+'])->name('admin.tag.edit');
 
+    // department
+    Route::get('department/{index?}', 'DepartmentController@adminIndex')->where('index', 'index')->name('admin.department.index');
+    Route::match(['get', 'post'], 'department/create', 'DepartmentController@create')->name('admin.department.create');
+    Route::match(['get', 'post'], 'department/{id}/edit', 'DepartmentController@edit')->where(['id' => '[0-9]+'])->name('admin.department.edit');
+
+    // job
+    Route::get('job/{index?}', 'JobController@adminIndex')->where('index', 'index')->name('admin.job.index');
+    Route::match(['get', 'post'], 'job/create', 'JobController@create')->name('admin.job.create');
+    Route::match(['get', 'post'], 'job/{id}/edit', 'JobController@edit')->where(['id' => '[0-9]+'])->name('admin.job.edit');
 });
