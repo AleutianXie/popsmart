@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>新建职位标签</h1>
+    <h1>修改职位标签</h1>
 @stop
 
 @section('content')

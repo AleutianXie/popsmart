@@ -20,10 +20,12 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>标签名</th>
-                <th>备注</th>
+                <th>部门</th>
+                <th>职位名称</th>
+                <th>简述</th>
                 <th>排序</th>
                 <th>置顶</th>
+                <th>标签</th>
                 <th>操作</th>
               </tr>
             </thead>
@@ -31,10 +33,12 @@
               @foreach($jobs as $item)
               <tr>
                 <td>{{ $item->id }}</td>
+                <td>{{ $item->depart->name }}</td>
                 <td>{{ $item->name }}</td>
-                <td>{{ $item->comment }}</td>
+                <td>{{ $item->summary }}</td>
                 <td>{{ $item->sort }}</td>
                 <td>{{ $item->is_top == 1 ? '是' : '否' }}</td>
+                <td>{{ $item->tags->implode('name', ',') }}</td>
                 <td>
                   <a href="{{ route('admin.job.edit', $item->id) }}">
                     <button class="btn btn-primary btn-xs">

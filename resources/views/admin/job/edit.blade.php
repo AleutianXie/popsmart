@@ -1,14 +1,23 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>新建职位标签</h1>
+    <h1>修改职位</h1>
 @stop
 
 @section('content')
 
 {!! Form::open(['url' => route('admin.job.edit', $job->id), 'files' => true ]) !!}
+<div class="form-group {{ $errors->has('department_id') ? 'has-error' : '' }}">
+    {{ Form::label('部门', null, ['class' => 'control-label']) }}
+    {{ Form::select('department_id', $departments, old('department_id') ?? $job->department_id, ['class' => 'form-control']) }}
+    @if ($errors->has('department_id'))
+        <span class="help-block">
+            <strong>{{ $errors->first('department_id') }}</strong>
+        </span>
+    @endif
+</div>
 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-    {{ Form::label('标签名', null, ['class' => 'control-label']) }}
+    {{ Form::label('职位名称', null, ['class' => 'control-label']) }}
     {{ Form::text('name', old('name') ?? $job->name, ['class' => 'form-control']) }}
     @if ($errors->has('name'))
         <span class="help-block">
@@ -16,12 +25,31 @@
         </span>
     @endif
 </div>
-<div class="form-group {{ $errors->has('comment') ? 'has-error' : '' }}">
-    {{ Form::label('备注', null, ['class' => 'control-label']) }}
-    {{ Form::textArea('comment', old('comment') ?? $job->comment, ['class' => 'form-control']) }}
-    @if ($errors->has('comment'))
+<div class="form-group {{ $errors->has('summary') ? 'has-error' : '' }}">
+    {{ Form::label('简述', null, ['class' => 'control-label']) }}
+    {{ Form::textArea('summary', old('summary') ?? $job->summary, ['class' => 'form-control']) }}
+    @if ($errors->has('summary'))
         <span class="help-block">
-            <strong>{{ $errors->first('comment') }}</strong>
+            <strong>{{ $errors->first('summary') }}</strong>
+        </span>
+    @endif
+</div>
+@include('UEditor::head')
+<div class="form-group {{ $errors->has('duty') ? 'has-error' : '' }}">
+    {{ Form::label('工作职责', null, ['class' => 'control-label']) }}
+    <div name="duty" id="duty" style="min-height: 600px;"></div>
+    @if ($errors->has('duty'))
+        <span class="help-block">
+            <strong>{{ $errors->first('duty') }}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group {{ $errors->has('requirements') ? 'has-error' : '' }}">
+    {{ Form::label('任职要求', null, ['class' => 'control-label']) }}
+    <div name="requirements" id="requirements" style="min-height: 600px;"></div>
+    @if ($errors->has('requirements'))
+        <span class="help-block">
+            <strong>{{ $errors->first('requirements') }}</strong>
         </span>
     @endif
 </div>
@@ -69,6 +97,24 @@
 @section('js')
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
+    var due = UE.getEditor('duty');
+    due.on('ready', function() {
+        due.setContent('{!! old('duty') ?? $job->duty !!}');
+    });
+    due.on("focus", function (type, event) {
+        $(due.container.parentElement.nextElementSibling).children('strong').text('');
+        $(due.container.parentElement.parentElement).removeClass('has-error');
+        return;
+    });
+    var rue = UE.getEditor('requirements');
+    rue.on('ready', function() {
+        rue.setContent('{!! old('requirements') ?? $job->requirements !!}');
+    });
+    rue.on("focus", function (type, event) {
+        $(rue.container.parentElement.nextElementSibling).children('strong').text('');
+        $(rue.container.parentElement.parentElement).removeClass('has-error');
+        return;
+    });
     $(document).on('focus', 'form input,form textarea, form ', function(e) {
         $(this).next().children('strong').text('');
         $(this).parent().removeClass('has-error');

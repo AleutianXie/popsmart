@@ -146,8 +146,8 @@ class PopIndor extends Migration
         // jobs table
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('departments_id')->comment('部门');
-            $table->foreign('departments_id')->references('id')->on('departments');
+            $table->unsignedInteger('department_id')->comment('部门');
+            $table->foreign('department_id')->references('id')->on('departments');
             $table->string('name', 30)->index()->comment('职位名');
             $table->string('summary', 255)->comment('服务简述');
             $table->mediumText('duty')->comment('工作职责');
@@ -167,7 +167,7 @@ class PopIndor extends Migration
             $table->foreign('job_id')->references('id')->on('jobs');
             $table->unsignedInteger('tag_id');
             $table->foreign('tag_id')->references('id')->on('tags');
-            $table->timestamps();
+            // $table->timestamps();
         });
 
         // once the table is created use a raw query to ALTER it and add the LONGBLOB
