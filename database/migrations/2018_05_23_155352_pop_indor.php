@@ -189,7 +189,7 @@ class PopIndor extends Migration
             $table->increments('id');
             $table->string('name', 30)->index()->comment('标题');
             $table->string('summary', 255)->nullable()->comment('文章简述');
-            $table->unsignedInteger('attributes_id')->comment('文章属性');
+            $table->unsignedInteger('attribute_id')->comment('文章属性');
             $table->foreign('attribute_id')->references('id')->on('attributes');
             $table->boolean('enabled')->default(0)->comment('是否启用');
             $table->timestamps();
