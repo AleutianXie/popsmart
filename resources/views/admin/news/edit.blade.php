@@ -95,14 +95,16 @@
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     var ue = UE.getEditor('content');
-    ue.on('ready', function() {
+        ue.ready(function() {
         ue.setContent('{!! old('content') ?? $news->content !!}');
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+        ue.on("focus", function (type, event) {
+            $(ue.container.parentElement.nextElementSibling).children('strong').text('');
+            $(ue.container.parentElement.parentElement).removeClass('has-error');
+            return;
+        });
     });
-    ue.on("focus", function (type, event) {
-        $(ue.container.parentElement.nextElementSibling).children('strong').text('');
-        $(ue.container.parentElement.parentElement).removeClass('has-error');
-        return;
-    });
+
     $(document).on('focus', 'form input,form textarea, form ', function(e) {
         $(this).next().children('strong').text('');
         $(this).parent().removeClass('has-error');

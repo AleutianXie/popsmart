@@ -199,8 +199,9 @@ return [
             'submenu' => [
                 [
                     'text' => '我们',
-                    'url'  => '#',
+                    'url'  => '/admin/article/1',
                     'icon' => 'users',
+                    'active'  => ['关于', '我们', '/admin/article/1*'],
                 ],
                 [
                     'text'    => '加入',
@@ -228,8 +229,9 @@ return [
                 ],
                 [
                     'text' => '联系',
-                    'url'  => '#',
+                    'url'  => '/admin/article/1',
                     'icon' => 'mobile',
+                    'active'  => ['关于', '联系', '/admin/article/2*'],
                 ],
             ],
         ],

@@ -104,6 +104,9 @@
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     var ue = UE.getEditor('content');
+        ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+    });
     ue.on('ready', function() {
         ue.setContent('{!! old('content') ?? $case->content !!}');
     });

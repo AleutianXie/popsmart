@@ -84,6 +84,15 @@
         </span>
     @endif
 </div>
+<div class="form-group {{ $errors->has('department_id') ? 'has-error' : '' }}">
+    {{ Form::label('标签', null, ['class' => 'control-label']) }}
+    {{ Form::select('department_id', $departments, old('department_id') ?? $job->department_id, ['class' => 'form-control']) }}
+    @if ($errors->has('department_id'))
+        <span class="help-block">
+            <strong>{{ $errors->first('department_id') }}</strong>
+        </span>
+    @endif
+</div>
 <div class="form-group">
     <div class="text-center">
         {{ Form::submit('提交', ['class' => 'btn btn-success']) }}
@@ -97,7 +106,10 @@
 @section('js')
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-    var due = UE.getEditor('duty');
+    var ue = UE.getEditor('duty');
+        ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+    }); 
     due.on('ready', function() {
         due.setContent('{!! old('duty') ?? $job->duty !!}');
     });
@@ -106,7 +118,10 @@
         $(due.container.parentElement.parentElement).removeClass('has-error');
         return;
     });
-    var rue = UE.getEditor('requirements');
+    var ue = UE.getEditor('requirements');
+        ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+    }); 
     rue.on('ready', function() {
         rue.setContent('{!! old('requirements') ?? $job->requirements !!}');
     });

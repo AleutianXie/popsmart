@@ -24553,6 +24553,7 @@ UE.plugin.register('simpleupload', function (){
                 }
 
                 /* 判断后端配置是否没有加载成功 */
+                console.log(me);
                 if (!me.getOpt('imageActionName')) {
                     errorHandler(me.getLang('autoupload.errorLoadConfig'));
                     return;

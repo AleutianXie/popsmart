@@ -106,7 +106,10 @@
 @section('js')
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-    var due = UE.getEditor('duty');
+    var ue = UE.getEditor('duty');
+        ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+    }); 
     @if (old('duty'))
         due.on('ready', function() {
             due.setContent('{!! old('duty') !!}');
@@ -117,7 +120,10 @@
         $(due.container.parentElement.parentElement).removeClass('has-error');
         return;
     });
-    var rue = UE.getEditor('requirements');
+    var ue = UE.getEditor('requirements');
+        ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+    }); 
     @if (old('requirements'))
         rue.on('ready', function() {
             rue.setContent('{!! old('requirements') !!}');

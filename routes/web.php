@@ -83,4 +83,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::get('job/{index?}', 'JobController@adminIndex')->where('index', 'index')->name('admin.job.index');
     Route::match(['get', 'post'], 'job/create', 'JobController@create')->name('admin.job.create');
     Route::match(['get', 'post'], 'job/{id}/edit', 'JobController@edit')->where(['id' => '[0-9]+'])->name('admin.job.edit');
+
+    // attribute
+    Route::get('attribute/{index?}', 'AttributeController@adminIndex')->where('index', 'index')->name('admin.attribute.index');
+    Route::match(['get', 'post'], 'attribute/create', 'AttributeController@create')->name('admin.attribute.create');
+    Route::match(['get', 'post'], 'attribute/{id}/edit', 'AttributeController@edit')->where(['id' => '[0-9]+'])->name('admin.attribute.edit');
+
+    // article
+    Route::get('article/{attribute?}/{index?}', 'ArticleController@admin')->where('index', 'index')->where(['attribute' => '[0-9]+'])->name('admin.article.index');
+    Route::match(['get', 'post'], 'article/create', 'ArticleController@create')->name('admin.article.create');
+    Route::match(['get', 'post'], 'article/{id}/edit', 'ArticleController@edit')->where(['id' => '[0-9]+'])->name('admin.article.edit');
+
+    Route::match(['get', 'post'], '/upload', 'UploadController@upload')->name('admin.upload');
 });
