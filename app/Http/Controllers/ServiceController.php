@@ -14,10 +14,21 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(StoreServicePost $request)
     {
-        return view('service.index');
+        $modules = Module::all()->toArray();
+        $cur = $request->input('module');
+        if (empty($cur)) {
+            $cur = array_first($modules)['id'];
+        }
+        $modules = json_encode($modules);
+
+        $services = Service::Module($cur)->paginate();
+
+        return view('service.index', compact('modules', 'cur', 'services'));
     }
+
+
 
     public function create(StoreServicePost $request)
     {

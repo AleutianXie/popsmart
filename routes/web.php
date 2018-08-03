@@ -21,11 +21,13 @@ Route::get('/news', 'NewsController@index')->name('news');
 Route::get('/news/{id}', 'NewsController@detail')->where('id', '[0-9]+')->name('admin.news.detail');
 
 Route::get('/case', 'CasesController@index')->name('cases');
-Route::get('case/{id}', 'CasesController@detail')->where('id', '[0-9]+')->name('admin.cases.detail');
+Route::get('case/{id}', 'CasesController@detail')->where('id', '[0-9]+')->name('cases.detail');
 
 Route::get('/product', 'ProductController@index')->name('product');
+Route::get('/product/{id}', 'ProductController@detail')->where('id', '[0-9]+')->name('product.detail');
 
 Route::get('/service', 'ServiceController@index')->name('service');
+Route::get('/service/{id}', 'ServiceController@detail')->where('id', '[0-9]+')->name('service.detail');
 
 Route::get('/recruit', 'RecruitController@index')->name('recruit');
 

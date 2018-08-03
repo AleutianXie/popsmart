@@ -21,7 +21,7 @@ class CasesController extends Controller
         if (empty($cur)) {
             $cur = array_first($categories)['id'];
         }
-        $categories = json_encode(Category::all()->toArray());
+        $categories = json_encode($categories);
 
         $cases = Cases::Category($cur)->paginate();
         return view('cases.index', compact('categories', 'cur', 'cases'));

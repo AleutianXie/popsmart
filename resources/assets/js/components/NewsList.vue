@@ -5,7 +5,7 @@
                 <h4>今日最新</h4>
                 <div class="line"></div>
                 <dl>
-                    <dt>{{ item.name }}</dt>     
+                    <dt><a :href="'/news/' + item.id">{{ item.name }}</a></dt>
                     <div class="line"></div>
                     <dd>{{ item.summary }}</dd>
                 </dl>

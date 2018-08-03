@@ -17,4 +17,9 @@ class Service extends Model
     protected $fillable = [
         'name', 'summary', 'cover', 'content', 'sort', 'is_top', 'module_id'
     ];
+
+    public function scopeModule($query, $module)
+    {
+        $query->where('module_id', $module);
+    }
 }
