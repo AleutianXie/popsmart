@@ -45,7 +45,7 @@
     @endif
 </div>
 <div class="form-group {{ $errors->has('enabled') ? 'has-error' : '' }}">
-    {{ Form::label('置顶', null, ['class' => 'control-label']) }}
+    {{ Form::label('启用', null, ['class' => 'control-label']) }}
     <div class="form-control">
         @if (old('enabled') ?? $article->enabled == 1)
             {{ Form::radio('enabled', 1, true) }}
