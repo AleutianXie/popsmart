@@ -52,7 +52,7 @@ class ArticleController extends Controller
             if ($articleAttribute['enabled'] == 1 && $article->enabled == 0) {
                 $temp_article = Article::where('enabled', 1)->where('attribute_id', $articleAttribute['attribute_id'])->first();
                 if ($temp_article) {
-                    $article->update(['enabled' => 0]);
+                    $temp_article->update(['enabled' => 0]);
                 }
             }
             $article->update($articleAttribute);
