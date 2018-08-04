@@ -19,7 +19,7 @@
             </div>
             <div class="content">
                 <div class="list">
-                    {!! $article->content !!}
+                    {!! $article->content  ?? '尚未发布联系我们内容' !!}
                 </div>
             </div>
         </div>

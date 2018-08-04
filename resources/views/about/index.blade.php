@@ -19,7 +19,7 @@
             </div>
             <div class="content">
                 <div class="list">
-                    {!! $article->content !!}
+                    {!! $article->content ?? '尚无发布内容' !!}
                 </div>
             </div>
         </div>
