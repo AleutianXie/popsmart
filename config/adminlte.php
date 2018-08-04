@@ -229,7 +229,7 @@ return [
                 ],
                 [
                     'text' => '联系',
-                    'url'  => '/admin/article/1',
+                    'url'  => '/admin/article/2',
                     'icon' => 'mobile',
                     'active'  => ['关于', '联系', '/admin/article/2*'],
                 ],

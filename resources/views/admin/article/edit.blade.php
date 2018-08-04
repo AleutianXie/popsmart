@@ -9,7 +9,7 @@
 {!! Form::open(['url' => route('admin.article.edit', $article->id), 'files' => true ]) !!}
 <div class="form-group {{ $errors->has('attribute_id') ? 'has-error' : '' }}">
     {{ Form::label('属性', null, ['class' => 'control-label']) }}
-    {{ Form::select('attribute_id', $attributes, old('attribute_id'), ['class' => 'form-control']) }}
+    {{ Form::select('attribute_id', $attributes, old('attribute_id') ?? $article->attribute_id, ['class' => 'form-control']) }}
     @if ($errors->has('attribute_id'))
         <span class="help-block">
             <strong>{{ $errors->first('attribute_id') }}</strong>

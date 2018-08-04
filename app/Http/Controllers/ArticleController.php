@@ -56,7 +56,7 @@ class ArticleController extends Controller
                 }
             }
             $article->update($articleAttribute);
-            return redirect(route('admin.article.index'))->with('success', '修改成功！');
+            return redirect(route('admin.article.index', $article->attribute_id))->with('success', '修改成功！');
         }
         $attributes = Attribute::all()->pluck('name', 'id')->toArray();
         return view('admin.article.edit', compact('article', 'attributes'));
