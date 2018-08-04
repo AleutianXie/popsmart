@@ -33,7 +33,7 @@
                 <li @if(starts_with(Request::fullUrl(), route('product'))) class="on" @endif><a href="/product">产品</a></li>
                 <li @if(starts_with(Request::fullUrl(), route('cases'))) class="on" @endif><a href="/case">案例</a></li>
                 <li @if(starts_with(Request::fullUrl(), route('service'))) class="on" @endif><a href="/service">服务</a></li>
-                <li @if(starts_with(Request::fullUrl(), route('recruit'))) class="on" @endif><a href="/recruit">关于我们</a></li>
+                <li @if(starts_with(Request::fullUrl(), route('about'))) class="on" @endif><a href="/about">关于我们</a></li>
             </ul>
         </div>
     </div>
@@ -42,12 +42,12 @@
         <div class="mobile-inner-header-icon mobile-inner-header-icon-out"><span></span><span></span></div>
     </div>
     <div class="mobile-inner-nav">
-        <a href="index.html" class="alist">首页</a>
-        <a href="about.html" class="alist">新闻</a>
-        <a href="pro.html" class="alist">产品</a>
-        <a href="join.html" class="alist">案例</a>
-        <a href="news.html" class="alist">服务</a>
-        <a href="job.html" class="alist">关于我们</a>
+        <a href="/" class="alist">首页</a>
+        <a href="/news" class="alist">新闻</a>
+        <a href="/product" class="alist">产品</a>
+        <a href="/cases" class="alist">案例</a>
+        <a href="/service" class="alist">服务</a>
+        <a href="/about" class="alist">关于我们</a>
     </div>
     <!---头部---->
             @yield('content')

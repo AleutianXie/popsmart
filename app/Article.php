@@ -22,4 +22,11 @@ class Article extends Model
     {
         return $this->hasOne('App\Attribute', 'id', 'attribute_id');
     }
+
+    public function scopeAttribute($query, $attribute)
+    {
+        return $query->whereHas('attribute', function ($query) use ($attribute) {
+            return $query->where('name', $attribute);
+        });
+    }
 }

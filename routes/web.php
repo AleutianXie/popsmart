@@ -29,7 +29,7 @@ Route::get('/product/{id}', 'ProductController@detail')->where('id', '[0-9]+')->
 Route::get('/service', 'ServiceController@index')->name('service');
 Route::get('/service/{id}', 'ServiceController@detail')->where('id', '[0-9]+')->name('service.detail');
 
-Route::get('/recruit', 'RecruitController@index')->name('recruit');
+Route::get('/about/{type?}', 'AboutController@index')->where('type', 'index|join|contact')->name('about');
 
 Auth::routes();
 
