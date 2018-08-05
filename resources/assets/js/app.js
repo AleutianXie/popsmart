@@ -26,6 +26,8 @@ Vue.component('case-list', require('./components/CaseList.vue'));
 Vue.component('news-list', require('./components/NewsList.vue'));
 Vue.component('module-list', require('./components/ModuleList.vue'));
 Vue.component('service-list', require('./components/ServiceList.vue'));
+Vue.component('tag-list', require('./components/TagList.vue'));
+Vue.component('job-list', require('./components/JobList.vue'));
 
 const app = new Vue({
     el: '#app'

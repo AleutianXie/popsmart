@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="mobile-inner-header clearfix" id="header">
-        <div class="ph_logo fl"><a href="/" class="alist"><img src="images/logo.png"></a></div>
+        <div class="ph_logo fl"><a href="/" class="alist"><img src="/images/logo.png"></a></div>
         <div class="mobile-inner-header-icon mobile-inner-header-icon-out"><span></span><span></span></div>
     </div>
     <div class="mobile-inner-nav">

@@ -27,4 +27,11 @@ class Job extends Model
     {
         return $this->belongsToMany('App\Tag', 'job_has_tags');
     }
+
+    public function scopeTags($query, $tag)
+    {
+        return $query->whereHas('tags', function ($query) use ($tag) {
+            return $query->where('tag_id', $tag);
+        });
+    }
 }

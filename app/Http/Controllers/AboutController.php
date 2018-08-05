@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Job;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -15,7 +17,15 @@ class AboutController extends Controller
     public function index(Request $request, $type = 'index')
     {
         if ('join' == $type) {
-            return view('recruit.index');
+            $tags = Tag::all()->toArray();
+            $cur = $request->input('tag');
+            if (empty($cur)) {
+                $cur = array_first($tags)['id'];
+            }
+            $tags = json_encode($tags);
+
+            $jobs = Job::with("depart")->Tags($cur)->paginate();
+            return view('recruit.index', compact('jobs', 'tags', 'cur'));
         } elseif ('index' == $type) {
             $article = Article::where('enabled', 1)->Attribute('关于我们')->latest()->first();
             if (empty($article)) {
@@ -29,6 +39,5 @@ class AboutController extends Controller
             }
             return view('contact.index', compact('article'));
         }
-
     }
 }
