@@ -19,13 +19,14 @@
           <table class="user-table table table-hover">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>图标</th>
-                <th>模块名</th>
-                <th>简述</th>
-                <th>排序</th>
-                <th>置顶</th>
-                <th>操作</th>
+                <th class="col-md-1">ID</th>
+                <th class="col-md-2">图标</th>
+                <th class="col-md-1">模块名</th>
+                <th class="col-md-4">简述</th>
+                <th class="col-md-1">排序</th>
+                <th class="col-md-1">置顶</th>
+                <th class="col-md-2">创建时间</th>
+                <th class="col-md-1">操作</th>
               </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                 <td>{{ $item->overview }}</td>
                 <td>{{ $item->sort }}</td>
                 <td>{{ $item->is_top == 1 ? '是' : '否' }}</td>
+                <td>{{ $item->created_at }}</td>
                 <td>
                   <a href="{{ route('admin.module.edit', $item->id) }}">
                     <button class="btn btn-primary btn-xs">
