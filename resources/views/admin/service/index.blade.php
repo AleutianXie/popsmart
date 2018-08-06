@@ -23,10 +23,11 @@
                 <th class="col-md-1">标题</th>
                 <th class="col-md-2">封图</th>
                 <th class="col-md-2">简述</th>
+                <th class="col-md-1">分类</th>
                 <th class="col-md-1">排序</th>
                 <th class="col-md-1">置顶</th>
                 <th class="col-md-2">创建时间</th>
-                <th class="col-md-2">操作</th>
+                <th class="col-md-1">操作</th>
               </tr>
             </thead>
             <tbody>
@@ -35,7 +36,8 @@
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
                 <td><img src="{{ $item->cover }}" alt="{{ $item->name }}" style="width: 100%;"></td>
-                <td>{{ $item->summary}}</td>
+                <td>{{ $item->summary }}</td>
+                <td>{{ $item->module->name }}</td>
                 <td>{{ $item->sort }}</td>
                 <td>{{ $item->is_top == 1 ? '是' : '否' }}</td>
                 <td>{{ $item->created_at }}</td>

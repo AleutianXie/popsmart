@@ -16,9 +16,9 @@ class ArticleController extends Controller
     {
         $filter = $request->input();
         if ($attribute_id) {
-            $articles = Article::where(compact('attribute_id'))->paginate()->appends($filter);
+            $articles = Article::where(compact('attribute_id'))->latest()->paginate()->appends($filter);
         } else {
-            $articles = Article::paginate()->appends($filter);
+            $articles = Article::latest()->paginate()->appends($filter);
         }
 
         return view('admin.article.index', compact('filter', 'articles'));

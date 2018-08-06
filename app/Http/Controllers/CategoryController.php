@@ -11,7 +11,7 @@ class CategoryController extends Controller
     public function create(StoreCategoryPost $request)
     {
         if ($request->isMethod('POST')) {
-            $icon = Uploader::uploadImage($request->file('icon'));
+            $icon          = Uploader::uploadImage($request->file('icon'));
             $cateAttribute = $request->input();
             array_forget($cateAttribute, '_token');
             $cateAttribute = array_add($cateAttribute, 'icon', $icon);
@@ -26,11 +26,10 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         if ($request->isMethod('POST')) {
-            $cateAttribute = $request->input();
-            // dd($cateAttribute);
+            $cateAttribute     = $request->input();
             array_forget($cateAttribute, '_token');
             if ($request->hasFile('icon')) {
-                $icon = Uploader::uploadImage($request->file('icon'));
+                $icon          = Uploader::uploadImage($request->file('icon'));
                 $cateAttribute = array_add($cateAttribute, 'icon', $icon);
             }
             $category->update($cateAttribute);

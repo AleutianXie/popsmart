@@ -18,6 +18,11 @@ class Service extends Model
         'name', 'summary', 'cover', 'content', 'sort', 'is_top', 'module_id'
     ];
 
+    public function module()
+    {
+        return $this->hasOne('App\Module', 'id', 'module_id');
+    }
+
     public function scopeModule($query, $module)
     {
         $query->where('module_id', $module);

@@ -16,10 +16,10 @@ class ProductController extends Controller
      */
     public function index(StoreProductPost $request)
     {
-        $filter = $request->input();
-        $model = new Product();
-        $model = $model->query();
-        $this->_getModel($model, $filter);
+        $filter   = $request->input();
+        $model    = new Product();
+        $model    = $model->query();
+        $this->getModel($model);
         $products = $model->paginate()->appends($filter);
 
         return view('product.index', compact('products'));
@@ -28,14 +28,14 @@ class ProductController extends Controller
     public function create(StoreProductPost $request)
     {
         if ($request->isMethod('POST')) {
-            $cover = Uploader::uploadImage($request->file('cover'));
+            $cover            = Uploader::uploadImage($request->file('cover'));
             $productAttribute = $request->input();
             array_forget($productAttribute, '_token');
             $productAttribute = array_add($productAttribute, 'cover', $cover);
             Product::create($productAttribute);
             return redirect(route('admin.product.index'))->with('success', '创建成功！');
         }
-        $series = Series::all()->pluck('name', 'id')->toArray();
+        $Series               = Series::all()->pluck('name', 'id')->toArray();
         return view('admin.product.create', compact('series'));
     }
 
@@ -43,34 +43,16 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         if ($request->isMethod('POST')) {
-            $productAttribute = $request->input();
+            $productAttribute     = $request->input();
             array_forget($productAttribute, '_token');
             if ($request->hasFile('cover')) {
-                $cover = Uploader::uploadImage($request->file('cover'));
+                $cover            = Uploader::uploadImage($request->file('cover'));
                 $productAttribute = array_add($productAttribute, 'cover', $cover);
             }
             $product->update($productAttribute);
             return redirect(route('admin.product.index'))->with('success', '修改成功！');
         }
-        $series = Series::all()->pluck('name', 'id')->toArray();
+        $series                  = Series::all()->pluck('name', 'id')->toArray();
         return view('admin.product.edit', compact('product', 'series'));
-    }
-
-    /**
-     * 产品查询构造器
-     */
-    private function _getModel(&$model, $data)
-    {
-        // if (isset($data['publish_state']) && $data['publish_state'] != '') {
-        //     $model->PublishState($data['publish_state']);
-        // }
-
-        // $model->with([
-        //     'couponExtends' => function ($query) {
-        //         $query->select(['coupon_id', 'property_name', 'property_value']);
-        //     }
-        // ]);
-
-        $model->latest();
     }
 }

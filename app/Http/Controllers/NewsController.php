@@ -16,10 +16,10 @@ class NewsController extends Controller
     public function index(StoreNewsPost $request)
     {
         $filter = $request->input();
-        $model = new News();
-        $model = $model->query();
-        $this->_getModel($model, $filter);
-        $news = $model->paginate()->appends($filter);
+        $model  = new News();
+        $model  = $model->query();
+        $this->getModel($model);
+        $news   = $model->paginate()->appends($filter);
         return view('news.index', compact('news'));
     }
 
@@ -27,7 +27,7 @@ class NewsController extends Controller
     public function create(StoreNewsPost $request)
     {
         if ($request->isMethod('POST')) {
-            $cover = Uploader::uploadImage($request->file('cover'));
+            $cover         = Uploader::uploadImage($request->file('cover'));
             $newsAttribute = $request->input();
             array_forget($newsAttribute, '_token');
             $newsAttribute = array_add($newsAttribute, 'cover', $cover);
@@ -42,33 +42,15 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
 
         if ($request->isMethod('POST')) {
-            $newsAttribute = $request->input();
+            $newsAttribute     = $request->input();
             array_forget($newsAttribute, '_token');
             if ($request->hasFile('cover')) {
-                $cover = Uploader::uploadImage($request->file('cover'));
+                $cover         = Uploader::uploadImage($request->file('cover'));
                 $newsAttribute = array_add($newsAttribute, 'cover', $cover);
             }
             $news->update($newsAttribute);
             return redirect(route('admin.news.index'))->with('success', '修改成功！');
         }
         return view('admin.news.edit', compact('news'));
-    }
-
-    /**
-     * 案例查询构造器
-     */
-    private function _getModel(&$model, $data)
-    {
-        // if (isset($data['publish_state']) && $data['publish_state'] != '') {
-        //     $model->PublishState($data['publish_state']);
-        // }
-
-        // $model->with([
-        //     'couponExtends' => function ($query) {
-        //         $query->select(['coupon_id', 'property_name', 'property_value']);
-        //     }
-        // ]);
-
-        $model->latest();
     }
 }

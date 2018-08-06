@@ -17,20 +17,22 @@ class CasesController extends Controller
     public function index(StoreCasesPost $request)
     {
         $categories = Category::all()->toArray();
-        $cur = $request->input('cate');
+        $cur        = $request->input('cate');
         if (empty($cur)) {
-            $cur = array_first($categories)['id'];
+            $cur    = array_first($categories)['id'];
         }
         $categories = json_encode($categories);
-
-        $cases = Cases::Category($cur)->paginate();
+        $model      = new Cases();
+        $model      = $model->query();
+        $this->getModel($model);
+        $cases      = $model->Category($cur)->paginate();
         return view('cases.index', compact('categories', 'cur', 'cases'));
     }
 
     public function create(StoreCasesPost $request)
     {
         if ($request->isMethod('POST')) {
-            $cover = Uploader::uploadImage($request->file('cover'));
+            $cover         = Uploader::uploadImage($request->file('cover'));
             $caseAttribute = $request->input();
             array_forget($caseAttribute, '_token');
             $caseAttribute = array_add($caseAttribute, 'cover', $cover);
@@ -43,13 +45,13 @@ class CasesController extends Controller
 
     public function edit(StoreCasesPost $request, $id)
     {
-        $case = Cases::findOrFail($id);
+        $case                  = Cases::findOrFail($id);
 
         if ($request->isMethod('POST')) {
-            $caseAttribute = $request->input();
+            $caseAttribute     = $request->input();
             array_forget($caseAttribute, '_token');
             if ($request->hasFile('cover')) {
-                $cover = Uploader::uploadImage($request->file('cover'));
+                $cover         = Uploader::uploadImage($request->file('cover'));
                 $caseAttribute = array_add($caseAttribute, 'cover', $cover);
             }
             $case->update($caseAttribute);

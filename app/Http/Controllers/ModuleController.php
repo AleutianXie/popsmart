@@ -11,7 +11,7 @@ class ModuleController extends Controller
     public function create(StoreModulePost $request)
     {
         if ($request->isMethod('POST')) {
-            $icon = Uploader::uploadImage($request->file('icon'));
+            $icon            = Uploader::uploadImage($request->file('icon'));
             $moduleAttribute = $request->input();
             array_forget($moduleAttribute, '_token');
             $moduleAttribute = array_add($moduleAttribute, 'icon', $icon);
@@ -26,10 +26,10 @@ class ModuleController extends Controller
         $module = Module::findOrFail($id);
 
         if ($request->isMethod('POST')) {
-            $moduleAttribute = $request->input();
+            $moduleAttribute     = $request->input();
             array_forget($moduleAttribute, '_token');
             if ($request->hasFile('icon')) {
-                $icon = Uploader::uploadImage($request->file('icon'));
+                $icon            = Uploader::uploadImage($request->file('icon'));
                 $moduleAttribute = array_add($moduleAttribute, 'icon', $icon);
             }
             $module->update($moduleAttribute);

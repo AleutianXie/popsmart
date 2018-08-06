@@ -11,10 +11,10 @@ class SeriesController extends Controller
     public function create(StoreSeriesPost $request)
     {
         if ($request->isMethod('POST')) {
-            $seriesAttribute = $request->input();
+            $seriesAttribute     = $request->input();
             array_forget($seriesAttribute, '_token');
             if ($request->hasFile('icon')) {
-                $icon = Uploader::uploadImage($request->file('icon'));
+                $icon            = Uploader::uploadImage($request->file('icon'));
                 $seriesAttribute = array_add($seriesAttribute, 'icon', $icon);
             }
             Series::create($seriesAttribute);
@@ -27,10 +27,10 @@ class SeriesController extends Controller
     {
         $series = Series::findOrFail($id);
         if ($request->isMethod('POST')) {
-            $seriesAttribute = $request->input();
+            $seriesAttribute     = $request->input();
             array_forget($seriesAttribute, '_token');
             if ($request->hasFile('icon')) {
-                $icon = Uploader::uploadImage($request->file('icon'));
+                $icon            = Uploader::uploadImage($request->file('icon'));
                 $seriesAttribute = array_add($seriesAttribute, 'icon', $icon);
             }
             $series->update($seriesAttribute);
