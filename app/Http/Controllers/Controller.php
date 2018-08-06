@@ -41,7 +41,7 @@ class Controller extends BaseController
     /**
      * 查询构造器
      */
-    private function getModel(&$model)
+    protected function getModel(&$model)
     {
         $model->orderByDesc('is_top');
         $model->orderByDesc('sort');
