@@ -32,7 +32,7 @@
               @foreach($modules as $item)
               <tr>
                 <td>{{ $item->id }}</td>
-                <td><img src="{{ $item->icon }}" alt="{{ $item->name }}"></td>
+                <td><img src="{{ $item->icon }}" style="width: 100%;" alt="{{ $item->name }}"></td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->overview }}</td>
                 <td>{{ $item->sort }}</td>
