@@ -36,7 +36,7 @@ Auth::routes();
 // pop indoor admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function () {
     Route::get('/{index?}', 'AdminController@index')->where('index', 'index')->name('admin.index');
-    Route::get('/home/banner', 'AdminController@banner')->name('admin.home.banner');
+
     // case
     Route::get('case/{index?}', 'CasesController@adminIndex')->where('index', 'index')->name('admin.cases.index');
     Route::match(['get', 'post'], 'case/create', 'CasesController@create')->name('admin.cases.create');
@@ -95,6 +95,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'web']], function ()
     Route::get('article/{attribute?}/{index?}', 'ArticleController@admin')->where('index', 'index')->where(['attribute' => '[0-9]+'])->name('admin.article.index');
     Route::match(['get', 'post'], 'article/create', 'ArticleController@create')->name('admin.article.create');
     Route::match(['get', 'post'], 'article/{id}/edit', 'ArticleController@edit')->where(['id' => '[0-9]+'])->name('admin.article.edit');
+
+    // banner
+    Route::get('home/banner/{index?}', 'BannerController@adminIndex')->where('index', 'index')->name('admin.banner.index');
+    Route::match(['get', 'post'], 'home/banner/create', 'BannerController@create')->name('admin.banner.create');
+    Route::match(['get', 'post'], 'home/banner/{id}/edit', 'BannerController@edit')->where(['id' => '[0-9]+'])->name('admin.banner.edit');
 
     Route::match(['get', 'post'], '/upload', 'UploadController@upload')->name('admin.upload');
 });

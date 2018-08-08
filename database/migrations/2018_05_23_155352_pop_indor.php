@@ -198,6 +198,20 @@ class PopIndor extends Migration
         // once the table is created use a raw query to ALTER it and add the LONGBLOB
         DB::statement("ALTER TABLE articles ADD content LONGBLOB after summary");
         DB::statement("ALTER TABLE articles comment '文章表'");
+
+        // jobs table
+        Schema::create('banners', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 30)->index()->comment('名称');
+            $table->string('summary', 255)->comment('简述');
+            $table->string('link', 255)->comment('链接地址');
+            $table->string('pic', 255)->comment('图片地址');
+            $table->smallInteger('sort')->default(0)->comment('排序');
+            $table->boolean('is_top')->default(0)->comment('是否置顶');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        DB::statement("ALTER TABLE banners comment '轮播图'");
     }
 
     /**
