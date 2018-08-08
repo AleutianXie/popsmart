@@ -38,7 +38,7 @@
                 <td>{{ $item->summary }}</td>
                 <td>{{ $item->sort }}</td>
                 <td>{{ $item->is_top == 1 ? '是' : '否' }}</td>
-                <td>{{ $item->tags->implode('name', ',') }}</td>
+                <td><span class="label label-info">{!! $item->tags->implode('name', '</span>  <span class="label label-info">') !!}</span></td>
                 <td>
                   <a href="{{ route('admin.job.edit', $item->id) }}">
                     <button class="btn btn-primary btn-xs">

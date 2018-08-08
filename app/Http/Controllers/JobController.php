@@ -6,16 +6,27 @@ use App\Department;
 use App\Http\Requests\StoreJobPost;
 use App\Job;
 use App\Tag;
+use DB;
 
 class JobController extends Controller
 {
     public function create(StoreJobPost $request)
     {
         if ($request->isMethod('POST')) {
-            $jobAttribute = $request->input();
-            array_forget($jobAttribute, '_token');
-            Job::create($jobAttribute);
-            return redirect(route('admin.job.index'))->with('success', '创建成功！');
+            try {
+                DB::beginTransaction();
+                $jobAttribute = $request->input();
+                array_forget($jobAttribute, '_token');
+                $tags = $jobAttribute["tag_id"];
+                array_forget($jobAttribute, 'tag_id');
+                $job = Job::create($jobAttribute);
+                $job->assignTags($tags);
+                DB::commit();
+                return redirect(route('admin.job.index'))->with('success', '创建成功！');
+            } catch (Exception $e) {
+                DB::rollback();
+                return redirect()->back();
+            }
         }
         $departments = Department::all()->pluck('name', 'id')->toArray();
         $tags = Tag::all()->pluck('name', 'id')->toArray();
@@ -26,10 +37,20 @@ class JobController extends Controller
     {
         $job = Job::findOrFail($id);
         if ($request->isMethod('POST')) {
-            $jobAttribute = $request->input();
-            array_forget($jobAttribute, '_token');
-            $job->update($jobAttribute);
-            return redirect(route('admin.job.index'))->with('success', '修改成功！');
+            try {
+                DB::beginTransaction();
+                $jobAttribute = $request->input();
+                array_forget($jobAttribute, '_token');
+                $tags = $jobAttribute["tag_id"];
+                array_forget($jobAttribute, 'tag_id');
+                $job->update($jobAttribute);
+                $job->assignTags($tags);
+                DB::commit();
+                return redirect(route('admin.job.index'))->with('success', '修改成功！');
+            } catch (Exception $e) {
+                DB::rollback();
+                return redirect()->back();
+            }
         }
         $departments = Department::all()->pluck('name', 'id')->toArray();
         $tags = Tag::all()->pluck('name', 'id')->toArray();

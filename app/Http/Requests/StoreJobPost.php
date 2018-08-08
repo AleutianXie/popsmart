@@ -27,7 +27,6 @@ class StoreJobPost extends FormRequest
         if ($this->isMethod('GET')) {
             return [];
         }
-        dd($this->input());
         if (Route::currentRouteName() == 'admin.job.create') {
             return [
                 'department_id' => 'required|exists:departments,id,deleted_at,NULL',
@@ -36,7 +35,9 @@ class StoreJobPost extends FormRequest
                 'duty'    => 'required',
                 'requirements' => 'required',
                 'sort'    => 'required|integer|min:0',
-                'is_top'  => 'required|boolean'
+                'is_top'  => 'required|boolean',
+                'tag_id'   => 'required|array',
+                'tag_id.*' => 'required|integer|min:1|unique:tags,id,,,deleted_at, 0|distinct'
             ];
         }
 
@@ -49,7 +50,9 @@ class StoreJobPost extends FormRequest
                 'duty'    => 'required',
                 'requirements' => 'required',
                 'sort'    => 'required|integer|min:0',
-                'is_top'  => 'required|boolean'
+                'is_top'  => 'required|boolean',
+                'tag_id'   => 'required|array',
+                'tag_id.*' => 'required|integer|min:1|unique:tags,id,,,deleted_at, 0|distinct'
             ];
         }
     }

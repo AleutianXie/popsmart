@@ -84,12 +84,12 @@
         </span>
     @endif
 </div>
-<div class="form-group {{ $errors->has('department_id') ? 'has-error' : '' }}">
+<div class="form-group {{ $errors->has('tag_id') ? 'has-error' : '' }}">
     {{ Form::label('标签', null, ['class' => 'control-label']) }}
-    {{ Form::select('department_id', $departments, old('department_id') ?? $job->department_id, ['class' => 'form-control']) }}
-    @if ($errors->has('department_id'))
+    {{ Form::select('tag_id[]', array_prepend($tags, 'zero'), null, ['class' => 'form-control']) }}
+    @if ($errors->has('tag_id'))
         <span class="help-block">
-            <strong>{{ $errors->first('department_id') }}</strong>
+            <strong>{{ $errors->first('tag_id') }}</strong>
         </span>
     @endif
 </div>
@@ -106,9 +106,9 @@
 @section('js')
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-    var ue = UE.getEditor('duty');
-        ue.ready(function() {
-        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+    var due = UE.getEditor('duty');
+        due.ready(function() {
+        due.execCommand('serverparam', '_token', '{{ csrf_token() }}');
     }); 
     due.on('ready', function() {
         due.setContent('{!! old('duty') ?? $job->duty !!}');
@@ -118,9 +118,9 @@
         $(due.container.parentElement.parentElement).removeClass('has-error');
         return;
     });
-    var ue = UE.getEditor('requirements');
-        ue.ready(function() {
-        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+    var rue = UE.getEditor('requirements');
+        rue.ready(function() {
+        rue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
     }); 
     rue.on('ready', function() {
         rue.setContent('{!! old('requirements') ?? $job->requirements !!}');
@@ -134,5 +134,33 @@
         $(this).next().children('strong').text('');
         $(this).parent().removeClass('has-error');
     });
+    $("select[name^='tag_id']").select2({
+        tags: true,
+        multiple: true,
+        tokenSeparators: [',', ' '],
+        templateResult: function (state) {
+            // 过滤掉已经被选中的result
+            console.log(state, state.selected);
+            if (state.selected) {
+                return null;
+            }
+            return state.text;
+        }
+    }).val(
+        [
+            @foreach($job->tags as $tag)
+            {{ $tag->id }},
+            @endforeach
+        ]).trigger('change');
+    // 后端校验失败时，保存上次选择的用户
+    @if (old('tag_id'))
+    $("select[name^='tag_id']").val(
+        [
+            @foreach(old('tag_id') as $id)
+            {{ $id }},
+            @endforeach
+        ]
+    ).trigger('change');
+    @endif
 </script>
 @endsection
