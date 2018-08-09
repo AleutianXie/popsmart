@@ -25,7 +25,7 @@ class Controller extends BaseController
         $model        = $model::query();
         $this->getModel($model);
         $$class_names = $model->paginate()->appends($filter);
-        return view('admin.'.strtolower(substr(class_basename(static::class), 0, -10)).'.index', compact('filter', $class_names));
+        return view('admin.'.strtolower($class_name).'.index', compact('filter', $class_names));
     }
 
     public function detail(Request $request, $id)
@@ -36,6 +36,17 @@ class Controller extends BaseController
         $$class_name = $model::query()->findOrFail($id);
 
         return view($class_name.'.detail', compact($class_name));
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $class_name  = substr(class_basename(static::class), 0, -10);
+        $model       = 'App\\'.$class_name;
+        $class_name  = strtolower($class_name);
+        $$class_name = $model::query()->findOrFail($id);
+        $$class_name->delete();
+
+        return redirect(route('admin.'.strtolower($class_name).'.index'))->with('succeed', '删除成功!');
     }
 
     /**
