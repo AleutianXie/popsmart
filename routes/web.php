@@ -18,7 +18,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/news', 'NewsController@index')->name('news');
-Route::get('/news/{id}', 'NewsController@detail')->where('id', '[0-9]+')->name('admin.news.detail');
+Route::get('/news/{id}', 'NewsController@detail')->where('id', '[0-9]+')->name('news.detail');
 
 Route::get('/case', 'CasesController@index')->name('cases');
 Route::get('case/{id}', 'CasesController@detail')->where('id', '[0-9]+')->name('cases.detail');

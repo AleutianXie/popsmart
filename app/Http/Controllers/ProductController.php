@@ -18,7 +18,6 @@ class ProductController extends Controller
     {
         $filter   = $request->input();
         $model    = new Product();
-        $model    = $model->query();
         $this->getModel($model);
         $products = $model->paginate()->appends($filter);
 

@@ -17,4 +17,9 @@ class Product extends Model
     protected $fillable = [
         'name', 'summary', 'cover', 'content', 'sort', 'is_top', 'series_id'
     ];
+
+    public function scopeSeries($query, $series)
+    {
+        $query->where('series_id', $series);
+    }
 }

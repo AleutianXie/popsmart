@@ -23,7 +23,6 @@ class ServiceController extends Controller
         }
         $modules  = json_encode($modules);
         $model    = new Service();
-        $model    = $model->query();
         $services = $model->Module($cur)->paginate();
 
         return view('service.index', compact('modules', 'cur', 'services'));
