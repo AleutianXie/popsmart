@@ -44,8 +44,14 @@ class Controller extends BaseController
         $model       = 'App\\'.$class_name;
         $class_name  = strtolower($class_name);
         $$class_name = $model::query()->findOrFail($id);
+        if ('article' == $class_name) {
+            $attribute = $$class_name->attribute_id;
+        }
         $$class_name->delete();
 
+        if ('article' == $class_name) {
+            return redirect(route('admin.'.strtolower($class_name).'.index', $attribute))->with('succeed', '删除成功!');
+        }
         return redirect(route('admin.'.strtolower($class_name).'.index'))->with('succeed', '删除成功!');
     }
 

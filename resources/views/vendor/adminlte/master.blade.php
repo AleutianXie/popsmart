@@ -40,7 +40,36 @@
 </head>
 <body class="hold-transition @yield('body_class')">
 @yield('body')
-
+  {{-- 确认删除 --}}
+  <div class="modal fade" id="modal-delete" tabIndex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">确认删除</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+              <i class="fa fa-times" aria-hidden="true"></i> 
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="lead">
+                <i class="fa fa-question-circle fa-lg"></i>
+                确认删除该条信息？
+              </p>
+            </div>
+            <div class="modal-footer">
+              <form method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="id" value="">
+                <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
+                <button type="submit" class="btn btn-danger">
+                  <i class="fa fa-times-circle"></i> 是
+                </button>
+              </form>
+            </div>
+        </div>
+    </div>
+  </div>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -60,7 +89,15 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 @endif
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#modal-delete').on('shown.bs.modal', function (e) {
+      var type=e.relatedTarget.dataset.type;
+      var id=e.relatedTarget.dataset.id;
+      $('.modal-footer form').attr('action', '/admin/'+type+'/'+id+'/delete');
+    });
+  });
+</script>
 @yield('adminlte_js')
-
 </body>
 </html>

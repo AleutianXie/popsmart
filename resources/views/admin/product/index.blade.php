@@ -45,6 +45,7 @@
                       修改
                     </button>
                   </a>
+                  <a class="btn btn-danger btn-xs" data-type="product" data-id="{{ $item->id }}" data-toggle="modal" data-target="#modal-delete">删除</a>
                 </td>
               </tr>
               @endforeach
