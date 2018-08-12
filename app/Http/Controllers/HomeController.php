@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Banner;
 use App\Cases;
 use App\Module;
 use App\News;
@@ -18,6 +19,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $bannerModel = new Banner();
+        $bannerModel->getModel($bannerModel);
+        $banners = $bannerModel->limit(5)->get();
+
         $newModel = new News();
         $newModel->getModel($newModel);
         $news     = $newModel->first();
@@ -40,6 +45,6 @@ class HomeController extends Controller
         $moduleModel = new Module();
         $moduleModel->getModel($moduleModel);
         $modules     = $moduleModel->limit(4)->get();
-        return view('index', compact('news', 'series', 'products', 'cases', 'modules'));
+        return view('index', compact('banners', 'news', 'series', 'products', 'cases', 'modules'));
     }
 }

@@ -99,6 +99,11 @@ body{
 	padding-top:60px;
 	padding-bottom:60px;
 }
+.banner_txt{ }
+   103 .banner_txt h2{font-size:80px; font-weight: 5;}
+   104 .banner_txt dl{ margin:20px 0;}
+   105 .banner_txt dt{font-size: 22px; line-height: 50px}
+   106 .banner_txt dd{font-size: 14px; line-height: 40px}
 .gg_title{
 	text-align:center;
 	color:#fff;
@@ -239,9 +244,15 @@ body{
 .c-case-r{
 	float:right;
 	width:50%;
+	position: relative;
 }
+.c-case-r .cont{ position: absolute; top: 400px; left: 50%; margin-left: -10%; z-index: 100}
+.c-case-r .cont{ text-align: center; background: #246AF8; border-radius: 4px;}
+.c-case-r .cont a{ color: #fff; font-size: 18px; padding:10px 20px; display: inline-block;}
+.c-case-r .cont a span{ margin-left: 10px;} 
 .c-case-r a img{
 	width:100%;
+	position: absolute;
 }
 .c-service{
 	padding-top:70px;
@@ -790,6 +801,7 @@ body{
 		margin-left:15px;
 		margin-right:15px;
 	}
+	.c-case-r .cont{ position: absolute; top: 320px; left: 50%; margin-left: -12%; z-index: 100}
 }
 @media only screen and (max-width:1000px) and (min-width:640px) {
 	.mobile-inner-header{
@@ -798,6 +810,13 @@ body{
 	.banner{
 		height:350px;
 	}
+	.banner_txt{}
+    .banner_txt h2{font-size:40px; font-weight: 5;}
+    .banner_txt dl{ margin:20px 0;}
+    .banner_txt dt{font-size: 18px; line-height: 40px}
+    .banner_txt dd{font-size: 12px; line-height: 30px}
+    .c-case-r .cont{ top: 280px; left: 50%; margin-left: -12%;}
+	.c-case-r .cont a{ font-size: 14px;}
 	.top{
 		display:none;
 	}
@@ -913,6 +932,15 @@ body{
 	.banner{
 		height:250px;
 	}
+	.banner_txt{ }
+    .banner_txt h2{font-size:30px; font-weight: 5;}
+    .banner_txt dl{ margin:10px 0;}
+    .banner_txt dt{font-size: 15px; line-height: 36px}
+    .banner_txt dd{font-size: 10px; line-height: 24px}
+    .c-case-r .cont{ position: absolute; top: 130px; left: 50%; margin-left: -20%; z-index: 100}
+	.c-case-r .cont{ text-align: center; background: #246AF8; border-radius: 4px;}
+	.c-case-r .cont a{ color: #fff; font-size: 10px; padding:5px 10px; display: inline-block;}
+	.c-case-r .cont a span{ margin-left: 10px;}
 	.flickerplate .arrow-navigation {
 		width:10%;
 	}

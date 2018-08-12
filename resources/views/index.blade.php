@@ -3,22 +3,31 @@
 @section('title', '首页')
 
 @section('content')
+    @if (count($banners) > 0)
     <!---banner---->
     <div class="banner active">
         <!--Basic example-->
         <div class="flicker-example clearfix" data-block-text="false">
             <ul>
-              <li data-background="images/banner1.jpg">
-                    <a href="#"></a>
-                </li><li data-background="images/banner2.jpg">
-                    <a href="#"></a>
+                @foreach ($banners as $item)
+
+                <li data-background="{{ $item->pic }}">
+                    <div class="banner_txt">
+                        <h2>{{ $item->name }}</h2>
+                        <dl>
+                            {{ $item->summary }}
+                        </dl>
+                    </div>
+                    <a href="{{ $item->link }}"></a>
                 </li>
+                @endforeach
             </ul>
         </div>
     </div>
     <!---banner---->
+    @endif
 
-    @if ($news)
+    @if (!empty($news))
     <div class="c-update">
         <div class="boxmain clearfix">
             <div class="c-update-l">
@@ -37,7 +46,7 @@
     </div>
     @endif
 
-    @if ($series)
+    @if (count($series) > 0)
     <div class="c1">
         <div class="gg_title">
             <h1>我们的产品</h1>
@@ -71,7 +80,7 @@
     </div>
     @endif
 
-    @if ($cases)
+    @if (count($cases) > 0)
     <div class="c-case">
         <div class="c-case-l">
             @foreach ($cases as $item)
@@ -79,7 +88,10 @@
             @endforeach
         </div>
         <div class="c-case-r">
-            <a href="{{ route('cases') }}"><img src="images/case_more.jpg" alt="更多..." /></a>
+            <div class="cont">
+                <a href="{{ route('cases') }}">查看更多<span>&gt;</span></a>
+            </div>
+            <img src="images/case_more.jpg" alt="更多..." style="width: 100%;" />
         </div>
     </div>
 
