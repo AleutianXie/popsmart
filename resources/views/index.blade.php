@@ -18,6 +18,7 @@
     </div>
     <!---banner---->
 
+    @if ($news)
     <div class="c-update">
         <div class="boxmain clearfix">
             <div class="c-update-l">
@@ -34,7 +35,9 @@
             </div>
         </div>
     </div>
+    @endif
 
+    @if ($series)
     <div class="c1">
         <div class="gg_title">
             <h1>我们的产品</h1>
@@ -66,7 +69,9 @@
             @endforeach
         </div>
     </div>
+    @endif
 
+    @if ($cases)
     <div class="c-case">
         <div class="c-case-l">
             @foreach ($cases as $item)
@@ -99,6 +104,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     <div class="c-aboutus">
         <a href="{{ route('about') }}"><img src="images/aboutus.jpg" alt="关于宝略" /></a>

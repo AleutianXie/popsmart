@@ -45,7 +45,7 @@
         <a href="/" class="alist">首页</a>
         <a href="/news" class="alist">新闻</a>
         <a href="/product" class="alist">产品</a>
-        <a href="/cases" class="alist">案例</a>
+        <a href="/case" class="alist">案例</a>
         <a href="/service" class="alist">服务</a>
         <a href="/about" class="alist">关于我们</a>
     </div>
