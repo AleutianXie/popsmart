@@ -2,7 +2,8 @@
     <div class="c-update">
         <div class="boxmain clearfix" v-for="item in items">
             <div class="c-update-l">
-                <h4>今日最新</h4>
+                <h4 v-if="item.is_today">今日最新</h4>
+                <h4 v-else>{{ item.created_at.substring(0, 10) }}</h4>
                 <div class="line"></div>
                 <dl>
                     <dt><a :href="'/news/' + item.id">{{ item.name }}</a></dt>

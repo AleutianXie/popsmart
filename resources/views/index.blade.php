@@ -31,7 +31,7 @@
     <div class="c-update">
         <div class="boxmain clearfix">
             <div class="c-update-l">
-                <h4>今日最新</h4>
+                <h4>@if ($news->is_today) 今日最新 @else {{ $news->created_at->toDateString() }}@endif</h4>
                 <div class="line"></div>
                 <dl>
                     <dt><a href="{{ route('news.detail', $news->id) }}"></a>{{ $news->name }}</dt>
