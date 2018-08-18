@@ -34,6 +34,7 @@ class StoreArticlePost extends FormRequest
                 'summary' => 'max:255',
                 'content' => 'required',
                 'enabled' => 'boolean',
+                'attribute_id' => 'required|exists:attributes,id,deleted_at,NULL'
             ];
         }
 
@@ -44,6 +45,7 @@ class StoreArticlePost extends FormRequest
                 'summary' => 'max:255',
                 'content' => 'required',
                 'enabled' => 'boolean',
+                'attribute_id' => 'required|exists:attributes,id,deleted_at,NULL'
             ];
         }
     }
