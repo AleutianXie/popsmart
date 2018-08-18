@@ -30,4 +30,14 @@ class AttributeController extends Controller
         }
         return view('admin.attribute.edit', compact('attribute'));
     }
+
+    /**
+     * 查询构造器
+     */
+    protected function getModel(&$model)
+    {
+        // $model->orderByDesc('is_top');
+        // $model->orderByDesc('sort');
+        $model->latest();
+    }
 }
