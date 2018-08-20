@@ -36,7 +36,7 @@ class ArticleController extends Controller
                 }
             }
             Article::create($articleAttribute);
-            return redirect(route('admin.article.index'))->with('success', '创建成功！');
+            return redirect(route('admin.article.index', $articleAttribute['attribute_id']))->with('success', '创建成功！');
         }
         $attributes = Attribute::all()->pluck('name', 'id')->toArray();
         return view('admin.article.create', compact('attributes'));
