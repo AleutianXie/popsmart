@@ -34,7 +34,7 @@ class ProductController extends Controller
             Product::create($productAttribute);
             return redirect(route('admin.product.index'))->with('success', '创建成功！');
         }
-        $Series               = Series::all()->pluck('name', 'id')->toArray();
+        $series               = Series::all()->pluck('name', 'id')->toArray();
         return view('admin.product.create', compact('series'));
     }
 
