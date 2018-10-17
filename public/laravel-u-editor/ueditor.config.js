@@ -400,6 +400,7 @@
 			header: [],
 			hr:     [],
 			i:      ['class', 'style'],
+            iframe: ['frameborder','border','marginwidth','marginheight','width','height','src','id'],//增加这一行
 			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', 'class', 'data-latex'],
 			ins:    ['datetime'],
 			li:     ['class', 'style'],
