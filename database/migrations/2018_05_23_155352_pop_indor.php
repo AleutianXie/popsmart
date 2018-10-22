@@ -202,8 +202,8 @@ class PopIndor extends Migration
         // jobs table
         Schema::create('banners', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 30)->index()->comment('名称');
-            $table->string('summary', 255)->comment('简述');
+            $table->string('name', 30)->nullable()->comment('名称');
+            $table->string('summary', 255)->nullable()->comment('简述');
             $table->string('link', 255)->comment('链接地址');
             $table->string('pic', 255)->comment('图片地址');
             $table->smallInteger('sort')->default(0)->comment('排序');

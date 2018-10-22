@@ -13,10 +13,16 @@
 
                 <li data-background="{{ $item->pic }}">
                     <div class="banner_txt">
-                        <h2>{{ $item->name }}</h2>
-                        <dl>
-                            {{ $item->summary }}
-                        </dl>
+                        @empty ($item->name)
+                        @else
+                            <h2>{{ $item->name }}</h2>
+                        @endempty
+                        @empty ($item->summary)
+                        @else
+                            <dl>
+                                {{ $item->summary }}
+                            </dl>
+                        @endempty
                     </div>
                     <a href="{{ $item->link }}"></a>
                 </li>

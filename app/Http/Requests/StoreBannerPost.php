@@ -29,8 +29,8 @@ class StoreBannerPost extends FormRequest
         }
         if (Route::currentRouteName() == 'admin.banner.create') {
             return [
-                'name'        => 'required|unique:banners,name,,,deleted_at,NULL',
-                'summary'     => 'required',
+                // 'name'        => 'required|unique:banners,name,,,deleted_at,NULL',
+                // 'summary'     => 'required',
                 'pic'         => 'required|image',
                 'link'        => 'required|url',
                 'sort'        => 'required|integer|min:0',
@@ -41,9 +41,9 @@ class StoreBannerPost extends FormRequest
         if (Route::currentRouteName() == 'admin.banner.edit') {
             $id = $this->route('id');
             return [
-                'name'        => 'required|unique:banners,name,' . $id . ',id,deleted_at,NULL',
-                'summary'     => 'required',
-                'picr'        => 'image',
+                // 'name'        => 'required|unique:banners,name,' . $id . ',id,deleted_at,NULL',
+                // 'summary'     => 'required',
+                'pic'         => 'image',
                 'link'        => 'required|url',
                 'sort'        => 'required|integer|min:0',
                 'is_top'      => 'required|boolean',
