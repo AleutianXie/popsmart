@@ -200,6 +200,8 @@ body{
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 .c1_img img:hover{
     -webkit-transform: scale(1.1);
