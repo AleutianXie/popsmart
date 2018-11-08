@@ -179,6 +179,7 @@ body{
 	margin-bottom:30px;
 	background:#fff;
 	border-radius:6px;
+	overflow: hidden;
 }
 .c1_titleText{
 	width:100%;
@@ -200,15 +201,11 @@ body{
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
 }
 .c1_img img:hover{
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -o-transform: scale(1.1);
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
 }
 .c-case{
 	overflow:hidden;
