@@ -32,7 +32,7 @@ class StoreProductPost extends FormRequest
                 'name'      => 'required|unique:products,name,,,deleted_at,NULL',
                 'summary'   => 'required',
                 'cover'     => 'required|image',
-                'content'   => 'required',
+                //'content'   => 'required',
                 'sort'      => 'required|integer|min:0',
                 'is_top'    => 'required|boolean',
                 'series_id' => 'required|exists:series,id,deleted_at,NULL'
@@ -45,7 +45,7 @@ class StoreProductPost extends FormRequest
                 'name'      => 'required|unique:products,name,' . $id . ',id,deleted_at,NULL',
                 'summary'   => 'required',
                 'cover'     => 'image',
-                'content'   => 'required',
+                //'content'   => 'required',
                 'sort'      => 'required|integer|min:0',
                 'is_top'    => 'required|boolean',
                 'series_id' => 'required|exists:series,id,deleted_at,NULL'

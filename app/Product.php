@@ -15,7 +15,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'summary', 'cover', 'content', 'sort', 'is_top', 'series_id'
+        'name', 'summary', 'cover', 'content', 'sort', 'is_top', 'series_id','is_url'
     ];
 
     public function scopeSeries($query, $series)

@@ -1,44 +1,31 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <meta content="telephone=no" name="format-detection">
-    <meta http-equiv="Page-Enter" content="revealTrans(duration=5, transition=2)">
-    <meta http-equiv="Page-Exit" content="revealTrans(duration=5, transition=2)">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-
-    <title>{{ config('app.name', 'PopSmart') }} - @yield('title')</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @section('css')
-    @show
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./basic.css">
+    <link rel="stylesheet" href="./common.css">
+    <title>F300</title>
 </head>
 <body>
-    <div id="app">
-    <!---头部---->
+    <!--头部-->
     <div class="top clearfix">
-        <div class="logo fl"><a href="index.html"><img src="/images/logo.png"></a></div>
+        <div class="logo fl"><a href="index.html"><img src="./img/logo.png"></a></div>
         <div class="pc_nav fl clearfix">
             <ul>
-                <li @if(Request::fullUrl() == route('home')) class="on" @endif><a href="/">首页</a></li>
-                <li @if(starts_with(Request::fullUrl(), route('news'))) class="on" @endif><a href="/news">新闻</a></li>
-                <li @if(starts_with(Request::fullUrl(), route('product'))) class="on" @endif><a href="/product">产品</a></li>
-                <li @if(starts_with(Request::fullUrl(), route('cases'))) class="on" @endif><a href="/case">案例</a></li>
-                <li @if(starts_with(Request::fullUrl(), route('service'))) class="on" @endif><a href="/service">服务</a></li>
-                <li @if(starts_with(Request::fullUrl(), route('about'))) class="on" @endif><a href="/about">关于我们</a></li>
+                <li ><a href="/">首页</a></li>
+                <li ><a href="/news">新闻</a></li>
+                <li ><a href="/product">产品</a></li>
+                <li ><a href="/case">案例</a></li>
+                <li ><a href="/service">服务</a></li>
+                <li ><a href="/about">关于我们</a></li>
             </ul>
         </div>
     </div>
     <div class="mobile-inner-header clearfix" id="header">
-        <div class="ph_logo fl"><a href="/" class="alist"><img src="/images/logo.png"></a></div>
+        <div class="ph_logo fl"><a href="/" class="alist"><img src="./img/logo.png"></a></div>
         <div class="mobile-inner-header-icon mobile-inner-header-icon-out"><span></span><span></span></div>
     </div>
     <div class="mobile-inner-nav">
@@ -49,15 +36,30 @@
         <a href="/service" class="alist">服务</a>
         <a href="/about" class="alist">关于我们</a>
     </div>
-    <!---头部---->
-            @yield('content')
+    <!--头部-->
+    <!-- 信息栏 -->
+    <div class="information">
+        <!-- <div class="center_contant"> -->
+        <div class="title">F300</div>
+        <div>
+            <ul>
+                <li class="default">概述</li>
+                <li><a href="./F300Details.html">参数配置</a></li>
+                <li><a href="#">相关下载</a></li>
+            </ul>
+        </div>
+        <!-- </div> -->
+    </div>
+    <!-- 内容 -->
+    <div class="containter"><img src="./img/F300.jpg" alt="" /></div>
+    <!--尾部-->
     <div class="footer">
         <div class="footer_top">
             <div class="boxmain">
                 <div class="footer_topmain clearfix">
                     <div class="footer_left fl clearfix">
-                       <div class="footer_img">
-                            <img src="/images/ewm.jpg" /> 
+                        <div class="footer_img">
+                            <img src="./img/ewm.jpg" />
                         </div>
                     </div>
                     <div class="footer_right fl clearfix">
@@ -97,16 +99,13 @@
                     <li class="tel">Tel：0574 - 55125939</li>
                     <li class="add">Add：浙江省宁波市鄞州区学士路655号科技孵化园E栋912、913室</li>
                     <li class="web">Web：www.popsmart.cn</li>
-					<li style="margin-top: 3px;opacity:1;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274497818'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1274497818%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-					</li>
+                    <li style="margin-top: 3px;opacity:1;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274497818'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1274497818%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-    </div>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @section('js')
-    @show
+    
+    <script src="app.js"></script>
 </body>
 </html>

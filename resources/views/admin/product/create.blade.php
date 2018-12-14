@@ -39,9 +39,19 @@
     @endif
 </div>
 <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
-    {{ Form::label('内容', null, ['class' => 'control-label']) }}
+    <div style="display: flex;margin-bottom: 10px;line-height: 35px;">
+	{{ Form::label('内容', null, ['class' => 'control-label']) }}
+	<select class="form-control" onchange="contentTypeChange(this.value)" style="max-width: 300px;margin-left: 5px;">
+		<option value="0">文本内容</option>
+		<option value="1">链接地址</option>
+	</select>
+	</div>
     @include('UEditor::head')
     <div name="content" id="content" style="min-height: 600px;"></div>
+	
+	<input type="text" name="is_url" class="form-control" placeholder="输入链接地址" id="isUrl"
+	style="display:none;"/>
+	
     @if ($errors->has('content'))
         <span class="help-block">
             <strong>{{ $errors->first('content') }}</strong>
@@ -103,6 +113,15 @@
 <script type="text/javascript" src="{{ asset('/bootstrap-fileinput/js/locales/zh.js') }}"></script>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
+	function contentTypeChange(e){
+		if(e === '0'){
+			$('#content').show();
+			$('#isUrl').hide();
+		} else {
+			$('#content').hide();
+			$('#isUrl').show();
+		}
+	}
     var ue = UE.getEditor('content');
         ue.ready(function() {
         ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');

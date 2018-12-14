@@ -48,6 +48,11 @@ class ProductController extends Controller
                 $cover            = Uploader::uploadImage($request->file('cover'));
                 $productAttribute = array_add($productAttribute, 'cover', $cover);
             }
+			if ($productAttribute['contentType'] == '0'){
+				$productAttribute['is_url'] = '';
+			} else {
+				$productAttribute['content'] = '';
+			}
             $product->update($productAttribute);
             return redirect(route('admin.product.index'))->with('success', '修改成功！');
         }
