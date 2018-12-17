@@ -97,8 +97,6 @@
                     <li class="tel">Tel：0574 - 55125939</li>
                     <li class="add">Add：浙江省宁波市鄞州区学士路655号科技孵化园E栋912、913室</li>
                     <li class="web">Web：www.popsmart.cn</li>
-					<li style="margin-top: 3px;opacity:1;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274497818'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1274497818%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-					</li>
                 </ul>
             </div>
         </div>

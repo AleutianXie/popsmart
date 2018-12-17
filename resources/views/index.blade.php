@@ -100,7 +100,9 @@
             <img src="images/case_more.jpg" alt="更多..." style="width: 100%;" />
         </div>
     </div>
+    @endif
 
+    @if (count($modules) > 0)
     <div class="c-service">
             <div class="gg_title">
                 <h1>服务内容</h1>
@@ -123,6 +125,44 @@
         </div>
     </div>
     @endif
+
+    <div class="solution">
+        <div class="gg_title">
+            <h1>解决方案</h1>
+            <div class="line"></div>
+            <p>Our products</p>
+        </div>
+        <div class="boxmain">
+            <div class="solution_l">
+                <h2>行业应用</h2>
+                <ul>
+                    <li><a href="" class="active">城市管理</a></li>
+                    <li><a href="">电力应用</a></li>
+                    <li><a href="">测绘</a></li>
+                    <li><a href="">工程建设</a></li>
+                    <li><a href="">古建筑/展览/博物馆</a></li>
+                </ul>
+            </div>
+            <div class="solution_r">
+                <h2>解决方案</h2>
+                <ul>
+                    <li><a href="" class="active">PopCity</a></li>
+                    <li><a href="">测量</a></li>
+                    <li><a href="">倾斜系统获取处理</a></li>
+                    <li><a href="">无人机遥感技术</a></li>
+                    <li><a href="">施工监测</a></li>
+                    <li><a href="">数字化平面图</a></li>
+                    <li><a href="">实景三维地图</a></li>
+                    <li><a href="">室内导航</a></li>
+                    <li><a href="">虚拟现实</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="videoPlay">
+            <img class="play_btn" src="images/play_btn.png" alt="play_btn" style="">
+            <video src="images/video.mp4" poster="images/gxt.png"></video>
+        </div>
+    </div>
 
     <div class="c-aboutus">
         <a href="{{ route('about') }}"><img src="images/aboutus.jpg" alt="关于宝略" /></a>
