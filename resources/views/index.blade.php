@@ -73,7 +73,7 @@
                     <ul>
                         @foreach ($listItem as $item)
                             <li>
-                                <a href="{{ route('product.detail', $item->id) }}">
+                                <a @if(isset($item->is_url) && !empty($item->is_url)) href="{{ $item->is_url }}" @else href="{{ route('product.detail', $item->id) }}"@endif>
                                     <div class="c1_img"><img src="{{ $item->cover }}" alt="{{ $item->name }}"></div>
                                     <div class="c1_titleText">{{ $item->name }}</div>
                                 </a>
