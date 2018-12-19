@@ -30,8 +30,8 @@ class StoreServicePost extends FormRequest
         if (Route::currentRouteName() == 'admin.service.create') {
             return [
                 'name'        => 'required|unique:services,name,,,deleted_at,NULL',
-                'summary'     => 'required',
-                'cover'       => 'required|image',
+                // 'summary'     => 'required',
+                'cover'       => 'image',
                 'content'     => 'required',
                 'sort'        => 'required|integer|min:0',
                 'is_top'      => 'required|boolean',
@@ -43,7 +43,7 @@ class StoreServicePost extends FormRequest
             $id = $this->route('id');
             return [
                 'name'        => 'required|unique:services,name,' . $id . ',id,deleted_at,NULL',
-                'summary'     => 'required',
+                // 'summary'     => 'required',
                 'cover'       => 'image',
                 'content'     => 'required',
                 'sort'        => 'required|integer|min:0',

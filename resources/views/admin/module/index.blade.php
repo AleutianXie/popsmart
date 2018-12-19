@@ -33,7 +33,7 @@
               @foreach($modules as $item)
               <tr>
                 <td>{{ $item->id }}</td>
-                <td><img src="{{ $item->icon }}" style="max-width: 100%;" alt="{{ $item->name }}"></td>
+                <td>@if(!empty($item->icon))<img src="{{ $item->icon }}" style="max-width: 100%;" alt="{{ $item->name }}">@endif</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->overview }}</td>
                 <td>{{ $item->sort }}</td>

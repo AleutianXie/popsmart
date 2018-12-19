@@ -8,6 +8,7 @@ use App\Module;
 use App\News;
 use App\Product;
 use App\Series;
+use App\Service;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -44,7 +45,13 @@ class HomeController extends Controller
 
         $moduleModel = new Module();
         $moduleModel->getModel($moduleModel);
-        $modules     = $moduleModel->limit(4)->get();
-        return view('index', compact('banners', 'news', 'series', 'products', 'cases', 'modules'));
+        $modules     = $moduleModel->limit(8)->get();
+        $model    = new Service();
+        $services = [];
+        foreach ($modules as $module) {
+            $services[$module->id] = $model->Module($module->id)->limit(10);
+        }
+
+        return view('index', compact('banners', 'news', 'series', 'products', 'cases', 'modules', 'services'));
     }
 }

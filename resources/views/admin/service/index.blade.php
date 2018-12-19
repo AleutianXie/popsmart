@@ -35,7 +35,7 @@
               <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
-                <td><img src="{{ $item->cover }}" style="max-width: 100%;" alt="{{ $item->name }}"></td>
+                <td>@if(!empty($item->cover))<img src="{{ $item->cover }}" style="max-width: 100%;" alt="{{ $item->name }}">@endif</td>
                 <td>{{ $item->summary }}</td>
                 <td>{{ $item->module->name }}</td>
                 <td>{{ $item->sort }}</td>

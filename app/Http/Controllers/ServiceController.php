@@ -31,10 +31,12 @@ class ServiceController extends Controller
     public function create(StoreServicePost $request)
     {
         if ($request->isMethod('POST')) {
-            $cover            = Uploader::uploadImage($request->file('cover'));
             $serviceAttribute = $request->input();
+            if ($request->hasFile('cover')) {
+                $cover            = Uploader::uploadImage($request->file('cover'));
+                $serviceAttribute = array_add($serviceAttribute, 'cover', $cover);
+            }
             array_forget($serviceAttribute, '_token');
-            $serviceAttribute = array_add($serviceAttribute, 'cover', $cover);
             Service::create($serviceAttribute);
             return redirect(route('admin.service.index'))->with('success', '创建成功！');
         }

@@ -105,8 +105,8 @@ class PopIndor extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 30)->index()->comment('服务名');
-            $table->string('summary', 255)->comment('服务简述');
-            $table->string('cover', 255)->comment('服务封面图');
+            $table->string('summary', 255)->nullable()->comment('服务简述');
+            $table->string('cover', 255)->nullable()->comment('服务封面图');
             $table->smallInteger('sort')->default(0)->comment('排序');
             $table->boolean('is_top')->default(0)->comment('是否置顶');
             $table->unsignedInteger('module_id')->comment('服务分类');

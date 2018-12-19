@@ -11,7 +11,10 @@ class ModuleController extends Controller
     public function create(StoreModulePost $request)
     {
         if ($request->isMethod('POST')) {
-            $icon            = Uploader::uploadImage($request->file('icon'));
+            $icon = '';
+            if ($request->hasFile('icon')) {
+                $icon            = Uploader::uploadImage($request->file('icon'));
+            }
             $moduleAttribute = $request->input();
             array_forget($moduleAttribute, '_token');
             $moduleAttribute = array_add($moduleAttribute, 'icon', $icon);
