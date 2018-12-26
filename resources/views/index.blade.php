@@ -86,7 +86,7 @@
     </div>
     @endif
 
-    @if (count($cases) > 0)
+{{--     @if (count($cases) > 0)
     <div class="c-case">
         <div class="c-case-l">
             @foreach ($cases as $item)
@@ -100,9 +100,9 @@
             <img src="images/case_more.jpg" alt="更多..." style="width: 100%;" />
         </div>
     </div>
-    @endif
+    @endif --}}
 
-    @if (count($modules) > 0)
+ {{--    @if (count($modules) > 0)
     <div class="c-service">
             <div class="gg_title">
                 <h1>服务内容</h1>
@@ -124,26 +124,44 @@
             </div>
         </div>
     </div>
-    @endif
+    @endif --}}
 
     <div class="solution">
         <div class="gg_title">
             <h1>解决方案</h1>
             <div class="line"></div>
-            <p>Our products</p>
+            <p>Our Solution</p>
         </div>
         <div class="boxmain">
             <div class="solution_l">
                 <h2>行业应用</h2>
-                <ul>
+{{--                 <ul>
                     <li><a href="" class="active">城市管理</a></li>
                     <li><a href="">电力应用</a></li>
                     <li><a href="">测绘</a></li>
                     <li><a href="">工程建设</a></li>
                     <li><a href="">古建筑/展览/博物馆</a></li>
+                </ul> --}}
+                <ul>
+                    @foreach ($modules as $module)
+                        <li><a href="javascript:void(0);" @if ($loop->first) class="active" @endif>{{ $module->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
-            <div class="solution_r">
+            @foreach ($services as $key => $serviceList)
+                <div @if ($loop->first) class="solution_r" @else class="d-none solution_r" @endif>
+                    <h2>解决方案</h2>
+                    <ul>
+                        @if (!empty($serviceList))
+                            @foreach ($serviceList as $service)
+                                <li><a href="{{ route('service.detail', $service->id) }}" target="_blank" @if ($loop->first) class="active" @endif>{{ $service->name }}</a></li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
+            @endforeach
+
+{{--             <div class="solution_r">
                 <h2>解决方案</h2>
                 <ul>
                     <li><a href="" class="active">PopCity</a></li>
@@ -156,7 +174,7 @@
                     <li><a href="">室内导航</a></li>
                     <li><a href="">虚拟现实</a></li>
                 </ul>
-            </div>
+            </div> --}}
         </div>
         <div class="videoPlay">
             <img class="play_btn" src="images/play_btn.png" alt="play_btn" style="">

@@ -23,7 +23,7 @@ class Service extends Model
         return $this->hasOne('App\Module', 'id', 'module_id');
     }
 
-    public function scopeModule($query, $module)
+    public function scopeIndustry($query, $module)
     {
         $query->where('module_id', $module);
     }

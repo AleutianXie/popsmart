@@ -46,10 +46,11 @@ class HomeController extends Controller
         $moduleModel = new Module();
         $moduleModel->getModel($moduleModel);
         $modules     = $moduleModel->limit(8)->get();
-        $model    = new Service();
+
         $services = [];
+        $serviceModel    = new Service();
         foreach ($modules as $module) {
-            $services[$module->id] = $model->Module($module->id)->limit(10);
+            $services[$module->id] = $serviceModel->industry($module->id)->limit(10)->get();
         }
 
         return view('index', compact('banners', 'news', 'series', 'products', 'cases', 'modules', 'services'));
