@@ -21,22 +21,18 @@ class HomeController extends Controller
     public function index()
     {
         $bannerModel = new Banner();
-        $bannerModel->getModel($bannerModel);
-        $banners = $bannerModel->limit(5)->get();
+        $banners = $bannerModel->orderByDesc('is_top')->orderByDesc('sort')->latest()->limit(5)->get();
 
         $newModel = new News();
-        $newModel->getModel($newModel);
-        $news     = $newModel->first();
+        $news     = $newModel->orderByDesc('is_top')->orderByDesc('sort')->latest()->first();
 
         $seriesModel = new Series();
-        $seriesModel->getModel($seriesModel);
-        $series      = $seriesModel->limit(4)->get();
+        $series      = $seriesModel->limit(4)->orderByDesc('is_top')->orderByDesc('sort')->latest()->get();
 
         $products = [];
         foreach ($series as $item) {
             $productModel        = new Product();
-            $productModel->getModel($productModel);
-            $products[$item->id] = $productModel->Series($item->id)->limit(8)->get();
+            $products[$item->id] = $productModel->Series($item->id)->orderByDesc('is_top')->orderByDesc('sort')->latest()->limit(8)->get();
         }
 
         $caseModel = new Cases();
@@ -50,7 +46,7 @@ class HomeController extends Controller
         $services = [];
         $serviceModel    = new Service();
         foreach ($modules as $module) {
-            $services[$module->id] = $serviceModel->industry($module->id)->limit(10)->get();
+            $services[$module->id] = $serviceModel->industry($module->id)->orderByDesc('is_top')->orderByDesc('sort')->latest()->limit(10)->get();
         }
 
         return view('index', compact('banners', 'news', 'series', 'products', 'cases', 'modules', 'services'));
