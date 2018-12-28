@@ -31,7 +31,7 @@
         props: ['products'],
         computed: {
             items() {
-                return JSON.parse(this.products).data;
+                return JSON.parse(this.products);
             }
         }
     }

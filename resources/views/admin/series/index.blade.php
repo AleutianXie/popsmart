@@ -32,7 +32,7 @@
               @foreach($series as $item)
               <tr>
                 <td>{{ $item->id }}</td>
-                <td>@if ($item->icon)<img src="{{ $item->icon }}" style="max-width: 100%;" alt="{{ $item->name }}">@endif</td>
+                <td>@if ($item->icon)<img src="{{ $item->icon }}" style="width: 150px;" alt="{{ $item->name }}">@endif</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->overview }}</td>
                 <td>{{ $item->sort }}</td>

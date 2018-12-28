@@ -15,6 +15,14 @@ class Series extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'icon', 'overview', 'sort', 'is_top'
+        'name', 'icon', 'overview', 'sort', 'is_top','is_url'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class,'series_id','id');
+    }
 }

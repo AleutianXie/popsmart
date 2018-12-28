@@ -34,7 +34,8 @@ class StoreSeriesPost extends FormRequest
                 'icon'      => 'image',
                 'overview'  => 'max:255',
                 'sort'      => 'required|integer|min:0',
-                'is_top'    => 'required|boolean'
+                'is_top'    => 'required|boolean',
+                'is_url'  => 'max:255'
             ];
         }
 
@@ -45,7 +46,8 @@ class StoreSeriesPost extends FormRequest
                 'icon'     => 'image',
                 'overview' => 'max:255',
                 'sort'     => 'required|integer|min:0',
-                'is_top'   => 'required|boolean'
+                'is_top'   => 'required|boolean',
+                'is_url'  => 'max:255'
             ];
         }
     }
@@ -57,6 +59,7 @@ class StoreSeriesPost extends FormRequest
            'icon'        => '图标',
            'sort'        => '排序',
            'is_top'      => '是否置顶',
+           'is_url'      => '是否是链接'
         ];
     }
 }

@@ -20,9 +20,24 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @section('css')
     @show
+    <style>
+        .top {
+            height: 60px;
+        }
+        .logo{
+            margin: 0px !important;
+        }
+        .logo img{
+            height: 60px;
+        }
+        .pc_nav ul li{
+            height: 60px;
+            line-height: 60px;
+        }
+    </style>
 </head>
-<body>
-    <div id="app">
+<body style="padding-top: 60px;">
+<div id="app">
     <!---头部---->
     <div class="top clearfix">
         <div class="logo fl"><a href="index.html"><img src="/images/logo.png"></a></div>
@@ -32,7 +47,7 @@
                 <li @if(starts_with(Request::fullUrl(), route('news'))) class="on" @endif><a href="/news">新闻</a></li>
                 <li @if(starts_with(Request::fullUrl(), route('product'))) class="on" @endif><a href="/product">产品</a></li>
                 <li @if(starts_with(Request::fullUrl(), route('cases'))) class="on" @endif><a href="/case">案例</a></li>
-                <li @if(starts_with(Request::fullUrl(), route('service'))) class="on" @endif><a href="/service">服务</a></li>
+                {{--<li @if(starts_with(Request::fullUrl(), route('service'))) class="on" @endif><a href="/service">解决方案</a></li>--}}
                 <li @if(starts_with(Request::fullUrl(), route('about'))) class="on" @endif><a href="/about">关于我们</a></li>
             </ul>
         </div>
@@ -50,61 +65,66 @@
         <a href="/about" class="alist">关于我们</a>
     </div>
     <!---头部---->
-            @yield('content')
+    @yield('content')
     <div class="footer">
-        <div class="footer_top">
+        <div class="footer_top" style="padding-bottom: 0px;padding-top: 10px;">
             <div class="boxmain">
                 <div class="footer_topmain clearfix">
                     <div class="footer_left fl clearfix">
-                       <div class="footer_img">
-                            <img src="/images/ewm.jpg" /> 
+                        <div class="footer_img">
+                            <img src="/images/ewm.jpg" style="width: 128px;height: 128px;"/>
                         </div>
                     </div>
-                    <div class="footer_right fl clearfix">
+                    <div class="footer_right fl clearfix" style="line-height: 128px;">
                         <ul>
-                            <li class="footer_navTitle"><a href="#">产品</a></li>
-                            <li><a href="#">飞马智能航测系统</a></li>
+                            <li><a href="/">首页</a></li>
+                        </ul>
+                        <ul>
+                            <li class=""><a href="/product">产品</a></li>
+                            <!-- <li><a href="#">飞马智能航测系统</a></li>
                             <li><a href="#">MD四旋翼无人机系统</a></li>
-                            <li><a href="#">室内移动扫描系统</a></li>
+                            <li><a href="#">室内移动扫描系统</a></li> -->
                         </ul>
                         <ul>
-                            <li class="footer_navTitle"><a href="#">服务</a></li>
-                            <li><a href="#">无人机技术服务</a></li>
+                            <li class=""><a href="/case">解决方案</a></li>
+                            <!-- <li><a href="#">无人机技术服务</a></li>
                             <li><a href="#">室内数字化</a></li>
                             <li><a href="#">地理信息系统</a></li>
-                            <li><a href="#">BIM运维</a></li>
+                            <li><a href="#">BIM运维</a></li> -->
                         </ul>
                         <ul>
-                            <li class="footer_navTitle"><a href="#">技术支持</a></li>
-                            <li><a href="#">无人机技术服务</a></li>
-                            <li><a href="#">室内数字化</a></li>
-                            <li><a href="#">地理信息系统</a></li>
-                            <li><a href="#">BIM运维</a></li>
-                        </ul>
-                        <ul>
-                            <li class="footer_navTitle"><a href="#">关于我们</a></li>
-                            <li><a href="#">关于宝略</a></li>
+                            <li class=""><a href="/about">关于宝略</a></li>
+                            <!-- <li><a href="#">关于宝略</a></li>
                             <li><a href="#">加入我们</a></li>
-                            <li><a href="#">联系我们</a></li>
+                            <li><a href="#">联系我们</a></li> -->
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer_bottom">
-            <div class="boxmain">
+        <div class="footer_bottom footer_top">
+            <div class="boxmain" style="display: flex;">
                 <ul>
-                    <li class="tel">Tel：0574 - 55125939</li>
+                    <li class="tel" style="width: 200px;">Tel：0574 - 55125939</li>
+                </ul>
+                <ul>
                     <li class="add">Add：浙江省宁波市鄞州区学士路655号科技孵化园E栋912、913室</li>
-                    <li class="web">Web：www.popsmart.cn</li>
+                    <li>浙江省杭州市江干区红晋路759号禧福汇4-412室</li>
+                    <li style="margin-top: 15px;">湖北武汉市江夏区大花岭正汤大道鸿发大厦A1座1501室</li>
                 </ul>
             </div>
+            <ul>
+                <li class="web">Web：www.popsmart.cn</li>
+            </ul>
+        </div>
+        <div style="height: 80px;background: #061A32;color: #ffffff;display: flex;justify-content: center;align-items: center;">
+            <span class="text-center">宁波宝略智能科技有限公司 版权所有  2017 PopSmart Technology Co., Ltd. All Rights Reserved | 浙ICP备17033777号-1</span>
         </div>
     </div>
-    </div>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @section('js')
-    @show
+</div>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+@section('js')
+@show
 </body>
 </html>

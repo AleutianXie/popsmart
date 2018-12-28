@@ -38,6 +38,15 @@
         </span>
     @endif
 </div>
+<div class="form-group {{ $errors->has('overview') ? 'has-error' : '' }}">
+    {{ Form::label('是否有链接', null, ['class' => 'control-label']) }}
+    {{ Form::text('is_url', old('is_url') ?? '', ['class' => 'form-control']) }}
+    @if ($errors->has('is_url'))
+        <span class="help-block">
+            <strong>{{ $errors->first('is_url') }}</strong>
+        </span>
+    @endif
+</div>
 <div class="form-group {{ $errors->has('sort') ? 'has-error' : '' }}">
     {{ Form::label('排序', null, ['class' => 'control-label']) }}
     {{ Form::number('sort', old('sort') ?? 0, ['class' => 'form-control']) }}

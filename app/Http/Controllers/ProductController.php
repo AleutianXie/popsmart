@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductPost;
 use App\Library\Utils\Uploader;
 use App\Product;
 use App\Series;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -17,11 +18,22 @@ class ProductController extends Controller
     public function index(StoreProductPost $request)
     {
         $filter   = $request->input();
-        $model    = new Product();
+//        $model    = new Product();
+        $model    = new Series();
         $this->getModel($model);
         $products = $model->paginate()->appends($filter);
 
         return view('product.index', compact('products'));
+    }
+
+    public function detail(Request $request, $id)
+    {
+        $class_name  = substr(class_basename(static::class), 0, -10);
+        $class_name  = strtolower($class_name);
+        $$class_name = Series::query()->findOrFail($id);
+
+        info($$class_name);
+        return view($class_name.'.detail', compact($class_name));
     }
 
     public function create(StoreProductPost $request)

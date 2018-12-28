@@ -2,6 +2,11 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('/bootstrap-fileinput/css/fileinput.min.css') }}">
+<style>
+    .kv-file-content img{
+        width: 200px;
+    }
+</style>
 @endsection
 
 @section('content_header')
@@ -34,6 +39,15 @@
     @if ($errors->has('overview'))
         <span class="help-block">
             <strong>{{ $errors->first('overview') }}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group {{ $errors->has('overview') ? 'has-error' : '' }}">
+    {{ Form::label('是否有链接', null, ['class' => 'control-label']) }}
+    {{ Form::text('is_url', old('is_url') ?? $series->is_url, ['class' => 'form-control']) }}
+    @if ($errors->has('is_url'))
+        <span class="help-block">
+            <strong>{{ $errors->first('is_url') }}</strong>
         </span>
     @endif
 </div>

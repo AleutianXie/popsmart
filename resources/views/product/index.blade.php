@@ -1,21 +1,103 @@
 @extends('layouts.cici')
 
 @section('title', '产品')
+@section('css')
+    <style>
+        .boxmain {
+            max-width: 1800px;
+        }
 
+        .casepage .ColumnOnenav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .casepage .ColumnOnenav li:hover {
+            color: #333;
+        }
+
+        .casepage .ColumnOnenav li {
+            max-width: 450px;
+            /*height:250px;*/
+            padding: 0;
+            overflow: hidden;
+            margin: 15px;
+            cursor: default;
+        }
+
+        .casepage .ColumnOnenav li.cur {
+            color: #333;
+        }
+
+        .product-item {
+            width: 25%;
+        }
+
+        .casepage .ColumnOnenav li img {
+            /*height:80%;*/
+            /*height: 150px;*/
+            /*max-height:300px;*/
+            width: 100%;
+        }
+
+        .casepage .ColumnOnenav li p {
+            /*padding:10px 0;*/
+            font-size: 14px;
+            color: #666;
+        }
+
+        .casepage .ColumnOnenav li a {
+            font-size: 12px;
+            color: #007bff;
+        }
+
+        .casepage .ColumnOnenav li a::after {
+            content: "  >";
+        }
+
+        .product-desc {
+            padding: 10px 0;
+            display: inline-block;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .casepage .ColumnOnenav {
+                flex-direction: column;
+            }
+
+            .product-item {
+                width: 100%;
+            }
+        }
+
+    </style>
+@endsection
 @section('content')
-    <div class="proTop">
-        <div class="gg_title">
-            <h1>简单的航测，不简单的无人机</h1>
-            <p>Simple navigation, not a simple drone.</p>
-            <div class="line"></div>
-            <p>飞马智能航测系统</p>
+<div class="casepage">
+    <div class="gg_title">
+        <h1>我们的产品</h1>
+        <div class="line"></div>
+        <p>OUR PRODUCTS</p>
+    </div>
+    <div class="boxmain">
+        <div class="ColumnOnenav">
+            @foreach($products as $product)
+                <div class="product-item">
+                    <li>
+                        <img src="{{$product->icon}}" alt="">
+                        <span class="product-desc">
+                            <h5>{{$product->name}}</h5>
+                            <p>{{$product->overview}}</p>
+                            <a href="@if($product->is_url) {{$product->is_url}} @else /product/{{$product->id}} @endif">了解更多</a>
+                        </span>
+                    </li>
+                </div>
+            @endforeach
         </div>
     </div>
-    <div class="product_main">
-        <div class="boxmain">
-            <product-list products="{{ json_encode($products) }}"></product-list>
-        </div>
-        {{ $products->links('pagination::cici') }}
-    </div>
+    {{ $products->links('pagination::cici') }}
+</div>
 
 @endsection
