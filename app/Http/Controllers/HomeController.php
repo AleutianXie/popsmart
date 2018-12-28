@@ -22,7 +22,6 @@ class HomeController extends Controller
     {
         $bannerModel = new Banner();
         $banners = $bannerModel->orderByDesc('is_top')->orderByDesc('sort')->latest()->limit(5)->get();
-
         $newModel = new News();
         $news     = $newModel->orderByDesc('is_top')->orderByDesc('sort')->latest()->first();
 

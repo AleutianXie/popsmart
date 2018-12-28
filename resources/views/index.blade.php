@@ -11,7 +11,7 @@
                 <ul>
                     @foreach ($banners as $item)
 
-                        <li data-background="{{ $item->pic }}">
+                        <li data-background="{{ $item->pic }}" style="position: relative;">
                             <div class="banner_txt">
                                 @empty ($item->name)
                                 @else
@@ -26,6 +26,7 @@
                             </div>
                             <a href="{{ $item->link }}"></a>
                         </li>
+						
                     @endforeach
                 </ul>
             </div>

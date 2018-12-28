@@ -32,7 +32,6 @@ class ProductController extends Controller
         $class_name  = strtolower($class_name);
         $$class_name = Series::query()->findOrFail($id);
 
-        info($$class_name);
         return view($class_name.'.detail', compact($class_name));
     }
 
