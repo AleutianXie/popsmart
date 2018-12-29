@@ -21,8 +21,8 @@ class ProductController extends Controller
 //        $model    = new Product();
         $model    = new Series();
         $this->getModel($model);
-        $products = $model->paginate()->appends($filter);
-
+        $products = $model->orderByDesc('sort')->paginate()->appends($filter);
+		
         return view('product.index', compact('products'));
     }
 
