@@ -82,16 +82,17 @@
         <p>OUR PRODUCTS</p>
     </div>
     <div class="boxmain">
-        <div class="ColumnOnenav">
+        <div class="ColumnOnenav" style="cursor: default;">
             @foreach($products as $product)
                 <div class="product-item">
                     <li>
+                        <a href="@if($product->is_url) {{$product->is_url}} @else /product/{{$product->id}} @endif">
                         <img src="{{$product->icon}}" alt="">
                         <span class="product-desc">
                             <h5>{{$product->name}}</h5>
                             <p>{{$product->overview}}</p>
-                            <a href="@if($product->is_url) {{$product->is_url}} @else /product/{{$product->id}} @endif">了解更多</a>
                         </span>
+                        </a>
                     </li>
                 </div>
             @endforeach

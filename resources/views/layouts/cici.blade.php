@@ -116,13 +116,13 @@
                     <li>浙江省杭州市江干区红晋路759号禧福汇4-412室</li>
                     <li style="margin-top: 15px;">湖北武汉市江夏区大花岭正汤大道鸿发大厦A1座1501室</li>
                 </ul>
+                <ul>
+                    <li class="web" style="width: 200px;">Web：www.popsmart.cn</li>
+                </ul>
             </div>
-            <ul>
-                <li class="web">Web：www.popsmart.cn</li>
-            </ul>
         </div>
         <div style="height: 80px;background: #061A32;color: #ffffff;display: flex;justify-content: center;align-items: center;">
-            <span class="text-center">宁波宝略智能科技有限公司 版权所有  2017 PopSmart Technology Co., Ltd. All Rights Reserved | 浙ICP备17033777号-1</span>
+            <span class="text-center">宁波宝略智能科技有限公司 版权所有  {{date('Y')}} PopSmart Technology Co., Ltd. All Rights Reserved | 浙ICP备17033777号-1</span>
         </div>
     </div>
 </div>
