@@ -22,18 +22,22 @@
     @show
     <style>
         .top {
-            height: 60px;
+            height: 120px;
         }
         .logo{
-            margin: 0px !important;
+            margin: 15px ;
         }
-        .logo img{
-            height: 60px;
-        }
+      
         .pc_nav ul li{
-            height: 60px;
-            line-height: 60px;
+            height: 120px;
+            line-height: 120px;
         }
+		.pc_nav ul li.on a{
+			background: #2162e5 url(/images/pc_nav_icon.png) no-repeat center 90px;
+		}
+		.pc_nav ul li a:hover{
+			background: #2162e5 url(/images/pc_nav_icon.png) no-repeat center 90px;
+		}
     </style>
 </head>
 <body style="padding-top: 60px;">
