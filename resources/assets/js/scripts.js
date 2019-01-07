@@ -7,7 +7,9 @@ $(document).ready(function() {
         $( this ).css({'animation-delay': (index/10)+'s'});
     });
     // Documentation link
-    $('.flicker-example').flicker();
+    $('.flicker-example').flicker({
+        auto_flick_delay: 3
+    });
     $(".c1_list").hide();
     // $(".ColumnOnenav li:first").addClass("cur").show();
     $(".c1_list:first").show();
