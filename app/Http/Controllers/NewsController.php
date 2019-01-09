@@ -17,8 +17,7 @@ class NewsController extends Controller
     {
         $filter = $request->input();
         $model  = new News();
-        $this->getModel($model);
-        $news   = $model->paginate()->appends($filter);
+        $news   = $model->orderByDesc('id')->paginate(config('app.NEW_PAGE_ITEM',5))->appends($filter);
         return view('news.index', compact('news'));
     }
 

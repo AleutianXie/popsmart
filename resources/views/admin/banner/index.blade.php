@@ -21,6 +21,7 @@
               <tr>
                 <th class="col-md-1">ID</th>
                 <th class="col-md-2">图片</th>
+                <th class="col-md-2">移动端图片</th>
                 <th class="col-md-1">标题</th>
                 <th class="col-md-2">简述</th>
                 <th class="col-md-2">链接</th>
@@ -35,6 +36,7 @@
               <tr>
                 <td>{{ $item->id }}</td>
                 <td><img src="{{ $item->pic }}" style="max-width: 100%;" alt="{{ $item->name }}"></td>
+                <td><img src="{{ $item->m_url }}" style="max-width: 150px;" alt="{{ $item->name }}"></td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->summary }}</td>
                 <td>{{ $item->link }}</td>

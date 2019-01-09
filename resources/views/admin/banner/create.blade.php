@@ -29,14 +29,25 @@
         </span>
     @endif
 </div>
-<div class="form-group {{ $errors->has('pic') ? 'has-error' : '' }}">
-    {{ Form::label('图片', null, ['class' => 'control-label']) }}
-    {{ Form::file('pic') }}
-    @if ($errors->has('pic'))
-        <span class="help-block">
+<div class="row">
+    <div class="form-group {{ $errors->has('pic') ? 'has-error' : '' }} col-md-6">
+        {{ Form::label('图片', null, ['class' => 'control-label']) }}
+        {{ Form::file('pic') }}
+        @if ($errors->has('pic'))
+            <span class="help-block">
             <strong>{{ $errors->first('pic') }}</strong>
         </span>
-    @endif
+        @endif
+    </div>
+    <div class="form-group {{ $errors->has('m_url') ? 'has-error' : '' }} col-md-6">
+        {{ Form::label('移动端图片', null, ['class' => 'control-label']) }} <small>(可为空)</small>
+        {{ Form::file('m_url') }}
+        @if ($errors->has('m_url'))
+            <span class="help-block">
+            <strong>{{ $errors->first('m_url') }}</strong>
+        </span>
+        @endif
+    </div>
 </div>
 <div class="form-group {{ $errors->has('summary') ? 'has-error' : '' }}">
     {{ Form::label('简述', null, ['class' => 'control-label']) }}
@@ -94,6 +105,9 @@
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     $('input[name=pic]').fileinput({
+        language: 'zh'
+    });
+    $('input[name=m_url]').fileinput({
         language: 'zh'
     });
     $(document).on('focus', 'form input, form textarea', function(e) {

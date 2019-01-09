@@ -28,14 +28,25 @@
         </span>
     @endif
 </div>
-<div class="form-group {{ $errors->has('pic') ? 'has-error' : '' }}">
-    {{ Form::label('图片', null, ['class' => 'control-label']) }}
-    {{ Form::file('pic') }}
-    @if ($errors->has('pic'))
-        <span class="help-block">
-            <strong>{{ $errors->first('pic') }}</strong>
+<div class="row">
+    <div class="form-group {{ $errors->has('pic') ? 'has-error' : '' }} col-md-6">
+        {{ Form::label('图片', null, ['class' => 'control-label']) }}
+        {{ Form::file('pic') }}
+        @if ($errors->has('pic'))
+            <span class="help-block">
+                <strong>{{ $errors->first('pic') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="form-group {{ $errors->has('m_url') ? 'has-error' : '' }} col-md-6">
+        {{ Form::label('移动端图片', null, ['class' => 'control-label']) }} <small>(可为空)</small>
+        {{ Form::file('m_url') }}
+        @if ($errors->has('m_url'))
+            <span class="help-block">
+            <strong>{{ $errors->first('m_url') }}</strong>
         </span>
-    @endif
+        @endif
+    </div>
 </div>
 <div class="form-group {{ $errors->has('summary') ? 'has-error' : '' }}">
     {{ Form::label('简述', null, ['class' => 'control-label']) }}
@@ -97,6 +108,17 @@
         language: 'zh',
         initialPreview: [
             '<img src="{{ $banner->pic }}" class="file-preview-image" style="max-width: 100%;" alt="{{ $banner->name }}">'
+        ]
+        @else
+        language: 'zh'
+        @endif
+
+    });
+    $('input[name=m_url]').fileinput({
+        @if ($banner->pic)
+        language: 'zh',
+        initialPreview: [
+            '<img src="{{ $banner->m_url }}" class="file-preview-image" style="max-width: 100%;" alt="{{ $banner->name }}">'
         ]
         @else
         language: 'zh'

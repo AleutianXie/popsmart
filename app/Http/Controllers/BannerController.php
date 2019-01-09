@@ -15,6 +15,12 @@ class BannerController extends Controller
             $bannerAttribute = $request->input();
             array_forget($bannerAttribute, '_token');
             $bannerAttribute = array_add($bannerAttribute, 'pic', $pic);
+
+            if ($request->hasFile('m_url')) {
+                $m_url         = Uploader::uploadImage($request->file('m_url'));
+                $bannerAttribute = array_add($bannerAttribute, 'm_url', $m_url);
+            }
+
             Banner::create($bannerAttribute);
             return redirect(route('admin.banner.index'))->with('success', '创建成功！');
         }
@@ -31,6 +37,10 @@ class BannerController extends Controller
             if ($request->hasFile('pic')) {
                 $pic         = Uploader::uploadImage($request->file('pic'));
                 $bannerAttribute = array_add($bannerAttribute, 'pic', $pic);
+            }
+            if ($request->hasFile('m_url')) {
+                $m_url         = Uploader::uploadImage($request->file('m_url'));
+                $bannerAttribute = array_add($bannerAttribute, 'm_url', $m_url);
             }
             $banner->update($bannerAttribute);
             return redirect(route('admin.banner.index'))->with('success', '修改成功！');

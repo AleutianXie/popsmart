@@ -11,8 +11,8 @@
                     <dd>{{ item.summary }}</dd>
                 </dl>
             </div>
-            <div class="c-update-r">
-                <img :src="item.cover" :alt="item.name" />
+            <div class="c-update-r c1_img">
+                <a :href="'/news/' + item.id"><img :src="item.cover" :alt="item.name" /></a>
             </div>
         </div>
     </div>

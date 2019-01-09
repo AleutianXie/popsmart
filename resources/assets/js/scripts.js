@@ -55,3 +55,43 @@ $(document).ready(function() {
         });
     });
 });
+
+(function ($) {
+    function setbgurl() {
+        let width = $("html").width();
+        if (width < 1000) {
+            $(".my-top-banner").each(function () {
+                let gb = $(this).attr("bg1");
+                $(this).css('background-image', `url(${gb})`);
+            })
+        } else {
+            $(".my-top-banner").each(function () {
+                let gb = $(this).attr("bg2");
+                $(this).css('background-image', `url(${gb})`);
+            })
+        }
+    }
+
+    setbgurl();
+
+    // 取自 UnderscoreJS 实用框架
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function () {
+            var context = this, args = arguments;
+            var later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
+    // 添加resize的回调函数，但是只允许它每300毫秒执行一次
+    window.addEventListener('resize', debounce(function (event) {
+        setbgurl();
+    }, 300));
+})(jQuery);

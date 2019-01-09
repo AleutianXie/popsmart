@@ -11,7 +11,8 @@
                 <ul>
                     @foreach ($banners as $item)
 
-                        <li data-background="{{ $item->pic }}" style="position: relative;">
+                        <li class="my-top-banner" bg1="{{ $item->m_url }}" bg2="{{$item->pic}}"
+                            style="position: relative;">
                             <div class="banner_txt">
                                 @empty ($item->name)
                                 @else
@@ -26,7 +27,7 @@
                             </div>
                             <a href="{{ $item->link }}"></a>
                         </li>
-						
+
                     @endforeach
                 </ul>
             </div>
@@ -41,13 +42,14 @@
                     <h4>@if ($news->is_today) 今日最新 @else {{ $news->created_at->toDateString() }}@endif</h4>
                     <div class="line"></div>
                     <dl>
-                        <dt><a href="{{ route('news.detail', $news->id) }}"></a>{{ $news->name }}</dt>
+                        <dt><a href="{{ route('news.detail', $news->id) }}" class="today-new">{{ $news->name }}</a></dt>
                         <div class="line"></div>
                         <dd>{{ $news->summary }}</dd>
                     </dl>
                 </div>
-                <div class="c-update-r">
-                    <img src="{{ $news->cover }}" alt="{{ $news->name }}" />
+                <div class="c-update-r c1_img">
+                    <a href="{{ route('news.detail', $news->id) }}"><img src="{{ $news->cover }}"
+                                                                         alt="{{ $news->name }}"/></a>
                 </div>
             </div>
         </div>
@@ -71,7 +73,8 @@
                     <ul>
                         @foreach ($series as $item)
                             <li>
-                                <a @if(isset($item->is_url) && !empty($item->is_url)) href="{{ $item->is_url }}" @else href="{{ route('product.detail', $item->id) }}"@endif>
+                                <a @if(isset($item->is_url) && !empty($item->is_url)) href="{{ $item->is_url }}"
+                                   @else href="{{ route('product.detail', $item->id) }}"@endif>
                                     <div class="c1_img"><img src="{{ $item->icon }}" alt="{{ $item->name }}"></div>
                                     <div class="c1_titleText">{{ $item->name }}</div>
                                 </a>
@@ -158,7 +161,8 @@
                                 </ul> --}}
                 <ul>
                     @foreach ($modules as $module)
-                        <li><a href="javascript:void(0);" @if ($loop->first) class="active" @endif>{{ $module->name }}</a></li>
+                        <li><a href="javascript:void(0);"
+                               @if ($loop->first) class="active" @endif>{{ $module->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -168,7 +172,8 @@
                     <ul>
                         @if (!empty($serviceList))
                             @foreach ($serviceList as $service)
-                                <li><a href="{{ route('service.detail', $service->id) }}" target="_blank" @if ($loop->first) class="active" @endif>{{ $service->name }}</a></li>
+                                <li><a href="{{ route('service.detail', $service->id) }}"
+                                       @if ($loop->first) class="active" @endif>{{ $service->name }}</a></li>
                             @endforeach
                         @endif
                     </ul>
@@ -191,13 +196,14 @@
                         </div> --}}
         </div>
         <div class="videoPlay">
-            <img class="play_btn" src="images/play_btn.png" alt="play_btn" style="">
-            <video src="images/video.mp4" poster="images/gxt.png"></video>
+            <iframe height=670 width='100%' class="popsmart-play-video" src='http://player.youku.com/embed/XNDAwMjU2ODgzMg==' frameborder=0 allowfullscreen></iframe>
         </div>
     </div>
 
-    <div class="c-aboutus">
-        <a href="{{ route('about') }}"><img src="images/aboutus.jpg" alt="关于宝略" /></a>
+    <div class="c-aboutus gg_title">
+        <a href="{{ route('about') }}"><img src="images/aboutus.jpg" alt="关于宝略"/>
+            <h1 style="font-size: 20px;font-weight: 700;line-height: 30px;">我们始终坚持以人为本、创新为根、客户至上为出发点,全力协助客户发挥最大的潜力,创造更大的价值。</h1>
+        </a>
     </div>
 
 @endsection
