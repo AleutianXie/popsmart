@@ -21,84 +21,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @section('css')
     @show
-    <style>
-        .top {
-            height: 120px;
-        }
-
-        .logo {
-            margin: 15px;
-        }
-
-        .pc_nav ul li {
-            height: 120px;
-            line-height: 120px;
-        }
-
-        .flickerplate ul.flicks > li {
-            background-position: center;
-        }
-
-        .pc_nav ul li.on a {
-            background: #2162e5 url(/images/pc_nav_icon.png) no-repeat center 90px;
-        }
-
-        .pc_nav ul li a:hover {
-            background: #2162e5 url(/images/pc_nav_icon.png) no-repeat center 90px;
-        }
-
-        .today-new {
-            color: #000;
-            -webkit-transition: color 0.5s;
-            -moz-transition: color 0.5s;
-            -ms-transition: color 0.5s;
-            -o-transition: color 0.5s;
-            transition: color 0.5s;
-        }
-
-        .today-new:hover {
-            color: #007bff;
-        }
-
-        @media only screen and (max-width: 1000px) and (min-width: 0px) {
-            .solution_l {
-                display: none;
-            }
-
-            .solution_r, .videoPlay, .videoPlay video {
-                width: 100%;
-            }
-
-            .solution_l li, .solution_r li {
-                text-align: center;
-            }
-
-            .solution_l li a, .solution_r li {
-                padding-left: 0;
-            }
-
-            .c-update .boxmain .c-update-l h4 {
-                width: 100%;
-            }
-
-            .joinbox .list img {
-                width: 100%;
-            }
-        }
-
-        @media only screen and (min-width: 1002px) {
-            .joinbox .list img {
-                width: 80%;
-            }
-
-            .popsmart-play-video {
-                width: 100%;
-                height: 670px;
-            }
-        }
-
-        .mc-footer{display:flex;justify-content:space-between;align-items:center;font-family:"Microsoft YaHei", sans-serif;color:rgb(76, 76, 76)}.footer_top{padding-bottom:39px}.mc-footer .footer-tel{height:18px;line-height:18px;background:url(/images/ft_icon_1.jpg) no-repeat 0;background-size:auto 100%;padding-left:30px;font-size:12px;font-family:"Microsoft YaHei", sans-serif}.mc-footer .footer-add{height:18px;line-height:18px;background:url(/images/ft_icon_2.jpg) no-repeat 0;background-size:auto 100%;padding-left:30px;display:flex;font-size:12px;font-family:"Microsoft YaHei", sans-serif}.mc-footer .footer-add span{margin:0 5px 10px 0;display:inline-block}.mc-footer .footer-add>div{}.mc-footer .footer-web{height:18px;line-height:18px;background:url(/images/ft_icon_3.jpg) no-repeat 0;background-size:auto 100%;padding-left:30px;font-size:12px;font-family:"Microsoft YaHei", sans-serif}
-    </style>
 </head>
 <body style="padding-top: 60px;">
 <div id="app">
@@ -190,7 +112,7 @@
             </div>
         </div>
         <div style="height: 80px;background: #061A32;color: #ffffff;display: flex;justify-content: center;align-items: center;">
-            <span class="text-center">宁波宝略智能科技有限公司 版权所有 {{date('Y')}} PopSmart Technology Co., Ltd. All Rights Reserved | 浙ICP备17033777号-1</span>
+            <span class="text-center ban-quan"><span class="ban-quan-pc">宁波宝略智能科技有限公司版权所有</span>   {{date('Y')}} PopSmart Technology Co., Ltd. All Rights Reserved | 浙ICP备17033777号-1</span>
         </div>
     </div>
 </div>
